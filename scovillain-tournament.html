@@ -649,6 +649,63 @@
   }
   .community-card p { color: var(--text-muted); line-height: 1.7; font-size: .9rem; }
 
+
+  .about-split {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 2rem;
+    align-items: start;
+    margin-bottom: 2.2rem;
+  }
+  .about-img-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+  }
+  .about-img-wrap img {
+    width: 100%;
+    max-width: 240px;
+    height: auto;
+    object-fit: contain;
+    filter: drop-shadow(0 0 28px rgba(232,34,10,0.28)) drop-shadow(0 0 28px rgba(62,207,26,0.22));
+  }
+  .about-text {
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .about-text h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    color: var(--gold);
+  }
+  .about-text p {
+    color: var(--text-muted);
+    line-height: 1.8;
+    font-size: .95rem;
+    margin-bottom: 1rem;
+  }
+  .stat-row {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: .9rem;
+    margin-top: 1.6rem;
+  }
+  .stat-box {
+    min-width: 150px;
+    padding: .9rem 1rem;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+    text-align: center;
+  }
+
+
   footer {
     position: relative;
     z-index: 1;
@@ -713,7 +770,8 @@
     <a href="#" data-section="inscription">Inscription</a>
     <a href="#" data-section="mesinscriptions">Mes inscriptions</a>
     <a href="#" data-section="regles">Regles</a>
-    <a href="#" data-section="communaute">Communaute</a>
+    <!--<a href="#" data-section="communaute">Communaute</a> -->
+    <a href="#" data-section="apropos">À propos</a>
   </nav>
 </header>
 
@@ -1152,7 +1210,8 @@
         </ul>
       </div>
     </div>
-
+	
+    <!-- SCOVILLE TABLE -->
     <div class="form-card">
       <h2>Echelle Scovillain</h2>
       <div class="scovillain-table-wrap">
@@ -1205,6 +1264,58 @@
         <h3>Contact</h3>
         <p>Demandes d'information, partenariats, propositions de lieu, animations locales et coordination avec la communaute.</p>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════ À PROPOS ══════════ -->
+<section id="apropos" class="section">
+  <div class="page-inner">
+    <div class="page-title"><span class="red">À propos</span></div>
+    <div class="page-line"></div>
+
+    <div class="about-split">
+      <div class="about-img-wrap">
+        <img src="logo-scovillain-main.png" alt="Scovilain Cup" onerror="this.style.background='linear-gradient(135deg,#9e1505,#1a7a08)';this.style.height='180px';this.style.borderRadius='12px'">
+      </div>
+      <div class="about-text">
+        <h2>QUI SOMMES-NOUS ?</h2>
+        <p>
+          Scoville Tournament est une organisation de tournois Pokémon TCG née d'une simple idée : rendre les défaites mémorables. 
+          Parce que perdre sur le tapis de jeu, c'est une chose — mais perdre <em>et</em> devoir manger une croquette de fromage avec de la sauce scorpion, c'est une autre histoire.
+        </p>
+        <p>
+          Nos événements se veulent accessibles à tous les niveaux, des débutants aux joueurs compétitifs, avec deux formats distincts : le <strong>Standard</strong> pour les stratèges de la méta, et l'<strong>Off-Meta</strong> pour les créatifs qui veulent surprendre.
+        </p>
+        <p>
+          Basés à Rennes, nous organisons des tournois en présentiel et en ligne. La communauté d'abord, la compétition ensuite — et la sauce toujours.
+        </p>
+
+        <div class="stat-row">
+          <div class="stat-box">
+            <div class="stat-label">Tournoi organisé</div>
+            <div class="stat-num">1</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Joueurs</div>
+            <div class="stat-num">12</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-card" style="text-align:center;max-width:600px;margin:0 auto;">
+      <h2>📬 Nous contacter</h2>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;font-size:0.9rem;">Une question ? Une suggestion ? Envie d'organiser un tournoi avec nous ?</p>
+      <div class="form-group" style="margin-bottom:1rem;">
+        <label>Votre email</label>
+        <input type="email" placeholder="dresseur@pokemon.com">
+      </div>
+      <div class="form-group" style="margin-bottom:1.5rem;">
+        <label>Message</label>
+        <textarea rows="4" placeholder="Votre message..."></textarea>
+      </div>
+      <button class="btn-primary" style="width:100%">Envoyer 🌶️</button>
     </div>
   </div>
 </section>
