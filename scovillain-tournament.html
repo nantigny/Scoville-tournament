@@ -1,0 +1,1208 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>scovillainain-tournament.com | Tournois Pokemon TCG</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --red: #e8220a;
+    --red-dark: #9e1505;
+    --red-soft: rgba(232, 34, 10, 0.12);
+    --green: #3ecf1a;
+    --green-dark: #1a7a08;
+    --green-soft: rgba(62, 207, 26, 0.12);
+    --gold: #f0c040;
+    --dark: #070707;
+    --dark2: #101010;
+    --dark3: #171717;
+    --dark4: #202020;
+    --text: #f0ede8;
+    --text-muted: #a8a8a8;
+    --border: rgba(255,255,255,0.08);
+    --radius: 16px;
+    --shadow: 0 14px 40px rgba(0,0,0,0.35);
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    font-family: 'Barlow', sans-serif;
+    background: var(--dark);
+    color: var(--text);
+    overflow-x: hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+      radial-gradient(circle at 10% 20%, rgba(232,34,10,0.12) 0%, transparent 28%),
+      radial-gradient(circle at 88% 22%, rgba(62,207,26,0.12) 0%, transparent 26%),
+      radial-gradient(circle at 50% 100%, rgba(240,192,64,0.05) 0%, transparent 35%);
+  }
+
+  a { color: inherit; }
+
+  header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    height: 78px;
+    padding: 0 2rem;
+    background: rgba(7,7,7,0.9);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid rgba(240,192,64,0.15);
+  }
+
+  .logo-wrap {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    text-decoration: none;
+    min-width: 0;
+  }
+  .logo-wrap img {
+    width: 54px;
+    height: 54px;
+    object-fit: contain;
+    filter: drop-shadow(0 0 16px rgba(232,34,10,0.3)) drop-shadow(0 0 16px rgba(62,207,26,0.25));
+  }
+  .logo-text-wrap { line-height: 1; }
+  .logo-text {
+    display: block;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.65rem;
+    letter-spacing: 2px;
+    background: linear-gradient(135deg, var(--red), var(--gold), var(--green));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+  .logo-sub {
+    display: block;
+    font-size: 0.72rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-top: 2px;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    gap: .2rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  nav::-webkit-scrollbar { display: none; }
+  nav a {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: 0.92rem;
+    text-decoration: none;
+    color: var(--text-muted);
+    height: 78px;
+    display: flex;
+    align-items: center;
+    padding: 0 0.95rem;
+    border-bottom: 3px solid transparent;
+    transition: .2s ease;
+    white-space: nowrap;
+  }
+  nav a:hover {
+    color: var(--green);
+    border-bottom-color: var(--green);
+  }
+  nav a.active {
+    color: var(--red);
+    border-bottom-color: var(--red);
+  }
+
+  .section { display: none; position: relative; z-index: 1; min-height: calc(100vh - 78px); }
+  .section.active { display: block; }
+  #home.active { display: flex; }
+
+  .page-inner { max-width: 1180px; margin: 0 auto; padding: 4rem 2rem 5rem; }
+  .page-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(2.7rem, 6vw, 4.8rem);
+    letter-spacing: 3px;
+    line-height: 0.95;
+    margin-bottom: .35rem;
+  }
+  .page-title span.red { color: var(--red); }
+  .page-title span.green { color: var(--green); }
+  .page-line {
+    width: 72px;
+    height: 4px;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--red), var(--green));
+    margin-bottom: 1.5rem;
+  }
+  .page-intro {
+    max-width: 760px;
+    color: var(--text-muted);
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+
+  #home {
+    min-height: calc(100vh - 78px);
+    display: none;
+    align-items: center;
+    justify-content: center;
+    padding: 3rem 2rem 4rem;
+  }
+  .hero-shell {
+    width: 100%;
+    max-width: 1220px;
+    display: grid;
+    grid-template-columns: 1.15fr .85fr;
+    gap: 2rem;
+    align-items: center;
+  }
+  .hero-left { padding: 1rem 0; }
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: .6rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-weight: 700;
+    font-size: .84rem;
+    padding: .6rem 1rem;
+    border-radius: 999px;
+    background: rgba(240,192,64,0.1);
+    border: 1px solid rgba(240,192,64,0.28);
+    color: var(--gold);
+    margin-bottom: 1.4rem;
+  }
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(4rem, 11vw, 7.8rem);
+    line-height: .88;
+    letter-spacing: 3px;
+    margin-bottom: 1rem;
+  }
+  .hero-title .red { color: var(--red); text-shadow: 0 0 24px rgba(232,34,10,0.35); }
+  .hero-title .green { color: var(--green); text-shadow: 0 0 24px rgba(62,207,26,0.35); }
+  .hero-sub {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.1rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 1.1rem;
+  }
+  .hero-desc {
+    max-width: 720px;
+    color: #d7d7d7;
+    font-size: 1.02rem;
+    line-height: 1.8;
+    margin-bottom: 2rem;
+  }
+  .hero-ctas {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2.2rem;
+  }
+  .btn-primary, .btn-secondary, .btn-ghost {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 12px;
+    padding: .95rem 1.4rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1.8px;
+    font-weight: 700;
+    font-size: .95rem;
+    transition: .2s ease;
+  }
+  .btn-primary {
+    color: #fff;
+    background: linear-gradient(135deg, var(--red-dark), var(--red));
+    border: 1px solid rgba(255,255,255,0.06);
+    box-shadow: 0 12px 24px rgba(232,34,10,0.18);
+  }
+  .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(232,34,10,0.32); }
+  .btn-secondary {
+    color: var(--green);
+    background: rgba(62,207,26,0.08);
+    border: 1px solid rgba(62,207,26,0.35);
+  }
+  .btn-secondary:hover { transform: translateY(-2px); background: rgba(62,207,26,0.14); }
+  .btn-ghost {
+    color: var(--gold);
+    background: rgba(240,192,64,0.08);
+    border: 1px solid rgba(240,192,64,0.24);
+  }
+
+  .hero-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+  .stat-card {
+    padding: 1rem;
+    border-radius: var(--radius);
+    background: rgba(255,255,255,0.03);
+    border: 1px solid var(--border);
+    box-shadow: var(--shadow);
+  }
+  .stat-num {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2rem;
+    color: var(--text);
+    letter-spacing: 1px;
+  }
+  .stat-label { color: var(--text-muted); font-size: .85rem; line-height: 1.5; }
+
+  .hero-panel {
+    background: linear-gradient(180deg, rgba(255,255,255,0.04), rgba(255,255,255,0.02));
+    border: 1px solid var(--border);
+    border-radius: 28px;
+    padding: 2rem;
+    box-shadow: var(--shadow);
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-panel::before {
+    content: '';
+    position: absolute;
+    inset: auto -40px -40px auto;
+    width: 180px;
+    height: 180px;
+    background: radial-gradient(circle, rgba(62,207,26,0.16), transparent 70%);
+    pointer-events: none;
+  }
+  .hero-logo-wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 1.6rem;
+  }
+  .hero-logo {
+    width: 320px;
+    max-width: 100%;
+    object-fit: contain;
+    filter: drop-shadow(0 0 28px rgba(232,34,10,0.35)) drop-shadow(0 0 28px rgba(62,207,26,0.28));
+  }
+  .panel-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.8rem;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+  }
+  .path-list { display: grid; gap: .85rem; }
+  .path-item {
+    display: grid;
+    grid-template-columns: 44px 1fr;
+    gap: .85rem;
+    align-items: start;
+    padding: .9rem;
+    border-radius: 14px;
+    background: rgba(0,0,0,0.18);
+    border: 1px solid rgba(255,255,255,0.05);
+  }
+  .path-num {
+    width: 44px;
+    height: 44px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: linear-gradient(135deg, var(--red), var(--green));
+    color: #0c0c0c;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.3rem;
+  }
+  .path-item h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1rem;
+    letter-spacing: 1px;
+    margin-bottom: .2rem;
+  }
+  .path-item p { color: var(--text-muted); font-size: .88rem; line-height: 1.55; }
+
+  .grid-2, .grid-3 {
+    display: grid;
+    gap: 1.3rem;
+  }
+  .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+
+  .card, .form-card, .info-card, .rule-card, .deck-card, .event-card, .account-card {
+    background: var(--dark3);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+  }
+  .card, .info-card, .rule-card, .account-card { padding: 1.35rem; }
+
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: .4rem;
+    border-radius: 999px;
+    padding: .33rem .65rem;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    font-size: .74rem;
+    border: 1px solid transparent;
+  }
+  .pill.standard { background: rgba(62,207,26,0.12); color: var(--green); border-color: rgba(62,207,26,0.28); }
+  .pill.offmeta { background: rgba(232,34,10,0.12); color: var(--red); border-color: rgba(232,34,10,0.28); }
+  .pill.online { background: rgba(80,110,255,0.12); color: #8ea2ff; border-color: rgba(80,110,255,0.25); }
+  .pill.irl { background: rgba(240,192,64,0.12); color: var(--gold); border-color: rgba(240,192,64,0.22); }
+  .pill.open { background: rgba(62,207,26,0.12); color: var(--green); border-color: rgba(62,207,26,0.28); }
+  .pill.wait { background: rgba(240,192,64,0.12); color: var(--gold); border-color: rgba(240,192,64,0.22); }
+  .pill.done { background: rgba(255,255,255,0.08); color: #d8d8d8; border-color: rgba(255,255,255,0.14); }
+
+  .event-list { display: grid; gap: 1rem; }
+  .event-card {
+    display: grid;
+    grid-template-columns: 108px 1fr auto;
+    gap: 1.2rem;
+    padding: 1.2rem;
+    align-items: center;
+    transition: .2s ease;
+  }
+  .event-card:hover { transform: translateY(-2px); border-color: rgba(240,192,64,0.25); }
+  .event-date {
+    border-radius: 14px;
+    padding: .9rem .6rem;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(232,34,10,0.22), rgba(158,21,5,0.45));
+    border: 1px solid rgba(232,34,10,0.24);
+  }
+  .event-date.green {
+    background: linear-gradient(135deg, rgba(62,207,26,0.18), rgba(26,122,8,0.4));
+    border-color: rgba(62,207,26,0.24);
+  }
+  .event-day {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 2.4rem;
+    line-height: 1;
+  }
+  .event-month {
+    font-family: 'Barlow Condensed', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: .84rem;
+    color: rgba(255,255,255,0.7);
+  }
+  .event-main h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.25rem;
+    letter-spacing: 1px;
+    margin-bottom: .3rem;
+  }
+  .event-main p { color: var(--text-muted); line-height: 1.6; margin-bottom: .55rem; font-size: .92rem; }
+  .event-tags { display: flex; flex-wrap: wrap; gap: .45rem; }
+  .event-actions { display: flex; flex-direction: column; gap: .7rem; align-items: flex-end; }
+
+  .results-head {
+    display: flex;
+    flex-wrap: wrap;
+    gap: .8rem;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.6rem;
+  }
+  .results-head .meta { color: var(--text-muted); }
+
+  .podium {
+    display: flex;
+    align-items: end;
+    justify-content: center;
+    gap: 1rem;
+    margin: 2rem 0 2.4rem;
+  }
+  .podium-step {
+    flex: 1;
+    max-width: 240px;
+    text-align: center;
+    padding: 1.3rem 1rem 1rem;
+    border-radius: 18px 18px 0 0;
+    border: 1px solid var(--border);
+  }
+  .p1 { height: 220px; background: linear-gradient(180deg, rgba(240,192,64,0.2), rgba(240,192,64,0.05)); }
+  .p2 { height: 182px; background: linear-gradient(180deg, rgba(220,220,220,0.14), rgba(220,220,220,0.04)); }
+  .p3 { height: 154px; background: linear-gradient(180deg, rgba(170,102,55,0.16), rgba(170,102,55,0.04)); }
+  .podium-rank { font-family: 'Bebas Neue', sans-serif; font-size: 3rem; line-height: 1; }
+  .p1 .podium-rank { color: var(--gold); }
+  .p2 .podium-rank { color: #d8d8d8; }
+  .p3 .podium-rank { color: #c2814d; }
+  .podium-name { font-family: 'Barlow Condensed', sans-serif; font-size: 1rem; font-weight: 700; letter-spacing: 1px; margin: .35rem 0 .1rem; }
+  .podium-deck, .podium-score { color: var(--text-muted); font-size: .86rem; }
+
+  table { width: 100%; border-collapse: collapse; }
+  th {
+    text-align: left;
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: .78rem;
+    text-transform: uppercase;
+    letter-spacing: 1.8px;
+    color: var(--text-muted);
+    padding: .85rem 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
+  }
+  td {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+    font-size: .93rem;
+    vertical-align: top;
+  }
+  tbody tr:hover td { background: rgba(255,255,255,0.025); }
+
+  .heat-level {
+    display: inline-flex;
+    align-items: center;
+    gap: .5rem;
+    color: var(--green);
+    font-weight: 700;
+  }
+  .heat-dots { letter-spacing: 1px; }
+
+  .deck-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.2rem; }
+  .deck-card { overflow: hidden; }
+  .deck-banner {
+    height: 110px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+  }
+  .deck-banner.fire { background: linear-gradient(135deg, #3a0904, #9e1505); }
+  .deck-banner.green { background: linear-gradient(135deg, #0d2108, #1a7a08); }
+  .deck-banner.gold { background: linear-gradient(135deg, #332809, #7a6400); }
+  .deck-banner.blue { background: linear-gradient(135deg, #061b2f, #005a8a); }
+  .deck-body { padding: 1.2rem; }
+  .deck-row {
+    display: flex;
+    justify-content: space-between;
+    gap: .8rem;
+    align-items: center;
+    margin-bottom: .35rem;
+  }
+  .deck-body h3 {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 1.15rem;
+    letter-spacing: 1px;
+  }
+  .deck-body p { color: var(--text-muted); font-size: .88rem; line-height: 1.65; margin-bottom: .9rem; }
+  .tier {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 1px;
+    font-size: 1rem;
+  }
+  .tier.s { color: var(--red); }
+  .tier.a { color: var(--gold); }
+  .tier.off { color: var(--green); }
+
+  .upload-box {
+    margin-top: 2rem;
+    padding: 1.4rem;
+    border-radius: var(--radius);
+    border: 1px dashed rgba(240,192,64,0.35);
+    background: rgba(240,192,64,0.05);
+  }
+  .upload-box h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    margin-bottom: .5rem;
+    color: var(--gold);
+  }
+  .upload-box p { color: var(--text-muted); line-height: 1.7; }
+
+  .form-card { padding: 1.6rem; }
+  .form-card h2 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.65rem;
+    letter-spacing: 2px;
+    margin-bottom: 1rem;
+    color: var(--gold);
+  }
+  .notice {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 1rem 1.1rem;
+    margin-bottom: 1.4rem;
+    border-radius: 14px;
+    background: linear-gradient(135deg, rgba(232,34,10,0.12), rgba(62,207,26,0.08));
+    border: 1px solid rgba(240,192,64,0.22);
+  }
+  .notice-icon { font-size: 1.6rem; }
+  .notice h4 {
+    font-family: 'Barlow Condensed', sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: .2rem;
+    color: var(--gold);
+  }
+  .notice p { color: var(--text-muted); font-size: .9rem; line-height: 1.6; }
+
+  .form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 1.2rem; }
+  .form-group { display: flex; flex-direction: column; gap: .42rem; }
+  .form-group.full { grid-column: 1 / -1; }
+  label {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--text-muted);
+    font-size: .82rem;
+  }
+  input, select, textarea {
+    width: 100%;
+    background: var(--dark4);
+    color: var(--text);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 12px;
+    padding: .9rem 1rem;
+    font-size: .95rem;
+    font-family: 'Barlow', sans-serif;
+    outline: none;
+    transition: .2s ease;
+  }
+  input:focus, select:focus, textarea:focus { border-color: rgba(240,192,64,0.55); }
+  textarea { resize: vertical; min-height: 110px; }
+
+  .account-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 1.2rem; }
+  .account-card h3, .rule-card h3, .card h3, .info-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+    margin-bottom: .65rem;
+    color: var(--gold);
+  }
+  .account-card p, .rule-card p, .card p, .info-card p, .account-card li, .rule-card li {
+    color: var(--text-muted);
+    line-height: 1.7;
+    font-size: .92rem;
+  }
+  .account-card ul, .rule-card ul { padding-left: 1.1rem; }
+
+  .mini-list { display: grid; gap: .8rem; margin-top: 1rem; }
+  .mini-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+    padding: .95rem 1rem;
+    border-radius: 14px;
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.06);
+  }
+  .mini-item strong { display: block; margin-bottom: .2rem; }
+  .mini-item span { color: var(--text-muted); font-size: .88rem; }
+
+  .rules-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2rem; margin-bottom: 1.2rem; }
+  .scovillain-table-wrap { overflow-x: auto; }
+  .level-badge {
+    display: inline-flex;
+    min-width: 72px;
+    justify-content: center;
+    padding: .32rem .65rem;
+    border-radius: 999px;
+    background: rgba(62,207,26,0.12);
+    color: var(--green);
+    font-weight: 700;
+    font-size: .82rem;
+  }
+  .shu { color: var(--gold); font-weight: 700; }
+  .bar {
+    height: 8px;
+    border-radius: 999px;
+    margin-top: 6px;
+    background: linear-gradient(90deg, #f9a825, #ff7043, #e53935, #b71c1c);
+  }
+
+  .community-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1.2rem; }
+  .community-card { padding: 1.3rem; }
+  .community-card h3 {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.4rem;
+    letter-spacing: 2px;
+    margin-bottom: .55rem;
+  }
+  .community-card p { color: var(--text-muted); line-height: 1.7; font-size: .9rem; }
+
+  footer {
+    position: relative;
+    z-index: 1;
+    padding: 1.6rem 2rem;
+    border-top: 1px solid rgba(255,255,255,0.06);
+    background: var(--dark2);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1rem;
+  }
+  .footer-left {
+    font-family: 'Bebas Neue', sans-serif;
+    letter-spacing: 2px;
+    font-size: 1.15rem;
+    color: var(--text-muted);
+  }
+  .footer-right { color: #666; font-size: .82rem; line-height: 1.6; text-align: right; }
+
+  @media (max-width: 1050px) {
+    .hero-shell, .account-grid, .grid-2, .grid-3, .rules-grid, .deck-grid, .community-grid { grid-template-columns: 1fr; }
+    .hero-panel { order: -1; }
+    .hero-stats { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 820px) {
+    header { padding: 0 1rem; }
+    .page-inner { padding: 3rem 1rem 4rem; }
+    #home { padding: 2rem 1rem 3rem; }
+    .event-card { grid-template-columns: 86px 1fr; }
+    .event-actions { grid-column: 1 / -1; align-items: stretch; }
+    .form-grid { grid-template-columns: 1fr; }
+    .podium { gap: .55rem; }
+    .podium-step { padding: 1rem .6rem .8rem; }
+    footer { flex-direction: column; text-align: center; }
+    .footer-right { text-align: center; }
+  }
+
+  @media (max-width: 640px) {
+    .logo-sub { display: none; }
+    .hero-title { font-size: 3.7rem; }
+    .results-table-wrap, .scovillain-table-wrap { overflow-x: auto; }
+    table { min-width: 720px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <a class="logo-wrap" href="#" onclick="showSection('home')">
+    <img src="logo-scovillain-main.png" alt="Logo scovillain Tournament" onerror="this.style.display='none'">
+    <div class="logo-text-wrap">
+      <span class="logo-text">scovillain Tournament</span>
+      <span class="logo-sub">scovillain-tournament.com</span>
+    </div>
+  </a>
+
+  <nav>
+    <a href="#" class="active" data-section="home">Accueil</a>
+    <a href="#" data-section="calendrier">Calendrier</a>
+    <a href="#" data-section="resultats">Resultats</a>
+    <a href="#" data-section="decks">Decks</a>
+    <a href="#" data-section="inscription">Inscription</a>
+    <a href="#" data-section="mesinscriptions">Mes inscriptions</a>
+    <a href="#" data-section="regles">Regles</a>
+    <a href="#" data-section="communaute">Communaute</a>
+  </nav>
+</header>
+
+<section id="home" class="section active">
+  <div class="hero-shell">
+    <div class="hero-left">
+      <div class="hero-badge">Pokemon TCG · Tournois Standard & Off-meta · Defaites pimentees</div>
+      <div class="hero-title">
+        <div class="red">Scovillain</div>
+        <div class="green">TOURNAMENT</div>
+      </div>
+      <div class="hero-sub">Des evenements reguliers pour jouer, gagner et monter en piquant</div>
+      <p class="hero-desc">
+        scovillain-tournament.com annonce et organise des tournois Pokemon TCG en format <strong>Standard</strong> ou <strong>Off-meta</strong>.
+        Chaque joueur peut retrouver le calendrier des evenements, s'inscrire, soumettre sa deck list, suivre ses resultats et decouvrir le niveau de sauce atteint en fonction de son nombre de defaites.
+      </p>
+      <div class="hero-ctas">
+        <a class="btn-primary" href="#" onclick="showSection('calendrier')">Voir les prochains tournois</a>
+        <a class="btn-secondary" href="#" onclick="showSection('inscription')">S'inscrire</a>
+        <a class="btn-ghost" href="#" onclick="showSection('regles')">Voir les regles scovillain</a>
+      </div>
+
+      <div class="hero-stats">
+        <div class="stat-card">
+          <div class="stat-num">2</div>
+          <div class="stat-label">Formats proposes : Standard et Off-meta</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">8 a 10</div>
+          <div class="stat-label">Niveaux de piquant associes a une sauce et a son score scovillain</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-num">1</div>
+          <div class="stat-label">Concept : plus tu perds, plus le defi culinaire devient intense</div>
+        </div>
+      </div>
+    </div>
+
+    <aside class="hero-panel">
+      <div class="hero-logo-wrap">
+        <img src="logo-scovillain-main.png" class="hero-logo" alt="scovillain Tournament" onerror="this.style.display='none'">
+      </div>
+      <div class="panel-title">Parcours d'un joueur</div>
+      <div class="path-list">
+        <div class="path-item">
+          <div class="path-num">1</div>
+          <div>
+            <h4>Je choisis mon tournoi</h4>
+            <p>Depuis l'onglet Calendrier, je consulte les evenements et je rejoins celui qui m'interesse.</p>
+          </div>
+        </div>
+        <div class="path-item">
+          <div class="path-num">2</div>
+          <div>
+            <h4>Je joue le tournoi</h4>
+            <p>Je dispute mes rondes, j'accumule mes victoires... ou mes sauces.</p>
+          </div>
+        </div>
+        <div class="path-item">
+          <div class="path-num">3</div>
+          <div>
+            <h4>Je consulte mes resultats</h4>
+            <p>Classement, deck joue, niveau de piquant et historique de participation sont conserves.</p>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section id="calendrier" class="section">
+  <div class="page-inner">
+    <div class="page-title"><span class="red">Calendrier</span></div>
+    <div class="page-line"></div>
+    <p class="page-intro">
+      Cet onglet a ete adapte pour devenir la porte d'entree vers les evenements. Chaque carte peut rediriger vers une page detaillee, une plateforme externe ou un formulaire d'inscription.
+    </p>
+
+    <div class="event-list">
+      <article class="event-card">
+        <div class="event-date">
+          <div class="event-day">19</div>
+          <div class="event-month">Avril</div>
+        </div>
+        <div class="event-main">
+          <h3>Scovillain Cup #1 - Standard Clash</h3>
+          <p>Strasbourg · 24 joueurs max · Swiss 4 rondes + top cut · Verification des deck lists avant le debut</p>
+          <div class="event-tags">
+            <span class="pill standard">Standard</span>
+            <span class="pill irl">Presentiel</span>
+            <span class="pill open">Inscriptions ouvertes</span>
+          </div>
+        </div>
+        <div class="event-actions">
+          <a class="btn-primary" href="#" onclick="showSection('inscription')">S'inscrire</a>
+          <span class="pill wait">8 niveaux de piquant</span>
+        </div>
+      </article>
+
+      <article class="event-card">
+        <div class="event-date green">
+          <div class="event-day">10</div>
+          <div class="event-month">Mai</div>
+        </div>
+        <div class="event-main">
+          <h3>Off-Meta Night - Chaos League</h3>
+          <p>Strasbourg · 32 joueurs max · Archetypes meta bannis ou limites · Validation des listes par l'organisation</p>
+          <div class="event-tags">
+            <span class="pill offmeta">Off-meta</span>
+            <span class="pill irl">Presentiel</span>
+            <span class="pill wait">Ouverture bientot</span>
+          </div>
+        </div>
+        <div class="event-actions">
+          <a class="btn-secondary" href="#" onclick="showSection('regles')">Voir le format</a>
+          <span class="pill done">10 niveaux de piquant</span>
+        </div>
+      </article>
+
+      <article class="event-card">
+        <div class="event-date">
+          <div class="event-day">07</div>
+          <div class="event-month">Juin</div>
+        </div>
+        <div class="event-main">
+          <h3>Scovillain Online #1 - Ladder Heat</h3>
+          <p>En ligne via PTCG Live · 64 joueurs max · Pairings publies en ligne · Saisie des resultats et decks sur le site</p>
+          <div class="event-tags">
+            <span class="pill standard">Standard</span>
+            <span class="pill online">En ligne</span>
+            <span class="pill wait">Preinscriptions</span>
+          </div>
+        </div>
+        <div class="event-actions">
+          <a class="btn-primary" href="#" onclick="showSection('mesinscriptions')">Mes evenements</a>
+          <span class="pill wait">8 niveaux de piquant</span>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="resultats" class="section">
+  <div class="page-inner">
+    <div class="page-title"><span class="red">Resultats</span></div>
+    <div class="page-line"></div>
+    <div class="results-head">
+      <p class="meta">Scovillain Cup #1 · 19 Avril 2026 · Format Standard · 16 joueurs</p>
+      <span class="pill standard">Resultats des derniers evenements</span>
+    </div>
+
+    <div class="podium">
+      <div class="podium-step p2">
+        <div class="podium-rank">2</div>
+        <div class="podium-name">Misty TCG</div>
+        <div class="podium-deck">Lugia VSTAR</div>
+        <div class="podium-score">4V - 1D · Niveau 2</div>
+      </div>
+      <div class="podium-step p1">
+        <div class="podium-rank">1</div>
+        <div class="podium-name">Red Trainer</div>
+        <div class="podium-deck">Charizard ex</div>
+        <div class="podium-score">5V - 0D · Aucune sauce</div>
+      </div>
+      <div class="podium-step p3">
+        <div class="podium-rank">3</div>
+        <div class="podium-name">Brock Onix</div>
+        <div class="podium-deck">Gardevoir ex</div>
+        <div class="podium-score">4V - 1D · Niveau 2</div>
+      </div>
+    </div>
+
+    <div class="results-table-wrap card" style="padding:0; overflow:hidden;">
+      <table>
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Joueur</th>
+            <th>Deck</th>
+            <th>Format</th>
+            <th>Victoires</th>
+            <th>Defaites</th>
+            <th>Niveau de piquant</th>
+            <th>Sauce / SHU</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td><td>Red Trainer</td><td>Charizard ex</td><td>Standard</td><td>5</td><td>0</td>
+            <td><span class="heat-level"><span class="heat-dots">-</span> Niveau 0</span></td><td>Aucune · 0 SHU</td>
+          </tr>
+          <tr>
+            <td>2</td><td>Misty TCG</td><td>Lugia VSTAR</td><td>Standard</td><td>4</td><td>1</td>
+            <td><span class="heat-level"><span class="heat-dots">🌶️</span> Niveau 2</span></td><td>Jalapeno Kick · 4 000 SHU</td>
+          </tr>
+          <tr>
+            <td>3</td><td>Brock Onix</td><td>Gardevoir ex</td><td>Standard</td><td>4</td><td>1</td>
+            <td><span class="heat-level"><span class="heat-dots">🌶️</span> Niveau 2</span></td><td>Jalapeno Kick · 4 000 SHU</td>
+          </tr>
+          <tr>
+            <td>4</td><td>Gary Oak</td><td>Iron Hands ex</td><td>Standard</td><td>3</td><td>2</td>
+            <td><span class="heat-level"><span class="heat-dots">🌶️🌶️</span> Niveau 4</span></td><td>Rouge Arena · 15 000 SHU</td>
+          </tr>
+          <tr>
+            <td>5</td><td>Pika Power</td><td>Pikachu ex</td><td>Standard</td><td>2</td><td>3</td>
+            <td><span class="heat-level"><span class="heat-dots">🌶️🌶️🌶️</span> Niveau 6</span></td><td>Dracaufeu Heat · 60 000 SHU</td>
+          </tr>
+          <tr>
+            <td>6</td><td>Ghost Master</td><td>Lost Zone Box</td><td>Off-meta</td><td>1</td><td>4</td>
+            <td><span class="heat-level"><span class="heat-dots">🔥🔥🔥</span> Niveau 8</span></td><td>Scovillain Core · 140 000 SHU</td>
+          </tr>
+          <tr>
+            <td>7</td><td>Snorlax Fan</td><td>Snorlax Stall</td><td>Off-meta</td><td>0</td><td>5</td>
+            <td><span class="heat-level"><span class="heat-dots">🔥🔥🔥🔥</span> Niveau 10</span></td><td>Final KO · 500 000 SHU</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section id="decks" class="section">
+  <div class="page-inner">
+    <div class="page-title"><span class="red">Decks lists</span></div>
+    <div class="page-line"></div>
+    <p class="page-intro">
+      Cet onglet a ete adapte pour servir a la fois de vitrine meta et d'espace de depot pour les deck lists des joueurs. Il pourra ensuite etre branche a un vrai formulaire ou a une base de donnees.
+    </p>
+
+    <div class="deck-grid">
+      <article class="deck-card">
+        <div class="deck-banner fire">🦎</div>
+        <div class="deck-body">
+          <div class="deck-row"><h3>Charizard ex</h3><span class="tier s">Tier S</span></div>
+          <p>Deck reference du format Standard. Solide, explosif et parfait pour illustrer les listes les plus attendues sur vos evenements competitifs.</p>
+          <div class="event-tags"><span class="pill standard">Standard</span></div>
+        </div>
+      </article>
+
+      <article class="deck-card">
+        <div class="deck-banner blue">🌊</div>
+        <div class="deck-body">
+          <div class="deck-row"><h3>Gardevoir ex</h3><span class="tier a">Tier A</span></div>
+          <p>Excellent exemple de deck technique a afficher dans les resultats avec son pilote, son classement et son niveau de piquant atteint.</p>
+          <div class="event-tags"><span class="pill standard">Standard</span></div>
+        </div>
+      </article>
+
+      <article class="deck-card">
+        <div class="deck-banner green">🌿</div>
+        <div class="deck-body">
+          <div class="deck-row"><h3>Lost Zone Box</h3><span class="tier off">Off-meta</span></div>
+          <p>Exemple de liste creative pour vos soirees Off-meta. Cette carte de section peut aussi contenir le nom du joueur et un lien vers sa liste complete.</p>
+          <div class="event-tags"><span class="pill offmeta">Off-meta</span></div>
+        </div>
+      </article>
+    </div>
+
+    <div class="upload-box">
+      <h3>Depot de deck list</h3>
+      <p>
+        Les joueurs pourront ici renseigner le nom du deck, coller leur liste complete, choisir le tournoi concerne, indiquer le format et enregistrer leur deck avant validation par l'organisation.
+        Cet onglet correspond bien a ta contrainte "deck" dans laquelle les joueurs pourront mettre leur deck list.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section id="inscription" class="section">
+  <div class="page-inner">
+    <div class="page-title"><span class="red">Inscription</span></div>
+    <div class="page-line"></div>
+
+    <div class="notice">
+      <div class="notice-icon">🌶️</div>
+      <div>
+        <h4>Regles Scovillain</h4>
+        <p>En vous inscrivant, vous acceptez le principe du defi culinaire. Pensez a signaler les allergies, intolerances, restrictions alimentaires et sensibilites au piment.</p>
+      </div>
+    </div>
+
+    <div class="form-card">
+      <h2>Formulaire d'inscription joueur</h2>
+      <div class="form-grid">
+        <div class="form-group">
+          <label>Prenom</label>
+          <input type="text" placeholder="Ash">
+        </div>
+        <div class="form-group">
+          <label>Nom</label>
+          <input type="text" placeholder="Ketchum">
+        </div>
+        <div class="form-group">
+          <label>Pseudo / ID joueur</label>
+          <input type="text" placeholder="PokeTrainer42">
+        </div>
+        <div class="form-group">
+          <label>Email</label>
+          <input type="email" placeholder="ash@pokemon.com">
+        </div>
+        <div class="form-group">
+          <label>Tournoi choisi</label>
+          <select>
+            <option>scovillain Cup #1 - Standard Clash</option>
+            <option>Off-Meta Night - Chaos League</option>
+            <option>scovillain Online #1 - Ladder Heat</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Format</label>
+          <select>
+            <option>Standard</option>
+            <option>Off-meta</option>
+          </select>
+        </div>
+        <div class="form-group full">
+          <label>Deck / archetype prevu</label>
+          <input type="text" placeholder="Ex : Charizard ex, Gardevoir ex, Lost Zone Box...">
+        </div>
+        <div class="form-group full">
+          <label>Deck list</label>
+          <textarea placeholder="Collez ici la liste complete de votre deck."></textarea>
+        </div>
+        <div class="form-group full">
+          <label>Allergies / restrictions alimentaires</label>
+          <textarea placeholder="Ex : vegetarien, allergie au lactose, intolerance au piment, etc."></textarea>
+        </div>
+      </div>
+      <div style="display:flex; align-items:flex-start; gap:.7rem; margin-top:1.2rem;">
+        <input type="checkbox" id="ok-rules" style="width:18px;height:18px;margin-top:3px;accent-color:#e8220a;">
+        <label for="ok-rules" style="text-transform:none; letter-spacing:0; font-size:.9rem; color:var(--text-muted); font-family:'Barlow',sans-serif;">J'accepte les regles du tournoi, les conditions de participation et le principe de la montee en piquant.</label>
+      </div>
+      <div style="margin-top:1.4rem; display:flex; gap:1rem; flex-wrap:wrap;">
+        <button class="btn-primary">Confirmer mon inscription</button>
+        <a class="btn-secondary" href="#" onclick="showSection('mesinscriptions')">Voir mes inscriptions</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="mesinscriptions" class="section">
+  <div class="page-inner">
+    <div class="page-title"><span class="red">Mes inscriptions</span></div>
+    <div class="page-line"></div>
+    <p class="page-intro">
+      Cet onglet a ete ajoute pour repondre a ta demande : les joueurs peuvent y retrouver les tournois auxquels ils sont deja inscrits, leur statut, leur deck et les informations utiles.
+    </p>
+
+    <div class="account-grid">
+      <div class="account-card">
+        <h3>Tournois enregistres</h3>
+        <div class="mini-list">
+          <div class="mini-item">
+            <div>
+              <strong>Scovillain Cup #1 - Standard Clash</strong>
+              <span>19 Avril 2026 · Rennes · Deck declare : Charizard ex</span>
+            </div>
+            <span class="pill open">Confirme</span>
+          </div>
+          <div class="mini-item">
+            <div>
+              <strong>Scovillain Online #1 - Ladder Heat</strong>
+              <span>07 Juin 2026 · En ligne · Deck declare : en attente</span>
+            </div>
+            <span class="pill wait">A completer</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="account-card">
+        <h3>Informations joueur</h3>
+        <ul>
+          <li>Deck list soumise ou en attente de validation</li>
+          <li>Check-in ouvert le jour du tournoi</li>
+          <li>Statut du paiement ou de la participation</li>
+          <li>Rappel des restrictions alimentaires declarees</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="regles" class="section">
+  <div class="page-inner">
+    <div class="page-title"><span class="red">Regles</span></div>
+    <div class="page-line"></div>
+    <p class="page-intro">
+      La regle est simple : selon le nombre de defaites pendant le tournoi, le joueur mange un aliment avec une sauce pimentee de plus en plus forte. Le barème ci-dessous montre une version 10 niveaux, mais tu peux facilement le reduire a 8 niveaux si besoin.
+    </p>
+
+    <div class="rules-grid">
+      <div class="rule-card">
+        <h3>Format des tournois</h3>
+        <ul>
+          <li>Tournois reguliers centres sur le Pokemon TCG</li>
+          <li>Formats proposes : Standard et Off-meta</li>
+          <li>Deck list obligatoire avant le debut du tournoi</li>
+          <li>Rondes Swiss puis top cut selon le nombre de joueurs</li>
+          <li>Validation des listes pour les events Off-meta</li>
+        </ul>
+      </div>
+      <div class="rule-card">
+        <h3>Defi culinaire</h3>
+        <ul>
+          <li>Les aliments peuvent etre poulet frit, croquette de fromage ou de legume</li>
+          <li>Le niveau de sauce depend du nombre de defaites</li>
+          <li>Prevoir une charte de securite alimentaire et un consentement clair</li>
+          <li>Des alternatives et restrictions doivent etre prises en compte</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="form-card">
+      <h2>Echelle scovillain - version 10 niveaux</h2>
+      <div class="scovillain-table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Niveau</th>
+              <th>Sauce</th>
+              <th>Scoville</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="level-badge">0</span></td><td>Aucune sauce</td><td class="shu">0 SHU<div class="bar" style="width: 4%;"></div></td></tr>
+            <tr><td><span class="level-badge">1</span></td><td>Sauce Verde</td><td class="shu">4 500 SHU<div class="bar" style="width: 10%;"></div></td></tr>
+            <tr><td><span class="level-badge">2</span></td><td>Jalapeno Kick</td><td class="shu">15 000 SHU<div class="bar" style="width: 18%;"></div></td></tr>
+            <tr><td><span class="level-badge">3</span></td><td>Chipotle Smash</td><td class="shu">30 000 SHU<div class="bar" style="width: 24%;"></div></td></tr>
+            <tr><td><span class="level-badge">4</span></td><td>Rouge Arena</td><td class="shu">50 000 SHU<div class="bar" style="width: 32%;"></div></td></tr>
+            <tr><td><span class="level-badge">5</span></td><td>Flamme League</td><td class="shu">60 000 SHU<div class="bar" style="width: 45%;"></div></td></tr>
+            <tr><td><span class="level-badge">6</span></td><td>Dracaufeu Heat</td><td class="shu">90 000 SHU<div class="bar" style="width: 58%;"></div></td></tr>
+            <tr><td><span class="level-badge">7</span></td><td>Inferno Cup</td><td class="shu">140 000 SHU<div class="bar" style="width: 70%;"></div></td></tr>
+            <tr><td><span class="level-badge">8</span></td><td>Scovillain Core</td><td class="shu">250 000 SHU<div class="bar" style="width: 82%;"></div></td></tr>
+            <tr><td><span class="level-badge">9</span></td><td>Boss Pepper</td><td class="shu">500 000 SHU<div class="bar" style="width: 92%;"></div></td></tr>
+            <tr><td><span class="level-badge">10</span></td><td>Final KO</td><td class="shu">1 000 000 SHU<div class="bar" style="width: 100%;"></div></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p style="margin-top:1rem; color:var(--text-muted); line-height:1.7; font-size:.9rem;">Important : les sauces et valeurs SHU sont ici presentees comme exemples de structure. Vous pourrez ensuite fixer la liste finale de vos sauces et le vrai bareme par nombre de rondes.</p>
+    </div>
+  </div>
+</section>
+
+<section id="communaute" class="section">
+  <div class="page-inner">
+    <div class="page-title"><span class="red">Communaute</span></div>
+    <div class="page-line"></div>
+    <p class="page-intro">
+      J'ai ajoute cet onglet complementaire avec un role utile : centraliser les photos, les actualites et le contact. C'est un bon complement aux onglets principaux sans alourdir la navigation.
+    </p>
+
+    <div class="community-grid">
+      <div class="community-card card">
+        <h3>Galerie</h3>
+        <p>Photos de podium, moments forts, degustations et ambiance des evenements precedents.</p>
+      </div>
+      <div class="community-card card">
+        <h3>Actualites</h3>
+        <p>Annonces des prochains tournois, changements de format, ouverture des inscriptions et publication des resultats.</p>
+      </div>
+      <div class="community-card card">
+        <h3>Contact</h3>
+        <p>Demandes d'information, partenariats, propositions de lieu, animations locales et coordination avec la communaute.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-left">scovillain-tournament.com</div>
+  <div class="footer-right">Prototype adapte pour vos tournois Pokemon TCG · Palette rouge / vert · Pokemon TCG appartient a Nintendo / The Pokemon Company</div>
+</footer>
+
+<script>
+  function showSection(id) {
+    document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
+    document.querySelectorAll('nav a').forEach(link => link.classList.remove('active'));
+    const target = document.getElementById(id);
+    if (target) target.classList.add('active');
+    const navLink = document.querySelector('nav a[data-section="' + id + '"]');
+    if (navLink) navLink.classList.add('active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  document.querySelectorAll('nav a[data-section]').forEach(link => {
+    link.addEventListener('click', function(event) {
+      event.preventDefault();
+      showSection(this.dataset.section);
+    });
+  });
+</script>
+</body>
+</html>
