@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>scovillainain-tournament.com | Tournois Pokemon TCG</title>
+<title>Scoville-tournament.com | Tournois Pokemon TCG</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -121,13 +121,9 @@
     transition: .2s ease;
     white-space: nowrap;
   }
-  nav a:hover {
-    color: var(--green);
-    border-bottom-color: var(--green);
-  }
-  nav a.active {
-    color: var(--red);
-    border-bottom-color: var(--red);
+  nav a:hover, nav a.active {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
   }
 
   .section { display: none; position: relative; z-index: 1; min-height: calc(100vh - 78px); }
@@ -148,7 +144,7 @@
     width: 72px;
     height: 4px;
     border-radius: 999px;
-    background: linear-gradient(90deg, var(--green));
+    background: linear-gradient(90deg, var(--red), var(--green));
     margin-bottom: 1.5rem;
   }
   .page-intro {
@@ -295,10 +291,10 @@
   .hero-logo-wrap {
     display: flex;
     justify-content: center;
-    margin-bottom: 1.6rem;
+    margin-bottom: 1.3rem;
   }
   .hero-logo {
-    width: 320px;
+    width: 220px;
     max-width: 100%;
     object-fit: contain;
     filter: drop-shadow(0 0 28px rgba(232,34,10,0.35)) drop-shadow(0 0 28px rgba(62,207,26,0.28));
@@ -482,7 +478,6 @@
   }
   .heat-dots { letter-spacing: 1px; }
 
-
   .deck-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.2rem; }
   .deck-card { overflow: hidden; }
   .deck-banner {
@@ -619,7 +614,7 @@
   .mini-item span { color: var(--text-muted); font-size: .88rem; }
 
   .rules-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2rem; margin-bottom: 1.2rem; }
-  .scovillain-table-wrap { overflow-x: auto; }
+  .scoville-table-wrap { overflow-x: auto; }
   .level-badge {
     display: inline-flex;
     min-width: 72px;
@@ -690,7 +685,7 @@
   @media (max-width: 640px) {
     .logo-sub { display: none; }
     .hero-title { font-size: 3.7rem; }
-    .results-table-wrap, .scovillain-table-wrap { overflow-x: auto; }
+    .results-table-wrap, .scoville-table-wrap { overflow-x: auto; }
     table { min-width: 720px; }
   }
 </style>
@@ -698,10 +693,10 @@
 <body>
 <header>
   <a class="logo-wrap" href="#" onclick="showSection('home')">
-    <img src="logo-scovillain-main.png" alt="Logo scovillain Tournament" onerror="this.style.display='none'">
+    <img src="logo-scoville.png" alt="Logo Scoville Tournament" onerror="this.style.display='none'">
     <div class="logo-text-wrap">
-      <span class="logo-text">scovillain Tournament</span>
-      <span class="logo-sub">scovillain-tournament.com</span>
+      <span class="logo-text">Scoville Tournament</span>
+      <span class="logo-sub">scoville-tournament.com</span>
     </div>
   </a>
 
@@ -722,18 +717,18 @@
     <div class="hero-left">
       <div class="hero-badge">Pokemon TCG · Tournois Standard & Off-meta · Defaites pimentees</div>
       <div class="hero-title">
-        <div class="red">Scovillain</div>
+        <div class="red">SCOVILLE</div>
         <div class="green">TOURNAMENT</div>
       </div>
       <div class="hero-sub">Des evenements reguliers pour jouer, gagner et monter en piquant</div>
       <p class="hero-desc">
-        scovillain-tournament.com annonce et organise des tournois Pokemon TCG en format <strong>Standard</strong> ou <strong>Off-meta</strong>.
-        Chaque joueur peut retrouver le calendrier des evenements, s'inscrire, suivre ses resultats et decouvrir le niveau de sauce atteint en fonction de son nombre de defaites.
+        Scoville-tournament.com annonce et organise des tournois Pokemon TCG en format <strong>Standard</strong> ou <strong>Off-meta</strong>.
+        Chaque joueur peut retrouver le calendrier des evenements, s'inscrire, soumettre sa deck list, suivre ses resultats et decouvrir le niveau de sauce atteint en fonction de son nombre de defaites.
       </p>
       <div class="hero-ctas">
         <a class="btn-primary" href="#" onclick="showSection('calendrier')">Voir les prochains tournois</a>
         <a class="btn-secondary" href="#" onclick="showSection('inscription')">S'inscrire</a>
-        <a class="btn-ghost" href="#" onclick="showSection('regles')">Voir les regles scovillain</a>
+        <a class="btn-ghost" href="#" onclick="showSection('regles')">Voir les regles Scoville</a>
       </div>
 
       <div class="hero-stats">
@@ -743,7 +738,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-num">8 a 10</div>
-          <div class="stat-label">Niveaux de piquant associes a une sauce et a son score scovillain</div>
+          <div class="stat-label">Niveaux de piquant associes a une sauce et a son score Scoville</div>
         </div>
         <div class="stat-card">
           <div class="stat-num">1</div>
@@ -754,7 +749,7 @@
 
     <aside class="hero-panel">
       <div class="hero-logo-wrap">
-        <img src="logo-scovillain-main.png" class="hero-logo" alt="scovillain Tournament" onerror="this.style.display='none'">
+        <img src="logo-scoville.png" class="hero-logo" alt="Scoville Tournament" onerror="this.style.display='none'">
       </div>
       <div class="panel-title">Parcours d'un joueur</div>
       <div class="path-list">
@@ -768,12 +763,19 @@
         <div class="path-item">
           <div class="path-num">2</div>
           <div>
+            <h4>Je soumets ma deck list</h4>
+            <p>Je declare mon deck, son format et son archetype avant la ronde 1.</p>
+          </div>
+        </div>
+        <div class="path-item">
+          <div class="path-num">3</div>
+          <div>
             <h4>Je joue le tournoi</h4>
             <p>Je dispute mes rondes, j'accumule mes victoires... ou mes sauces.</p>
           </div>
         </div>
         <div class="path-item">
-          <div class="path-num">3</div>
+          <div class="path-num">4</div>
           <div>
             <h4>Je consulte mes resultats</h4>
             <p>Classement, deck joue, niveau de piquant et historique de participation sont conserves.</p>
@@ -784,10 +786,9 @@
   </div>
 </section>
 
-<!-- ══════════ CALENDRIER ══════════ -->
 <section id="calendrier" class="section">
   <div class="page-inner">
-    <div class="page-title"><span class="red">Calendrier</span></div>
+    <div class="page-title"><span class="red">Cal</span>endrier</div>
     <div class="page-line"></div>
     <p class="page-intro">
       Cet onglet a ete adapte pour devenir la porte d'entree vers les evenements. Chaque carte peut rediriger vers une page detaillee, une plateforme externe ou un formulaire d'inscription.
@@ -800,7 +801,7 @@
           <div class="event-month">Avril</div>
         </div>
         <div class="event-main">
-          <h3>Scovillain Cup #1 - Standard Clash</h3>
+          <h3>Scoville Cup #1 - Standard Clash</h3>
           <p>Strasbourg · 24 joueurs max · Swiss 4 rondes + top cut · Verification des deck lists avant le debut</p>
           <div class="event-tags">
             <span class="pill standard">Standard</span>
@@ -840,7 +841,7 @@
           <div class="event-month">Juin</div>
         </div>
         <div class="event-main">
-          <h3>Scovillain Online #1 - Ladder Heat</h3>
+          <h3>Scoville Online #1 - Ladder Heat</h3>
           <p>En ligne via PTCG Live · 64 joueurs max · Pairings publies en ligne · Saisie des resultats et decks sur le site</p>
           <div class="event-tags">
             <span class="pill standard">Standard</span>
@@ -857,13 +858,12 @@
   </div>
 </section>
 
-<!-- ══════════ RÉSULTATS ══════════ -->
 <section id="resultats" class="section">
   <div class="page-inner">
-    <div class="page-title"><span class="red">Resultats</span></div>
+    <div class="page-title"><span class="red">Res</span>ultats</div>
     <div class="page-line"></div>
     <div class="results-head">
-      <p class="meta">Scovillain Cup #1 · 19 Avril 2026 · Format Standard · 16 joueurs</p>
+      <p class="meta">Scoville Cup #1 · 19 Avril 2026 · Format Standard · 16 joueurs</p>
       <span class="pill standard">Resultats des derniers evenements</span>
     </div>
 
@@ -937,10 +937,9 @@
   </div>
 </section>
 
-<!-- ══════════ DECKS ══════════ -->
 <section id="decks" class="section">
   <div class="page-inner">
-    <div class="page-title"><span class="red">Decks lists</span></div>
+    <div class="page-title"><span class="red">Dec</span>ks <span class="green">& lists</span></div>
     <div class="page-line"></div>
     <p class="page-intro">
       Cet onglet a ete adapte pour servir a la fois de vitrine meta et d'espace de depot pour les deck lists des joueurs. Il pourra ensuite etre branche a un vrai formulaire ou a une base de donnees.
@@ -985,16 +984,15 @@
   </div>
 </section>
 
-<!-- ══════════ INSCRIPTION ══════════ -->
 <section id="inscription" class="section">
   <div class="page-inner">
-    <div class="page-title"><span class="red">Inscription</span></div>
+    <div class="page-title"><span class="red">Ins</span>cription</div>
     <div class="page-line"></div>
 
     <div class="notice">
       <div class="notice-icon">🌶️</div>
       <div>
-        <h4>Regles Scovillain</h4>
+        <h4>Regle Scoville</h4>
         <p>En vous inscrivant, vous acceptez le principe du defi culinaire. Pensez a signaler les allergies, intolerances, restrictions alimentaires et sensibilites au piment.</p>
       </div>
     </div>
@@ -1021,9 +1019,9 @@
         <div class="form-group">
           <label>Tournoi choisi</label>
           <select>
-            <option>scovillain Cup #1 - Standard Clash</option>
+            <option>Scoville Cup #1 - Standard Clash</option>
             <option>Off-Meta Night - Chaos League</option>
-            <option>scovillain Online #1 - Ladder Heat</option>
+            <option>Scoville Online #1 - Ladder Heat</option>
           </select>
         </div>
         <div class="form-group">
@@ -1058,10 +1056,9 @@
   </div>
 </section>
 
-<!-- ══════════ MES INSCRIPTIONS ══════════ -->
 <section id="mesinscriptions" class="section">
   <div class="page-inner">
-    <div class="page-title"><span class="red">Mes inscriptions</span></div>
+    <div class="page-title"><span class="red">Mes</span> inscriptions</div>
     <div class="page-line"></div>
     <p class="page-intro">
       Cet onglet a ete ajoute pour repondre a ta demande : les joueurs peuvent y retrouver les tournois auxquels ils sont deja inscrits, leur statut, leur deck et les informations utiles.
@@ -1073,14 +1070,14 @@
         <div class="mini-list">
           <div class="mini-item">
             <div>
-              <strong>Scovillain Cup #1 - Standard Clash</strong>
-              <span>19 Avril 2026 · Rennes · Deck declare : Charizard ex</span>
+              <strong>Scoville Cup #1 - Standard Clash</strong>
+              <span>19 Avril 2026 · Strasbourg · Deck declare : Charizard ex</span>
             </div>
             <span class="pill open">Confirme</span>
           </div>
           <div class="mini-item">
             <div>
-              <strong>Scovillain Online #1 - Ladder Heat</strong>
+              <strong>Scoville Online #1 - Ladder Heat</strong>
               <span>07 Juin 2026 · En ligne · Deck declare : en attente</span>
             </div>
             <span class="pill wait">A completer</span>
@@ -1101,91 +1098,72 @@
   </div>
 </section>
 
-<!-- ══════════ RÈGLES ══════════ -->
 <section id="regles" class="section">
   <div class="page-inner">
-    <div class="page-title"><span class="red">Regles</span></div>
+    <div class="page-title"><span class="red">Regl</span>es</div>
     <div class="page-line"></div>
     <p class="page-intro">
-      La regle est simple : en fin de tournoi, chaque joueur mange un aliment avec une sauce pimentée en fonction de son nombre de défaites.
-      Humour et un peu de souffrance partagée font l'âme de nos événements!
+      La regle est simple : selon le nombre de defaites pendant le tournoi, le joueur mange un aliment avec une sauce pimentee de plus en plus forte. Le barème ci-dessous montre une version 10 niveaux, mais tu peux facilement le reduire a 8 niveaux si besoin.
     </p>
 
-	<div class="rules-grid">
+    <div class="rules-grid">
       <div class="rule-card">
-        <h3>⚔️ Format du tournoi</h3>
+        <h3>Format des tournois</h3>
         <ul>
-          <li>Système Swiss (rondes appariées)</li>
-          <li>50 minutes par ronde</li>
-          <li>Format Pokémon officiel Standard ou Off-Meta selon l'événement</li>
-          <li>Deck liste obligatoire à l'inscription</li>
-          <li>Arbitrage en cas de litige</li>
-        </ul>
-      </div>
-	  <div class="rule-card">
-        <h3>😊 Code de conduite</h3>
-        <ul>
-          <li>Respect envers tous les joueurs</li>
-          <li>Pas de slow-play intentionnel</li>
-          <li>Pas de triche (double shuffling, stack, etc.)</li>
-          <li>Bonne humeur et fair-play obligatoires</li>
-          <li>La règle Scoville est acceptée à l'inscription</li>
+          <li>Tournois reguliers centres sur le Pokemon TCG</li>
+          <li>Formats proposes : Standard et Off-meta</li>
+          <li>Deck list obligatoire avant le debut du tournoi</li>
+          <li>Rondes Swiss puis top cut selon le nombre de joueurs</li>
+          <li>Validation des listes pour les events Off-meta</li>
         </ul>
       </div>
       <div class="rule-card">
-        <h3>🎴 Règles Standard</h3>
+        <h3>Defi culinaire</h3>
         <ul>
-          <li>Cartes légales dans le format Standard Pokémon en vigueur</li>
-          <li>Deck de 60 cartes obligatoire</li>
-          <li>Pas de proxies</li>
-          <li>Sleeves obligatoires (uniformes)</li>
-        </ul>
-      </div>
-      <div class="rule-card">
-        <h3>🌿 Format Off-Meta</h3>
-        <ul>
-          <li>Archétypes Tier S interdits (liste publiée avant chaque tournoi)</li>
-          <li>L'objectif est la créativité !</li>
-          <li>Les decks validés par l'orga sont autorisés</li>
-          <li>Sanctions pour non-respect : défaite forfait</li>
+          <li>Les aliments peuvent etre poulet frit, croquette de fromage ou de legume</li>
+          <li>Le niveau de sauce depend du nombre de defaites</li>
+          <li>Prevoir une charte de securite alimentaire et un consentement clair</li>
+          <li>Des alternatives et restrictions doivent etre prises en compte</li>
         </ul>
       </div>
     </div>
 
     <div class="form-card">
-      <h2>Echelle Scovillain</h2>
-      <div class="scovillain-table-wrap">
+      <h2>Echelle Scoville - version 10 niveaux</h2>
+      <div class="scoville-table-wrap">
         <table>
           <thead>
             <tr>
               <th>Niveau</th>
+              <th>Defaites</th>
+              <th>Aliment</th>
               <th>Sauce</th>
               <th>Scoville</th>
             </tr>
           </thead>
-			<tbody>
-			  <tr><td><span class="level-badge">0</span></td><td>Aucune sauce</td><td class="shu">0 SHU<div class="bar" style="background:linear-gradient(90deg,#2e7d32,#2e7d32);width: 0%;"></div></td></tr>
-			  <tr><td><span class="level-badge">1</span></td><td>HEGOA</td><td class="shu">1 500 SHU<div class="bar" style="background:linear-gradient(90deg,#2e7d32,#43a047);width: 4%;"></div></td></tr>
-			  <tr><td><span class="level-badge">2</span></td><td>SRIRACHA / MISTRAL</td><td class="shu">15 000 SHU<div class="bar" style="background:linear-gradient(90deg,#43a047,#7cb342);width: 10%;"></div></td></tr>
-			  <tr><td><span class="level-badge">3</span></td><td>BLIZZARD / EAST IPA / INDIENNE</td><td class="shu">60 000 SHU<div class="bar" style="background:linear-gradient(90deg,#7cb342,#c0ca33);width: 18%;"></div></td></tr>
-			  <tr><td><span class="level-badge">4</span></td><td>PHA-YU / NAGA MANGO</td><td class="shu">70 000 SHU<div class="bar" style="background:linear-gradient(90deg,#c0ca33,#f9a825);width: 24%;"></div></td></tr>
-			  <tr><td><span class="level-badge">5</span></td><td>SIROCCO</td><td class="shu">75 000 SHU<div class="bar" style="background:linear-gradient(90deg,#f9a825,#fb8c00);width: 45%;"></div></td></tr>
-			  <tr><td><span class="level-badge">6</span></td><td>TONNERRE</td><td class="shu">100 000 SHU<div class="bar" style="background:linear-gradient(90deg,#fb8c00,#f4511e);width: 58%;"></div></td></tr>
-			  <tr><td><span class="level-badge">7</span></td><td>FOUDRE</td><td class="shu">120 000 SHU<div class="bar" style="background:linear-gradient(90deg,#f4511e,#e53935);width: 70%;"></div></td></tr>
-			  <tr><td><span class="level-badge">8</span></td><td>ARMAGEDDON</td><td class="shu">500 000 SHU<div class="bar" style="background:linear-gradient(90deg,#e53935,#c62828);width: 82%;"></div></td></tr>
-			  <tr><td><span class="level-badge">9</span></td><td>CAROLINA REAPER</td><td class="shu">800 000 SHU<div class="bar" style="background:linear-gradient(90deg,#c62828,#b71c1c);width: 92%;"></div></td></tr>
-			  <tr><td><span class="level-badge">10</span></td><td>TSUNAMI</td><td class="shu">1 000 000 SHU<div class="bar" style="background:linear-gradient(90deg,#b71c1c,#7f0000);width: 100%;"></div></td></tr>
-			</tbody>
+          <tbody>
+            <tr><td><span class="level-badge">0</span></td><td>0</td><td>Aucun</td><td>Aucune sauce</td><td class="shu">0 SHU<div class="bar" style="width: 4%;"></div></td></tr>
+            <tr><td><span class="level-badge">1</span></td><td>1</td><td>Poulet frit</td><td>Sauce Verde</td><td class="shu">1 500 SHU<div class="bar" style="width: 10%;"></div></td></tr>
+            <tr><td><span class="level-badge">2</span></td><td>1 a 2</td><td>Croquette fromage</td><td>Jalapeno Kick</td><td class="shu">4 000 SHU<div class="bar" style="width: 18%;"></div></td></tr>
+            <tr><td><span class="level-badge">3</span></td><td>2</td><td>Croquette legume</td><td>Chipotle Smash</td><td class="shu">8 000 SHU<div class="bar" style="width: 24%;"></div></td></tr>
+            <tr><td><span class="level-badge">4</span></td><td>2 a 3</td><td>Poulet frit</td><td>Rouge Arena</td><td class="shu">15 000 SHU<div class="bar" style="width: 32%;"></div></td></tr>
+            <tr><td><span class="level-badge">5</span></td><td>3</td><td>Croquette fromage</td><td>Flamme League</td><td class="shu">30 000 SHU<div class="bar" style="width: 45%;"></div></td></tr>
+            <tr><td><span class="level-badge">6</span></td><td>3 a 4</td><td>Croquette legume</td><td>Dracaufeu Heat</td><td class="shu">60 000 SHU<div class="bar" style="width: 58%;"></div></td></tr>
+            <tr><td><span class="level-badge">7</span></td><td>4</td><td>Poulet frit</td><td>Inferno Cup</td><td class="shu">95 000 SHU<div class="bar" style="width: 70%;"></div></td></tr>
+            <tr><td><span class="level-badge">8</span></td><td>4 a 5</td><td>Croquette fromage</td><td>Scovillain Core</td><td class="shu">140 000 SHU<div class="bar" style="width: 82%;"></div></td></tr>
+            <tr><td><span class="level-badge">9</span></td><td>5</td><td>Croquette legume</td><td>Boss Pepper</td><td class="shu">250 000 SHU<div class="bar" style="width: 92%;"></div></td></tr>
+            <tr><td><span class="level-badge">10</span></td><td>5+</td><td>Combo surprise</td><td>Final KO</td><td class="shu">500 000 SHU<div class="bar" style="width: 100%;"></div></td></tr>
+          </tbody>
         </table>
       </div>
-      <p style="margin-top:1rem; color:var(--text-muted); line-height:1.7; font-size:.9rem;">Les aliments pour accompagner vos sauces seront du poulet frit 🍗, des croquettes de fromage 🧀 ou de legumes 🥦. Prevoir les allergies alimentaire et faire signer une charte de securite alimentaire avec un consentement clair.</p>
+      <p style="margin-top:1rem; color:var(--text-muted); line-height:1.7; font-size:.9rem;">Important : les sauces et valeurs SHU sont ici presentees comme exemples de structure. Vous pourrez ensuite fixer la liste finale de vos sauces et le vrai bareme par nombre de rondes.</p>
     </div>
   </div>
 </section>
 
 <section id="communaute" class="section">
   <div class="page-inner">
-    <div class="page-title"><span class="red">Communaute</span></div>
+    <div class="page-title"><span class="red">Commu</span>naute</div>
     <div class="page-line"></div>
     <p class="page-intro">
       J'ai ajoute cet onglet complementaire avec un role utile : centraliser les photos, les actualites et le contact. C'est un bon complement aux onglets principaux sans alourdir la navigation.
@@ -1209,7 +1187,7 @@
 </section>
 
 <footer>
-  <div class="footer-left">scovillain-tournament.com</div>
+  <div class="footer-left">Scoville-tournament.com</div>
   <div class="footer-right">Prototype adapte pour vos tournois Pokemon TCG · Palette rouge / vert · Pokemon TCG appartient a Nintendo / The Pokemon Company</div>
 </footer>
 

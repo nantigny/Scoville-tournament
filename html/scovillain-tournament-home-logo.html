@@ -121,13 +121,9 @@
     transition: .2s ease;
     white-space: nowrap;
   }
-  nav a:hover {
-    color: var(--green);
-    border-bottom-color: var(--green);
-  }
-  nav a.active {
-    color: var(--red);
-    border-bottom-color: var(--red);
+  nav a:hover, nav a.active {
+    color: var(--gold);
+    border-bottom-color: var(--gold);
   }
 
   .section { display: none; position: relative; z-index: 1; min-height: calc(100vh - 78px); }
@@ -148,7 +144,7 @@
     width: 72px;
     height: 4px;
     border-radius: 999px;
-    background: linear-gradient(90deg, var(--green));
+    background: linear-gradient(90deg, var(--red), var(--green));
     margin-bottom: 1.5rem;
   }
   .page-intro {
@@ -482,7 +478,6 @@
   }
   .heat-dots { letter-spacing: 1px; }
 
-
   .deck-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.2rem; }
   .deck-card { overflow: hidden; }
   .deck-banner {
@@ -728,7 +723,7 @@
       <div class="hero-sub">Des evenements reguliers pour jouer, gagner et monter en piquant</div>
       <p class="hero-desc">
         scovillain-tournament.com annonce et organise des tournois Pokemon TCG en format <strong>Standard</strong> ou <strong>Off-meta</strong>.
-        Chaque joueur peut retrouver le calendrier des evenements, s'inscrire, suivre ses resultats et decouvrir le niveau de sauce atteint en fonction de son nombre de defaites.
+        Chaque joueur peut retrouver le calendrier des evenements, s'inscrire, soumettre sa deck list, suivre ses resultats et decouvrir le niveau de sauce atteint en fonction de son nombre de defaites.
       </p>
       <div class="hero-ctas">
         <a class="btn-primary" href="#" onclick="showSection('calendrier')">Voir les prochains tournois</a>
@@ -768,12 +763,19 @@
         <div class="path-item">
           <div class="path-num">2</div>
           <div>
+            <h4>Je soumets ma deck list</h4>
+            <p>Je declare mon deck, son format et son archetype avant la ronde 1.</p>
+          </div>
+        </div>
+        <div class="path-item">
+          <div class="path-num">3</div>
+          <div>
             <h4>Je joue le tournoi</h4>
             <p>Je dispute mes rondes, j'accumule mes victoires... ou mes sauces.</p>
           </div>
         </div>
         <div class="path-item">
-          <div class="path-num">3</div>
+          <div class="path-num">4</div>
           <div>
             <h4>Je consulte mes resultats</h4>
             <p>Classement, deck joue, niveau de piquant et historique de participation sont conserves.</p>
@@ -784,7 +786,6 @@
   </div>
 </section>
 
-<!-- ══════════ CALENDRIER ══════════ -->
 <section id="calendrier" class="section">
   <div class="page-inner">
     <div class="page-title"><span class="red">Calendrier</span></div>
@@ -857,7 +858,6 @@
   </div>
 </section>
 
-<!-- ══════════ RÉSULTATS ══════════ -->
 <section id="resultats" class="section">
   <div class="page-inner">
     <div class="page-title"><span class="red">Resultats</span></div>
@@ -937,7 +937,6 @@
   </div>
 </section>
 
-<!-- ══════════ DECKS ══════════ -->
 <section id="decks" class="section">
   <div class="page-inner">
     <div class="page-title"><span class="red">Decks lists</span></div>
@@ -985,7 +984,6 @@
   </div>
 </section>
 
-<!-- ══════════ INSCRIPTION ══════════ -->
 <section id="inscription" class="section">
   <div class="page-inner">
     <div class="page-title"><span class="red">Inscription</span></div>
@@ -1058,7 +1056,6 @@
   </div>
 </section>
 
-<!-- ══════════ MES INSCRIPTIONS ══════════ -->
 <section id="mesinscriptions" class="section">
   <div class="page-inner">
     <div class="page-title"><span class="red">Mes inscriptions</span></div>
@@ -1101,59 +1098,38 @@
   </div>
 </section>
 
-<!-- ══════════ RÈGLES ══════════ -->
 <section id="regles" class="section">
   <div class="page-inner">
     <div class="page-title"><span class="red">Regles</span></div>
     <div class="page-line"></div>
     <p class="page-intro">
-      La regle est simple : en fin de tournoi, chaque joueur mange un aliment avec une sauce pimentée en fonction de son nombre de défaites.
-      Humour et un peu de souffrance partagée font l'âme de nos événements!
+      La regle est simple : selon le nombre de defaites pendant le tournoi, le joueur mange un aliment avec une sauce pimentee de plus en plus forte. Le barème ci-dessous montre une version 10 niveaux, mais tu peux facilement le reduire a 8 niveaux si besoin.
     </p>
 
-	<div class="rules-grid">
+    <div class="rules-grid">
       <div class="rule-card">
-        <h3>⚔️ Format du tournoi</h3>
+        <h3>Format des tournois</h3>
         <ul>
-          <li>Système Swiss (rondes appariées)</li>
-          <li>50 minutes par ronde</li>
-          <li>Format Pokémon officiel Standard ou Off-Meta selon l'événement</li>
-          <li>Deck liste obligatoire à l'inscription</li>
-          <li>Arbitrage en cas de litige</li>
-        </ul>
-      </div>
-	  <div class="rule-card">
-        <h3>😊 Code de conduite</h3>
-        <ul>
-          <li>Respect envers tous les joueurs</li>
-          <li>Pas de slow-play intentionnel</li>
-          <li>Pas de triche (double shuffling, stack, etc.)</li>
-          <li>Bonne humeur et fair-play obligatoires</li>
-          <li>La règle Scoville est acceptée à l'inscription</li>
+          <li>Tournois reguliers centres sur le Pokemon TCG</li>
+          <li>Formats proposes : Standard et Off-meta</li>
+          <li>Deck list obligatoire avant le debut du tournoi</li>
+          <li>Rondes Swiss puis top cut selon le nombre de joueurs</li>
+          <li>Validation des listes pour les events Off-meta</li>
         </ul>
       </div>
       <div class="rule-card">
-        <h3>🎴 Règles Standard</h3>
+        <h3>Defi culinaire</h3>
         <ul>
-          <li>Cartes légales dans le format Standard Pokémon en vigueur</li>
-          <li>Deck de 60 cartes obligatoire</li>
-          <li>Pas de proxies</li>
-          <li>Sleeves obligatoires (uniformes)</li>
-        </ul>
-      </div>
-      <div class="rule-card">
-        <h3>🌿 Format Off-Meta</h3>
-        <ul>
-          <li>Archétypes Tier S interdits (liste publiée avant chaque tournoi)</li>
-          <li>L'objectif est la créativité !</li>
-          <li>Les decks validés par l'orga sont autorisés</li>
-          <li>Sanctions pour non-respect : défaite forfait</li>
+          <li>Les aliments peuvent etre poulet frit, croquette de fromage ou de legume</li>
+          <li>Le niveau de sauce depend du nombre de defaites</li>
+          <li>Prevoir une charte de securite alimentaire et un consentement clair</li>
+          <li>Des alternatives et restrictions doivent etre prises en compte</li>
         </ul>
       </div>
     </div>
 
     <div class="form-card">
-      <h2>Echelle Scovillain</h2>
+      <h2>Echelle scovillain - version 10 niveaux</h2>
       <div class="scovillain-table-wrap">
         <table>
           <thead>
@@ -1163,22 +1139,22 @@
               <th>Scoville</th>
             </tr>
           </thead>
-			<tbody>
-			  <tr><td><span class="level-badge">0</span></td><td>Aucune sauce</td><td class="shu">0 SHU<div class="bar" style="background:linear-gradient(90deg,#2e7d32,#2e7d32);width: 0%;"></div></td></tr>
-			  <tr><td><span class="level-badge">1</span></td><td>HEGOA</td><td class="shu">1 500 SHU<div class="bar" style="background:linear-gradient(90deg,#2e7d32,#43a047);width: 4%;"></div></td></tr>
-			  <tr><td><span class="level-badge">2</span></td><td>SRIRACHA / MISTRAL</td><td class="shu">15 000 SHU<div class="bar" style="background:linear-gradient(90deg,#43a047,#7cb342);width: 10%;"></div></td></tr>
-			  <tr><td><span class="level-badge">3</span></td><td>BLIZZARD / EAST IPA / INDIENNE</td><td class="shu">60 000 SHU<div class="bar" style="background:linear-gradient(90deg,#7cb342,#c0ca33);width: 18%;"></div></td></tr>
-			  <tr><td><span class="level-badge">4</span></td><td>PHA-YU / NAGA MANGO</td><td class="shu">70 000 SHU<div class="bar" style="background:linear-gradient(90deg,#c0ca33,#f9a825);width: 24%;"></div></td></tr>
-			  <tr><td><span class="level-badge">5</span></td><td>SIROCCO</td><td class="shu">75 000 SHU<div class="bar" style="background:linear-gradient(90deg,#f9a825,#fb8c00);width: 45%;"></div></td></tr>
-			  <tr><td><span class="level-badge">6</span></td><td>TONNERRE</td><td class="shu">100 000 SHU<div class="bar" style="background:linear-gradient(90deg,#fb8c00,#f4511e);width: 58%;"></div></td></tr>
-			  <tr><td><span class="level-badge">7</span></td><td>FOUDRE</td><td class="shu">120 000 SHU<div class="bar" style="background:linear-gradient(90deg,#f4511e,#e53935);width: 70%;"></div></td></tr>
-			  <tr><td><span class="level-badge">8</span></td><td>ARMAGEDDON</td><td class="shu">500 000 SHU<div class="bar" style="background:linear-gradient(90deg,#e53935,#c62828);width: 82%;"></div></td></tr>
-			  <tr><td><span class="level-badge">9</span></td><td>CAROLINA REAPER</td><td class="shu">800 000 SHU<div class="bar" style="background:linear-gradient(90deg,#c62828,#b71c1c);width: 92%;"></div></td></tr>
-			  <tr><td><span class="level-badge">10</span></td><td>TSUNAMI</td><td class="shu">1 000 000 SHU<div class="bar" style="background:linear-gradient(90deg,#b71c1c,#7f0000);width: 100%;"></div></td></tr>
-			</tbody>
+          <tbody>
+            <tr><td><span class="level-badge">0</span></td><td>Aucune sauce</td><td class="shu">0 SHU<div class="bar" style="width: 4%;"></div></td></tr>
+            <tr><td><span class="level-badge">1</span></td><td>Sauce Verde</td><td class="shu">4 500 SHU<div class="bar" style="width: 10%;"></div></td></tr>
+            <tr><td><span class="level-badge">2</span></td><td>Jalapeno Kick</td><td class="shu">15 000 SHU<div class="bar" style="width: 18%;"></div></td></tr>
+            <tr><td><span class="level-badge">3</span></td><td>Chipotle Smash</td><td class="shu">30 000 SHU<div class="bar" style="width: 24%;"></div></td></tr>
+            <tr><td><span class="level-badge">4</span></td><td>Rouge Arena</td><td class="shu">50 000 SHU<div class="bar" style="width: 32%;"></div></td></tr>
+            <tr><td><span class="level-badge">5</span></td><td>Flamme League</td><td class="shu">60 000 SHU<div class="bar" style="width: 45%;"></div></td></tr>
+            <tr><td><span class="level-badge">6</span></td><td>Dracaufeu Heat</td><td class="shu">90 000 SHU<div class="bar" style="width: 58%;"></div></td></tr>
+            <tr><td><span class="level-badge">7</span></td><td>Inferno Cup</td><td class="shu">140 000 SHU<div class="bar" style="width: 70%;"></div></td></tr>
+            <tr><td><span class="level-badge">8</span></td><td>Scovillain Core</td><td class="shu">250 000 SHU<div class="bar" style="width: 82%;"></div></td></tr>
+            <tr><td><span class="level-badge">9</span></td><td>Boss Pepper</td><td class="shu">500 000 SHU<div class="bar" style="width: 92%;"></div></td></tr>
+            <tr><td><span class="level-badge">10</span></td><td>Final KO</td><td class="shu">1 000 000 SHU<div class="bar" style="width: 100%;"></div></td></tr>
+          </tbody>
         </table>
       </div>
-      <p style="margin-top:1rem; color:var(--text-muted); line-height:1.7; font-size:.9rem;">Les aliments pour accompagner vos sauces seront du poulet frit 🍗, des croquettes de fromage 🧀 ou de legumes 🥦. Prevoir les allergies alimentaire et faire signer une charte de securite alimentaire avec un consentement clair.</p>
+      <p style="margin-top:1rem; color:var(--text-muted); line-height:1.7; font-size:.9rem;">Important : les sauces et valeurs SHU sont ici presentees comme exemples de structure. Vous pourrez ensuite fixer la liste finale de vos sauces et le vrai bareme par nombre de rondes.</p>
     </div>
   </div>
 </section>
