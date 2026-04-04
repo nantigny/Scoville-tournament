@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>scovillainain-tournament.com | Tournois Pokemon TCG</title>
+<title>scoville-tournament.com | Tournois Pokemon TCG</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -619,7 +619,7 @@
   .mini-item span { color: var(--text-muted); font-size: .88rem; }
 
   .rules-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2rem; margin-bottom: 1.2rem; }
-  .scovillain-table-wrap { overflow-x: auto; }
+  .scoville-table-wrap { overflow-x: auto; }
   .level-badge {
     display: inline-flex;
     min-width: 72px;
@@ -747,7 +747,7 @@
   @media (max-width: 640px) {
     .logo-sub { display: none; }
     .hero-title { font-size: 3.7rem; }
-    .results-table-wrap, .scovillain-table-wrap { overflow-x: auto; }
+    .results-table-wrap, .scoville-table-wrap { overflow-x: auto; }
     table { min-width: 720px; }
   }
 </style>
@@ -755,10 +755,10 @@
 <body>
 <header>
   <a class="logo-wrap" href="#" onclick="showSection('home')">
-    <img src="logo-scovillain-main.png" alt="Logo scovillain Tournament" onerror="this.style.display='none'">
+    <img src="logo-scoville-tournament.png" alt="Logo scoville Tournament" onerror="this.style.display='none'">
     <div class="logo-text-wrap">
-      <span class="logo-text">scovillain Tournament</span>
-      <span class="logo-sub">scovillain-tournament.com</span>
+      <span class="logo-text">scoville Tournament</span>
+      <span class="logo-sub">scoville-tournament.net</span>
     </div>
   </a>
 
@@ -766,7 +766,7 @@
     <a href="#" class="active" data-section="home">Accueil</a>
     <a href="#" data-section="calendrier">Calendrier</a>
     <a href="#" data-section="resultats">Resultats</a>
-    <a href="#" data-section="decks">Decks</a>
+    <!--<a href="#" data-section="decks">Decks</a> -->
     <a href="#" data-section="inscription">Inscription</a>
     <!--<a href="#" data-section="mesinscriptions">Mes inscriptions</a> -->
     <a href="#" data-section="regles">Regles</a>
@@ -780,18 +780,18 @@
     <div class="hero-left">
       <div class="hero-badge">Pokemon TCG · Tournois Standard & Off-meta · Defaites pimentees</div>
       <div class="hero-title">
-        <div class="red">Scovillain</div>
+        <div class="red">Scoville</div>
         <div class="green">TOURNAMENT</div>
       </div>
       <div class="hero-sub">Des evenements reguliers pour jouer, gagner et monter en piquant</div>
       <p class="hero-desc">
-        scovillain-tournament.com annonce et organise des tournois Pokemon TCG en format <strong>Standard</strong> ou <strong>Off-meta</strong>.
+        scoville-tournament.com annonce et organise des tournois Pokemon TCG en format <strong>Standard</strong> ou <strong>Off-meta</strong>.
         Chaque joueur peut retrouver le calendrier des evenements, s'inscrire, suivre ses resultats et decouvrir le niveau de sauce atteint en fonction de son nombre de defaites.
       </p>
       <div class="hero-ctas">
         <a class="btn-primary" href="#" onclick="showSection('calendrier')">Voir les prochains tournois</a>
         <a class="btn-secondary" href="#" onclick="showSection('inscription')">S'inscrire</a>
-        <a class="btn-ghost" href="#" onclick="showSection('regles')">Voir les regles scovillain</a>
+        <a class="btn-ghost" href="#" onclick="showSection('regles')">Voir les regles scoville</a>
       </div>
 
       <div class="hero-stats">
@@ -801,7 +801,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-num">10</div>
-          <div class="stat-label">Niveaux de piquant associes a une sauce et a son score scovillain</div>
+          <div class="stat-label">Niveaux de piquant associes a une sauce et a son score scoville</div>
         </div>        
 		<div class="stat-card">
           <div class="stat-num">2</div>
@@ -813,7 +813,7 @@
 
     <aside class="hero-panel">
       <div class="hero-logo-wrap">
-        <img src="logo-scovillain-main.png" class="hero-logo" alt="scovillain Tournament" onerror="this.style.display='none'">
+        <img src="logo-scoville-tournament.png" class="hero-logo" alt="scoville Tournament" onerror="this.style.display='none'">
       </div>
       <div class="panel-title">Parcours d'un joueur</div>
       <div class="path-list">
@@ -859,7 +859,7 @@
           <div class="event-month">Avril</div>
         </div>
         <div class="event-main">
-          <h3>Scovillain Cup #1 - Standard Clash</h3>
+          <h3>Scoville Cup #1 - Standard Clash</h3>
           <p>Strasbourg · 24 joueurs max · Swiss 4 rondes + top cut · Verification des deck lists avant le debut</p>
           <div class="event-tags">
             <span class="pill standard">Standard</span>
@@ -869,7 +869,6 @@
         </div>
         <div class="event-actions">
           <a class="btn-primary" href="#" onclick="showSection('inscription')">S'inscrire</a>
-          <span class="pill wait">8 niveaux de piquant</span>
         </div>
       </article>
 
@@ -888,8 +887,7 @@
           </div>
         </div>
         <div class="event-actions">
-          <a class="btn-secondary" href="#" onclick="showSection('regles')">Voir le format</a>
-          <span class="pill done">10 niveaux de piquant</span>
+          <a class="btn-primary" href="#" onclick="showSection('inscription')">S'inscrire</a>
         </div>
       </article>
 
@@ -899,7 +897,7 @@
           <div class="event-month">Juin</div>
         </div>
         <div class="event-main">
-          <h3>Scovillain Online #1 - Ladder Heat</h3>
+          <h3>Scoville Online #1 - Ladder Heat</h3>
           <p>En ligne via PTCG Live · 64 joueurs max · Pairings publies en ligne · Saisie des resultats et decks sur le site</p>
           <div class="event-tags">
             <span class="pill standard">Standard</span>
@@ -908,8 +906,7 @@
           </div>
         </div>
         <div class="event-actions">
-          <a class="btn-primary" href="#" onclick="showSection('mesinscriptions')">Mes evenements</a>
-          <span class="pill wait">8 niveaux de piquant</span>
+          <a class="btn-primary" href="#" onclick="showSection('inscription')">S'inscrire</a>
         </div>
       </article>
     </div>
@@ -922,7 +919,7 @@
     <div class="page-title"><span class="red">Resultats</span></div>
     <div class="page-line"></div>
     <div class="results-head">
-      <p class="meta">Scovillain Cup #1 · 19 Avril 2026 · Format Standard · 16 joueurs</p>
+      <p class="meta">Scoville Cup #1 · 19 Avril 2026 · Format Standard · 16 joueurs</p>
       <span class="pill standard">Resultats des derniers evenements</span>
     </div>
 
@@ -984,7 +981,7 @@
           </tr>
           <tr>
             <td>6</td><td>Ghost Master</td><td>Lost Zone Box</td><td>Off-meta</td><td>1</td><td>4</td>
-            <td><span class="heat-level"><span class="heat-dots">🔥🔥🔥</span> Niveau 8</span></td><td>Scovillain Core · 140 000 SHU</td>
+            <td><span class="heat-level"><span class="heat-dots">🔥🔥🔥</span> Niveau 8</span></td><td>Scoville Core · 140 000 SHU</td>
           </tr>
           <tr>
             <td>7</td><td>Snorlax Fan</td><td>Snorlax Stall</td><td>Off-meta</td><td>0</td><td>5</td>
@@ -997,7 +994,7 @@
 </section>
 
 <!-- ══════════ DECKS ══════════ -->
-<section id="decks" class="section">
+<!--<section id="decks" class="section">
   <div class="page-inner">
     <div class="page-title"><span class="red">Decks lists</span></div>
     <div class="page-line"></div>
@@ -1043,7 +1040,7 @@
     </div>
   </div>
 </section>
-
+-->
 <!-- ══════════ INSCRIPTION ══════════ -->
 <section id="inscription" class="section">
   <div class="page-inner">
@@ -1053,66 +1050,92 @@
     <div class="notice">
       <div class="notice-icon">🌶️</div>
       <div>
-        <h4>Regles Scovillain</h4>
-        <p>En vous inscrivant, vous acceptez le principe du defi culinaire. Pensez a signaler les allergies, intolerances, restrictions alimentaires et sensibilites au piment.</p>
+        <h4>Règles Scoville</h4>
+        <p>
+          En vous inscrivant, vous acceptez le principe du défi culinaire.
+          Pensez à signaler les allergies, intolérances, restrictions alimentaires
+          et sensibilités au piment dans le champ remarques.
+        </p>
       </div>
     </div>
 
     <div class="form-card">
       <h2>Formulaire d'inscription joueur</h2>
-      <div class="form-grid">
-        <div class="form-group">
-          <label>Prenom</label>
-          <input type="text" placeholder="Ash">
+
+      <!-- Remplace l'URL ci-dessous par celle de ton Google Apps Script -->
+      <form id="inscription-form" action="TON_URL_APPS_SCRIPT_ICI" method="POST">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="prenom">Prénom</label>
+            <input type="text" id="prenom" name="Prénom" placeholder="Ash" required>
+          </div>
+
+          <div class="form-group">
+            <label for="nom">Nom</label>
+            <input type="text" id="nom" name="Nom" placeholder="Ketchum" required>
+          </div>
+
+          <div class="form-group">
+            <label for="player-id">Player ID</label>
+            <input type="text" id="player-id" name="Player_ID" placeholder="123456789" required>
+          </div>
+
+          <div class="form-group">
+            <label for="annee-naissance">Année de naissance</label>
+            <input type="number" id="annee-naissance" name="Année_de_naissance" placeholder="2001" min="1900" max="2100" required>
+          </div>
+
+          <div class="form-group full">
+            <label for="email">Email de contact</label>
+            <input type="email" id="email" name="Email_de_contact" placeholder="ash@pokemon.com" required>
+          </div>
+
+          <div class="form-group full">
+            <label for="tournoi">Tournoi choisi</label>
+            <select id="tournoi" name="Tournoi_choisi" required>
+              <option value="">-- Sélectionnez un tournoi --</option>
+              <option value="Scoville Cup #1 - Standard Clash">Scoville Cup #1 - Standard Clash</option>
+              <option value="Off-Meta Night - Chaos League">Off-Meta Night - Chaos League</option>
+              <option value="Scoville Online #1 - Ladder Heat">Scoville Online #1 - Ladder Heat</option>
+            </select>
+          </div>
+
+          <div class="form-group full">
+            <label for="remarques">Remarques</label>
+            <textarea
+              id="remarques"
+              name="Remarques"
+              placeholder="Allergies, restrictions alimentaires, informations utiles..."
+            ></textarea>
+          </div>
         </div>
-        <div class="form-group">
-          <label>Nom</label>
-          <input type="text" placeholder="Ketchum">
+
+        <!-- Valeur envoyée automatiquement au Sheet -->
+        <input type="hidden" name="Statut_inscription" value="En attente">
+
+        <div style="display:flex; align-items:flex-start; gap:.7rem; margin-top:1.2rem;">
+          <input
+            type="checkbox"
+            id="ok-rules"
+            required
+            style="width:18px;height:18px;margin-top:3px;accent-color:#e8220a;"
+          >
+          <label
+            for="ok-rules"
+            style="text-transform:none; letter-spacing:0; font-size:.9rem; color:var(--text-muted); font-family:'Barlow',sans-serif;"
+          >
+            J'accepte les règles du tournoi, les conditions de participation
+            et le principe de la montée en piquant.
+          </label>
         </div>
-        <div class="form-group">
-          <label>Pseudo / ID joueur</label>
-          <input type="text" placeholder="PokeTrainer42">
+
+        <div style="margin-top:1.4rem; display:flex; gap:1rem; flex-wrap:wrap;">
+          <button type="submit" class="btn-primary">Confirmer mon inscription</button>
+          <!--<a class="btn-secondary" href="#" onclick="showSection('mesinscriptions')">Voir mes inscriptions</a>-->
         </div>
-        <div class="form-group">
-          <label>Email</label>
-          <input type="email" placeholder="ash@pokemon.com">
-        </div>
-        <div class="form-group">
-          <label>Tournoi choisi</label>
-          <select>
-            <option>scovillain Cup #1 - Standard Clash</option>
-            <option>Off-Meta Night - Chaos League</option>
-            <option>scovillain Online #1 - Ladder Heat</option>
-          </select>
-        </div>
-        <div class="form-group">
-          <label>Format</label>
-          <select>
-            <option>Standard</option>
-            <option>Off-meta</option>
-          </select>
-        </div>
-        <div class="form-group full">
-          <label>Deck / archetype prevu</label>
-          <input type="text" placeholder="Ex : Charizard ex, Gardevoir ex, Lost Zone Box...">
-        </div>
-        <div class="form-group full">
-          <label>Deck list</label>
-          <textarea placeholder="Collez ici la liste complete de votre deck."></textarea>
-        </div>
-        <div class="form-group full">
-          <label>Allergies / restrictions alimentaires</label>
-          <textarea placeholder="Ex : vegetarien, allergie au lactose, intolerance au piment, etc."></textarea>
-        </div>
-      </div>
-      <div style="display:flex; align-items:flex-start; gap:.7rem; margin-top:1.2rem;">
-        <input type="checkbox" id="ok-rules" style="width:18px;height:18px;margin-top:3px;accent-color:#e8220a;">
-        <label for="ok-rules" style="text-transform:none; letter-spacing:0; font-size:.9rem; color:var(--text-muted); font-family:'Barlow',sans-serif;">J'accepte les regles du tournoi, les conditions de participation et le principe de la montee en piquant.</label>
-      </div>
-      <div style="margin-top:1.4rem; display:flex; gap:1rem; flex-wrap:wrap;">
-        <button class="btn-primary">Confirmer mon inscription</button>
-        <a class="btn-secondary" href="#" onclick="showSection('mesinscriptions')">Voir mes inscriptions</a>
-      </div>
+
+        <p id="form-message" style="margin-top:1rem; color:var(--text-muted); font-family:'Barlow',sans-serif;"></p>
+      </form>
     </div>
   </div>
 </section>
@@ -1132,14 +1155,14 @@
         <div class="mini-list">
           <div class="mini-item">
             <div>
-              <strong>Scovillain Cup #1 - Standard Clash</strong>
+              <strong>Scoville Cup #1 - Standard Clash</strong>
               <span>19 Avril 2026 · Rennes · Deck declare : Charizard ex</span>
             </div>
             <span class="pill open">Confirme</span>
           </div>
           <div class="mini-item">
             <div>
-              <strong>Scovillain Online #1 - Ladder Heat</strong>
+              <strong>Scoville Online #1 - Ladder Heat</strong>
               <span>07 Juin 2026 · En ligne · Deck declare : en attente</span>
             </div>
             <span class="pill wait">A completer</span>
@@ -1174,8 +1197,10 @@
       <div class="rule-card">
         <h3>⚔️ Format du tournoi</h3>
         <ul>
-          <li>Système Swiss (rondes appariées)</li>
+          <li>Système Suisse (rondes appariées en fonction des résultats)</li>
           <li>50 minutes par ronde</li>
+          <li>15 minutes extra time en 3 tours maximum</li>
+		  <li>Matchs en Best-of-3 pour déterminer le gagnant</li>
           <li>Format Pokémon officiel Standard ou Off-Meta selon l'événement</li>
           <li>Deck liste obligatoire à l'inscription</li>
           <li>Arbitrage en cas de litige</li>
@@ -1201,7 +1226,7 @@
         </ul>
       </div>
       <div class="rule-card">
-        <h3>🌿 Format Off-Meta</h3>
+        <h3>🐱‍👤 Format Off-Meta</h3>
         <ul>
           <li>Archétypes Tier S interdits (liste publiée avant chaque tournoi)</li>
           <li>L'objectif est la créativité !</li>
@@ -1213,8 +1238,8 @@
 	
     <!-- SCOVILLE TABLE -->
     <div class="form-card">
-      <h2>Echelle Scovillain</h2>
-      <div class="scovillain-table-wrap">
+      <h2>Echelle Scoville</h2>
+      <div class="scoville-table-wrap">
         <table>
           <thead>
             <tr>
@@ -1276,13 +1301,13 @@
 
     <div class="about-split">
       <div class="about-img-wrap">
-        <img src="logo-scovillain-main.png" alt="Scovilain Cup" onerror="this.style.background='linear-gradient(135deg,#9e1505,#1a7a08)';this.style.height='180px';this.style.borderRadius='12px'">
+        <img src="logo-scoville-tournament.png" alt="Scovilain Cup" onerror="this.style.background='linear-gradient(135deg,#9e1505,#1a7a08)';this.style.height='180px';this.style.borderRadius='12px'">
       </div>
       <div class="about-text">
         <h2>QUI SOMMES-NOUS ?</h2>
         <p>
-          Scoville Tournament est une organisation de tournois Pokémon TCG née d'une simple idée : rendre les défaites mémorables. 
-          Parce que perdre sur le tapis de jeu, c'est une chose — mais perdre <em>et</em> devoir manger une croquette de fromage avec de la sauce scorpion, c'est une autre histoire.
+          Scoville Tournament est un concept de tournois Pokémon TCG née d'une simple idée : rendre les défaites mémorables. 
+          Parce que perdre sur le tapis de jeu, c'est une chose — mais perdre <strong>ET</strong> devoir manger une croquette de fromage avec de la sauce scorpion, c'est une autre histoire.
         </p>
         <p>
           Nos événements se veulent accessibles à tous les niveaux, des débutants aux joueurs compétitifs, avec deux formats distincts : le <strong>Standard</strong> pour les stratèges de la méta, et l'<strong>Off-Meta</strong> pour les créatifs qui veulent surprendre.
@@ -1304,9 +1329,11 @@
       </div>
     </div>
 
-    <div class="form-card" style="text-align:center;max-width:600px;margin:0 auto;">
+    <div class="form-card" style="text-align:center;max-width:600px;margin:0 auto 2rem auto;">
       <h2>📬 Nous contacter</h2>
-      <p style="color:var(--text-muted);margin-bottom:1.5rem;font-size:0.9rem;">Une question ? Une suggestion ? Envie d'organiser un tournoi avec nous ?</p>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;font-size:0.9rem;">
+        Une question ? Une suggestion ? Envie d'organiser un tournoi avec nous ?
+      </p>
       <div class="form-group" style="margin-bottom:1rem;">
         <label>Votre email</label>
         <input type="email" placeholder="dresseur@pokemon.com">
@@ -1317,11 +1344,35 @@
       </div>
       <button class="btn-primary" style="width:100%">Envoyer 🌶️</button>
     </div>
+
+    <!-- ══════════ NOUS SOUTENIR ══════════ -->
+    <div class="form-card" style="text-align:center;max-width:600px;margin:0 auto;">
+      <h2>❤️ Nous soutenir</h2>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;font-size:0.95rem;line-height:1.6;">
+        Vous aimez le concept Scoville Tournament et souhaitez aider l'association à organiser
+        de nouveaux événements, améliorer les dotations et faire grandir la communauté ?
+        Vous pouvez nous soutenir via un don libre sur PayPal.
+      </p>
+
+      <a
+        href="TON_LIEN_PAYPAL_ICI"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="btn-primary"
+        style="display:inline-block; text-decoration:none;"
+      >
+        Faire un don via PayPal
+      </a>
+
+      <p style="color:var(--text-muted);margin-top:1rem;font-size:0.85rem;">
+        Chaque contribution aide à faire monter la température 🌶️
+      </p>
+    </div>
   </div>
 </section>
 
 <footer>
-  <div class="footer-left">scovillain-tournament.com</div>
+  <div class="footer-left">scoville-tournament.net</div>
   <div class="footer-right">Prototype adapte pour vos tournois Pokemon TCG · Palette rouge / vert · Pokemon TCG appartient a Nintendo / The Pokemon Company</div>
 </footer>
 
