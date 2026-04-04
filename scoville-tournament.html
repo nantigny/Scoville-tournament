@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>scoville-tournament.com | Tournois Pokemon TCG</title>
+<title>scoville-tournament.net | Tournois Pokemon TCG</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -429,6 +429,93 @@
   }
   .results-head .meta { color: var(--text-muted); }
 
+  .results-intro {
+    margin-bottom: 1.5rem;
+    color: var(--text-muted);
+    font-family: 'Barlow', sans-serif;
+  }
+
+  .results-archive-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .archive-card {
+    text-align: left;
+    background: rgba(255,255,255,.04);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 16px;
+    padding: 1.1rem;
+    cursor: pointer;
+    transition: .2s ease;
+    color: inherit;
+  }
+
+  .archive-card:hover {
+    transform: translateY(-3px);
+    border-color: rgba(232,34,10,.5);
+    background: rgba(255,255,255,.06);
+  }
+
+  .archive-card.active {
+    border-color: #e8220a;
+    background: rgba(232,34,10,.08);
+    box-shadow: 0 0 0 1px rgba(232,34,10,.15);
+  }
+
+  .archive-card h3 {
+    margin: .7rem 0 .35rem;
+    font-size: 1.05rem;
+  }
+
+  .archive-card p {
+    margin: 0 0 .45rem;
+    color: var(--text-muted);
+    font-size: .92rem;
+  }
+
+  .archive-meta {
+    display: inline-block;
+    font-size: .82rem;
+    color: var(--text-muted);
+  }
+
+  .archive-badge {
+    display: inline-block;
+    padding: .3rem .55rem;
+    border-radius: 999px;
+    font-size: .72rem;
+    font-weight: 700;
+    letter-spacing: .03em;
+    text-transform: uppercase;
+  }
+
+  .archive-badge.standard {
+    background: rgba(232,34,10,.12);
+    color: #ff6b57;
+  }
+
+  .archive-badge.offmeta {
+    background: rgba(255,193,7,.14);
+    color: #ffd54f;
+  }
+
+  .archive-badge.online {
+    background: rgba(80,110,255,.14);
+    color: #8ea2ff;
+  }
+
+  .tournament-result {
+    animation: fadeResult .2s ease;
+  }
+
+  @keyframes fadeResult {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
   .podium {
     display: flex;
     align-items: end;
@@ -480,8 +567,11 @@
     color: var(--green);
     font-weight: 700;
   }
-  .heat-dots { letter-spacing: 1px; }
-
+  .heat-dots {
+    letter-spacing: 1px;
+    min-width: 34px;
+    display: inline-block;
+  }
 
   .deck-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.2rem; }
   .deck-card { overflow: hidden; }
@@ -649,7 +739,6 @@
   }
   .community-card p { color: var(--text-muted); line-height: 1.7; font-size: .9rem; }
 
-
   .about-split {
     display: grid;
     grid-template-columns: 1fr;
@@ -705,7 +794,6 @@
     text-align: center;
   }
 
-
   footer {
     position: relative;
     z-index: 1;
@@ -749,6 +837,7 @@
     .hero-title { font-size: 3.7rem; }
     .results-table-wrap, .scoville-table-wrap { overflow-x: auto; }
     table { min-width: 720px; }
+    .results-archive-grid { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -765,10 +854,10 @@
   <nav>
     <a href="#" class="active" data-section="home">Accueil</a>
     <a href="#" data-section="calendrier">Calendrier</a>
-    <a href="#" data-section="resultats">Resultats</a>
     <!--<a href="#" data-section="decks">Decks</a> -->
     <a href="#" data-section="inscription">Inscription</a>
     <!--<a href="#" data-section="mesinscriptions">Mes inscriptions</a> -->
+    <a href="#" data-section="resultats">Resultats</a>
     <a href="#" data-section="regles">Regles</a>
     <!--<a href="#" data-section="communaute">Communaute</a> -->
     <a href="#" data-section="apropos">À propos</a>
@@ -785,7 +874,7 @@
       </div>
       <div class="hero-sub">Des evenements reguliers pour jouer, gagner et monter en piquant</div>
       <p class="hero-desc">
-        scoville-tournament.com annonce et organise des tournois Pokemon TCG en format <strong>Standard</strong> ou <strong>Off-meta</strong>.
+        scoville-tournament.net annonce et organise des tournois Pokemon TCG en format <strong>Standard</strong> ou <strong>Off-meta</strong>.
         Chaque joueur peut retrouver le calendrier des evenements, s'inscrire, suivre ses resultats et decouvrir le niveau de sauce atteint en fonction de son nombre de defaites.
       </p>
       <div class="hero-ctas">
@@ -795,19 +884,18 @@
       </div>
 
       <div class="hero-stats">
-	    <div class="stat-card">
+        <div class="stat-card">
           <div class="stat-num">1</div>
-        <div class="stat-label">Concept : plus tu perds, plus le defi culinaire devient intense</div>
+          <div class="stat-label">Concept : plus tu perds, plus le defi culinaire devient intense</div>
         </div>
         <div class="stat-card">
           <div class="stat-num">10</div>
           <div class="stat-label">Niveaux de piquant associes a une sauce et a son score scoville</div>
-        </div>        
-		<div class="stat-card">
+        </div>
+        <div class="stat-card">
           <div class="stat-num">2</div>
           <div class="stat-label">Formats proposes : Standard et Off-meta</div>
         </div>
-
       </div>
     </div>
 
@@ -859,8 +947,8 @@
           <div class="event-month">Avril</div>
         </div>
         <div class="event-main">
-          <h3>Scoville Cup #1 - Standard Clash</h3>
-          <p>Strasbourg · 24 joueurs max · Swiss 4 rondes + top cut · Verification des deck lists avant le debut</p>
+          <h3>Scoville Cup #1 - Standard</h3>
+          <p>Rennes · 24 joueurs max · Swiss 4 rondes + top cut · Verification des deck lists avant le debut</p>
           <div class="event-tags">
             <span class="pill standard">Standard</span>
             <span class="pill irl">Presentiel</span>
@@ -878,8 +966,8 @@
           <div class="event-month">Mai</div>
         </div>
         <div class="event-main">
-          <h3>Off-Meta Night - Chaos League</h3>
-          <p>Strasbourg · 32 joueurs max · Archetypes meta bannis ou limites · Validation des listes par l'organisation</p>
+          <h3>Off-Meta Night #1</h3>
+          <p>Rennes · 16 joueurs max · Archetypes meta bannis ou limites · Validation des listes par l'organisation</p>
           <div class="event-tags">
             <span class="pill offmeta">Off-meta</span>
             <span class="pill irl">Presentiel</span>
@@ -897,98 +985,18 @@
           <div class="event-month">Juin</div>
         </div>
         <div class="event-main">
-          <h3>Scoville Online #1 - Ladder Heat</h3>
+          <h3>Scoville Online #1 - Standard</h3>
           <p>En ligne via PTCG Live · 64 joueurs max · Pairings publies en ligne · Saisie des resultats et decks sur le site</p>
           <div class="event-tags">
             <span class="pill standard">Standard</span>
             <span class="pill online">En ligne</span>
-            <span class="pill wait">Preinscriptions</span>
+            <span class="pill wait">Ouverture bientot</span>
           </div>
         </div>
         <div class="event-actions">
           <a class="btn-primary" href="#" onclick="showSection('inscription')">S'inscrire</a>
         </div>
       </article>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════ RÉSULTATS ══════════ -->
-<section id="resultats" class="section">
-  <div class="page-inner">
-    <div class="page-title"><span class="red">Resultats</span></div>
-    <div class="page-line"></div>
-    <div class="results-head">
-      <p class="meta">Scoville Cup #1 · 19 Avril 2026 · Format Standard · 16 joueurs</p>
-      <span class="pill standard">Resultats des derniers evenements</span>
-    </div>
-
-    <div class="podium">
-      <div class="podium-step p2">
-        <div class="podium-rank">2</div>
-        <div class="podium-name">Misty TCG</div>
-        <div class="podium-deck">Lugia VSTAR</div>
-        <div class="podium-score">4V - 1D · Niveau 2</div>
-      </div>
-      <div class="podium-step p1">
-        <div class="podium-rank">1</div>
-        <div class="podium-name">Red Trainer</div>
-        <div class="podium-deck">Charizard ex</div>
-        <div class="podium-score">5V - 0D · Aucune sauce</div>
-      </div>
-      <div class="podium-step p3">
-        <div class="podium-rank">3</div>
-        <div class="podium-name">Brock Onix</div>
-        <div class="podium-deck">Gardevoir ex</div>
-        <div class="podium-score">4V - 1D · Niveau 2</div>
-      </div>
-    </div>
-
-    <div class="results-table-wrap card" style="padding:0; overflow:hidden;">
-      <table>
-        <thead>
-          <tr>
-            <th>#</th>
-            <th>Joueur</th>
-            <th>Deck</th>
-            <th>Format</th>
-            <th>Victoires</th>
-            <th>Defaites</th>
-            <th>Niveau de piquant</th>
-            <th>Sauce / SHU</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>1</td><td>Red Trainer</td><td>Charizard ex</td><td>Standard</td><td>5</td><td>0</td>
-            <td><span class="heat-level"><span class="heat-dots">-</span> Niveau 0</span></td><td>Aucune · 0 SHU</td>
-          </tr>
-          <tr>
-            <td>2</td><td>Misty TCG</td><td>Lugia VSTAR</td><td>Standard</td><td>4</td><td>1</td>
-            <td><span class="heat-level"><span class="heat-dots">🌶️</span> Niveau 2</span></td><td>Jalapeno Kick · 4 000 SHU</td>
-          </tr>
-          <tr>
-            <td>3</td><td>Brock Onix</td><td>Gardevoir ex</td><td>Standard</td><td>4</td><td>1</td>
-            <td><span class="heat-level"><span class="heat-dots">🌶️</span> Niveau 2</span></td><td>Jalapeno Kick · 4 000 SHU</td>
-          </tr>
-          <tr>
-            <td>4</td><td>Gary Oak</td><td>Iron Hands ex</td><td>Standard</td><td>3</td><td>2</td>
-            <td><span class="heat-level"><span class="heat-dots">🌶️🌶️</span> Niveau 4</span></td><td>Rouge Arena · 15 000 SHU</td>
-          </tr>
-          <tr>
-            <td>5</td><td>Pika Power</td><td>Pikachu ex</td><td>Standard</td><td>2</td><td>3</td>
-            <td><span class="heat-level"><span class="heat-dots">🌶️🌶️🌶️</span> Niveau 6</span></td><td>Dracaufeu Heat · 60 000 SHU</td>
-          </tr>
-          <tr>
-            <td>6</td><td>Ghost Master</td><td>Lost Zone Box</td><td>Off-meta</td><td>1</td><td>4</td>
-            <td><span class="heat-level"><span class="heat-dots">🔥🔥🔥</span> Niveau 8</span></td><td>Scoville Core · 140 000 SHU</td>
-          </tr>
-          <tr>
-            <td>7</td><td>Snorlax Fan</td><td>Snorlax Stall</td><td>Off-meta</td><td>0</td><td>5</td>
-            <td><span class="heat-level"><span class="heat-dots">🔥🔥🔥🔥</span> Niveau 10</span></td><td>Final KO · 500 000 SHU</td>
-          </tr>
-        </tbody>
-      </table>
     </div>
   </div>
 </section>
@@ -1041,6 +1049,7 @@
   </div>
 </section>
 -->
+
 <!-- ══════════ INSCRIPTION ══════════ -->
 <section id="inscription" class="section">
   <div class="page-inner">
@@ -1063,7 +1072,7 @@
       <h2>Formulaire d'inscription joueur</h2>
 
       <!-- Remplace l'URL ci-dessous par celle de ton Google Apps Script -->
-      <form id="inscription-form" action="TON_URL_APPS_SCRIPT_ICI" method="POST">
+      <form id="inscription-form" action="https://script.google.com/macros/s/AKfycbweq4b6j1Bd-3nNfpMEzH8DQ0JLn7AHJq-EQmpZeZInXiAXWEzmS9y06hG318Elj-mVzw/exec" method="POST">
         <div class="form-grid">
           <div class="form-group">
             <label for="prenom">Prénom</label>
@@ -1094,9 +1103,9 @@
             <label for="tournoi">Tournoi choisi</label>
             <select id="tournoi" name="Tournoi_choisi" required>
               <option value="">-- Sélectionnez un tournoi --</option>
-              <option value="Scoville Cup #1 - Standard Clash">Scoville Cup #1 - Standard Clash</option>
-              <option value="Off-Meta Night - Chaos League">Off-Meta Night - Chaos League</option>
-              <option value="Scoville Online #1 - Ladder Heat">Scoville Online #1 - Ladder Heat</option>
+              <option value="cup1">Scoville Cup #1 - Standard Clash</option>
+              <option value="offmeta1">Off-Meta Night - Chaos League</option>
+              <option value="online1">Scoville Online #1 - Ladder Heat</option>
             </select>
           </div>
 
@@ -1181,8 +1190,254 @@
       </div>
     </div>
   </div>
+</section> -->
+
+<!-- ══════════ RÉSULTATS ══════════ -->
+<section id="resultats" class="section">
+  <div class="page-inner">
+    <div class="page-title"><span class="red">Résultats</span></div>
+    <div class="page-line"></div>
+
+    <div class="results-intro">
+      <p>
+        Retrouvez les podiums, decks marquants et niveaux de piquant de nos précédents événements.
+      </p>
+    </div>
+
+    <div class="results-archive-grid">
+      <button class="archive-card active" onclick="showTournament(event, 'tournament1')">
+        <span class="archive-badge standard">Standard</span>
+        <h3>Scoville Cup #1</h3>
+        <p>19 Avril 2026</p>
+        <span class="archive-meta">16 joueurs</span>
+      </button>
+
+      <button class="archive-card" onclick="showTournament(event, 'tournament2')">
+        <span class="archive-badge offmeta">Off-Meta</span>
+        <h3>Off-Meta Night #1</h3>
+        <p>10 Mars 2026</p>
+        <span class="archive-meta">12 joueurs</span>
+      </button>
+
+      <button class="archive-card" onclick="showTournament(event, 'tournament3')">
+        <span class="archive-badge online">Online</span>
+        <h3>Scoville Online #1</h3>
+        <p>22 Février 2026</p>
+        <span class="archive-meta">24 joueurs</span>
+      </button>
+    </div>
+
+    <!-- ══════════ TOURNOI 1 ══════════ -->
+    <div class="tournament-result active" id="tournament1">
+      <div class="results-head">
+        <p class="meta">Scoville Cup #1 · 19 Avril 2026 · Format Standard · 16 joueurs</p>
+        <span class="pill standard">Archive tournoi</span>
+      </div>
+
+      <div class="podium">
+        <div class="podium-step p2">
+          <div class="podium-rank">2</div>
+          <div class="podium-name">Misty TCG</div>
+          <div class="podium-deck">Lugia VSTAR</div>
+          <div class="podium-score">4V - 1D · Niveau 2</div>
+        </div>
+        <div class="podium-step p1">
+          <div class="podium-rank">1</div>
+          <div class="podium-name">Red Trainer</div>
+          <div class="podium-deck">Charizard ex</div>
+          <div class="podium-score">5V - 0D · Niveau 0</div>
+        </div>
+        <div class="podium-step p3">
+          <div class="podium-rank">3</div>
+          <div class="podium-name">Brock Onix</div>
+          <div class="podium-deck">Gardevoir ex</div>
+          <div class="podium-score">4V - 1D · Niveau 2</div>
+        </div>
+      </div>
+
+      <div class="results-table-wrap card" style="padding:0; overflow:hidden;">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Joueur</th>
+              <th>Deck</th>
+              <th>Format</th>
+              <th>Victoires</th>
+              <th>Défaites</th>
+              <th>Niveau de piquant</th>
+              <th>Sauce / SHU</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td><td>Red Trainer</td><td>Charizard ex</td><td>Standard</td><td>5</td><td>0</td>
+              <td><span class="heat-level"><span class="heat-dots">-</span> Niveau 0</span></td>
+              <td>Aucune sauce · 0 SHU</td>
+            </tr>
+            <tr>
+              <td>2</td><td>Misty TCG</td><td>Lugia VSTAR</td><td>Standard</td><td>4</td><td>1</td>
+              <td><span class="heat-level"><span class="heat-dots">🌶️</span> Niveau 2</span></td>
+              <td>SRIRACHA / MISTRAL · 15 000 SHU</td>
+            </tr>
+            <tr>
+              <td>3</td><td>Brock Onix</td><td>Gardevoir ex</td><td>Standard</td><td>4</td><td>1</td>
+              <td><span class="heat-level"><span class="heat-dots">🌶️</span> Niveau 2</span></td>
+              <td>SRIRACHA / MISTRAL · 15 000 SHU</td>
+            </tr>
+            <tr>
+              <td>4</td><td>Gary Oak</td><td>Iron Hands ex</td><td>Standard</td><td>3</td><td>2</td>
+              <td><span class="heat-level"><span class="heat-dots">🌶️🌶️</span> Niveau 4</span></td>
+              <td>PHA-YU / NAGA MANGO · 70 000 SHU</td>
+            </tr>
+            <tr>
+              <td>5</td><td>Pika Power</td><td>Pikachu ex</td><td>Standard</td><td>2</td><td>3</td>
+              <td><span class="heat-level"><span class="heat-dots">🌶️🌶️🌶️</span> Niveau 6</span></td>
+              <td>TONNERRE · 100 000 SHU</td>
+            </tr>
+            <tr>
+              <td>6</td><td>Ghost Master</td><td>Lost Zone Box</td><td>Off-Meta</td><td>1</td><td>4</td>
+              <td><span class="heat-level"><span class="heat-dots">🔥🔥🔥</span> Niveau 8</span></td>
+              <td>ARMAGEDDON · 500 000 SHU</td>
+            </tr>
+            <tr>
+              <td>7</td><td>Snorlax Fan</td><td>Snorlax Stall</td><td>Off-Meta</td><td>0</td><td>5</td>
+              <td><span class="heat-level"><span class="heat-dots">🔥🔥🔥🔥</span> Niveau 10</span></td>
+              <td>TSUNAMI · 1 000 000 SHU</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ══════════ TOURNOI 2 ══════════ -->
+    <div class="tournament-result" id="tournament2" style="display:none;">
+      <div class="results-head">
+        <p class="meta">Off-Meta Night #1 · 10 Mars 2026 · Format Off-Meta · 12 joueurs</p>
+        <span class="pill offmeta">Archive tournoi</span>
+      </div>
+
+      <div class="podium">
+        <div class="podium-step p2">
+          <div class="podium-rank">2</div>
+          <div class="podium-name">Ghost Master</div>
+          <div class="podium-deck">Banette Box</div>
+          <div class="podium-score">3V - 1D · Niveau 4</div>
+        </div>
+        <div class="podium-step p1">
+          <div class="podium-rank">1</div>
+          <div class="podium-name">Chaos Player</div>
+          <div class="podium-deck">Wugtrio Mill</div>
+          <div class="podium-score">4V - 0D · Niveau 1</div>
+        </div>
+        <div class="podium-step p3">
+          <div class="podium-rank">3</div>
+          <div class="podium-name">Snorlax Fan</div>
+          <div class="podium-deck">Snorlax Stall</div>
+          <div class="podium-score">3V - 1D · Niveau 5</div>
+        </div>
+      </div>
+
+      <div class="results-table-wrap card" style="padding:0; overflow:hidden;">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Joueur</th>
+              <th>Deck</th>
+              <th>Format</th>
+              <th>Victoires</th>
+              <th>Défaites</th>
+              <th>Niveau de piquant</th>
+              <th>Sauce / SHU</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td><td>Chaos Player</td><td>Wugtrio Mill</td><td>Off-Meta</td><td>4</td><td>0</td>
+              <td><span class="heat-level"><span class="heat-dots">-</span> Niveau 1</span></td>
+              <td>HEGOA · 1 500 SHU</td>
+            </tr>
+            <tr>
+              <td>2</td><td>Ghost Master</td><td>Banette Box</td><td>Off-Meta</td><td>3</td><td>1</td>
+              <td><span class="heat-level"><span class="heat-dots">🌶️🌶️</span> Niveau 4</span></td>
+              <td>PHA-YU / NAGA MANGO · 70 000 SHU</td>
+            </tr>
+            <tr>
+              <td>3</td><td>Snorlax Fan</td><td>Snorlax Stall</td><td>Off-Meta</td><td>3</td><td>1</td>
+              <td><span class="heat-level"><span class="heat-dots">🌶️🌶️🌶️</span> Niveau 5</span></td>
+              <td>SIROCCO · 75 000 SHU</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- ══════════ TOURNOI 3 ══════════ -->
+    <div class="tournament-result" id="tournament3" style="display:none;">
+      <div class="results-head">
+        <p class="meta">Scoville Online #1 · 22 Février 2026 · Format Standard · 24 joueurs</p>
+        <span class="pill standard">Archive tournoi</span>
+      </div>
+
+      <div class="podium">
+        <div class="podium-step p2">
+          <div class="podium-rank">2</div>
+          <div class="podium-name">Pika Power</div>
+          <div class="podium-deck">Miraidon ex</div>
+          <div class="podium-score">5V - 1D · Niveau 3</div>
+        </div>
+        <div class="podium-step p1">
+          <div class="podium-rank">1</div>
+          <div class="podium-name">Meta Crusher</div>
+          <div class="podium-deck">Gardevoir ex</div>
+          <div class="podium-score">6V - 0D · Niveau 0</div>
+        </div>
+        <div class="podium-step p3">
+          <div class="podium-rank">3</div>
+          <div class="podium-name">Iron Champ</div>
+          <div class="podium-deck">Iron Hands ex</div>
+          <div class="podium-score">4V - 2D · Niveau 4</div>
+        </div>
+      </div>
+
+      <div class="results-table-wrap card" style="padding:0; overflow:hidden;">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Joueur</th>
+              <th>Deck</th>
+              <th>Format</th>
+              <th>Victoires</th>
+              <th>Défaites</th>
+              <th>Niveau de piquant</th>
+              <th>Sauce / SHU</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>1</td><td>Meta Crusher</td><td>Gardevoir ex</td><td>Standard</td><td>6</td><td>0</td>
+              <td><span class="heat-level"><span class="heat-dots">-</span> Niveau 0</span></td>
+              <td>Aucune sauce · 0 SHU</td>
+            </tr>
+            <tr>
+              <td>2</td><td>Pika Power</td><td>Miraidon ex</td><td>Standard</td><td>5</td><td>1</td>
+              <td><span class="heat-level"><span class="heat-dots">🌶️</span> Niveau 3</span></td>
+              <td>BLIZZARD / EAST IPA / INDIENNE · 60 000 SHU</td>
+            </tr>
+            <tr>
+              <td>3</td><td>Iron Champ</td><td>Iron Hands ex</td><td>Standard</td><td>4</td><td>2</td>
+              <td><span class="heat-level"><span class="heat-dots">🌶️🌶️</span> Niveau 4</span></td>
+              <td>PHA-YU / NAGA MANGO · 70 000 SHU</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
 </section>
--->
+
 <!-- ══════════ RÈGLES ══════════ -->
 <section id="regles" class="section">
   <div class="page-inner">
@@ -1193,20 +1448,20 @@
       Humour et un peu de souffrance partagée font l'âme de nos événements!
     </p>
 
-	<div class="rules-grid">
+    <div class="rules-grid">
       <div class="rule-card">
         <h3>⚔️ Format du tournoi</h3>
         <ul>
           <li>Système Suisse (rondes appariées en fonction des résultats)</li>
           <li>50 minutes par ronde</li>
           <li>15 minutes extra time en 3 tours maximum</li>
-		  <li>Matchs en Best-of-3 pour déterminer le gagnant</li>
+          <li>Matchs en Best-of-3 pour déterminer le gagnant</li>
           <li>Format Pokémon officiel Standard ou Off-Meta selon l'événement</li>
           <li>Deck liste obligatoire à l'inscription</li>
           <li>Arbitrage en cas de litige</li>
         </ul>
       </div>
-	  <div class="rule-card">
+      <div class="rule-card">
         <h3>😊 Code de conduite</h3>
         <ul>
           <li>Respect envers tous les joueurs</li>
@@ -1235,7 +1490,7 @@
         </ul>
       </div>
     </div>
-	
+
     <!-- SCOVILLE TABLE -->
     <div class="form-card">
       <h2>Echelle Scoville</h2>
@@ -1248,19 +1503,19 @@
               <th>Scoville</th>
             </tr>
           </thead>
-			<tbody>
-			  <tr><td><span class="level-badge">0</span></td><td>Aucune sauce</td><td class="shu">0 SHU<div class="bar" style="background:linear-gradient(90deg,#2e7d32,#2e7d32);width: 0%;"></div></td></tr>
-			  <tr><td><span class="level-badge">1</span></td><td>HEGOA</td><td class="shu">1 500 SHU<div class="bar" style="background:linear-gradient(90deg,#2e7d32,#43a047);width: 4%;"></div></td></tr>
-			  <tr><td><span class="level-badge">2</span></td><td>SRIRACHA / MISTRAL</td><td class="shu">15 000 SHU<div class="bar" style="background:linear-gradient(90deg,#43a047,#7cb342);width: 10%;"></div></td></tr>
-			  <tr><td><span class="level-badge">3</span></td><td>BLIZZARD / EAST IPA / INDIENNE</td><td class="shu">60 000 SHU<div class="bar" style="background:linear-gradient(90deg,#7cb342,#c0ca33);width: 18%;"></div></td></tr>
-			  <tr><td><span class="level-badge">4</span></td><td>PHA-YU / NAGA MANGO</td><td class="shu">70 000 SHU<div class="bar" style="background:linear-gradient(90deg,#c0ca33,#f9a825);width: 24%;"></div></td></tr>
-			  <tr><td><span class="level-badge">5</span></td><td>SIROCCO</td><td class="shu">75 000 SHU<div class="bar" style="background:linear-gradient(90deg,#f9a825,#fb8c00);width: 45%;"></div></td></tr>
-			  <tr><td><span class="level-badge">6</span></td><td>TONNERRE</td><td class="shu">100 000 SHU<div class="bar" style="background:linear-gradient(90deg,#fb8c00,#f4511e);width: 58%;"></div></td></tr>
-			  <tr><td><span class="level-badge">7</span></td><td>FOUDRE</td><td class="shu">120 000 SHU<div class="bar" style="background:linear-gradient(90deg,#f4511e,#e53935);width: 70%;"></div></td></tr>
-			  <tr><td><span class="level-badge">8</span></td><td>ARMAGEDDON</td><td class="shu">500 000 SHU<div class="bar" style="background:linear-gradient(90deg,#e53935,#c62828);width: 82%;"></div></td></tr>
-			  <tr><td><span class="level-badge">9</span></td><td>CAROLINA REAPER</td><td class="shu">800 000 SHU<div class="bar" style="background:linear-gradient(90deg,#c62828,#b71c1c);width: 92%;"></div></td></tr>
-			  <tr><td><span class="level-badge">10</span></td><td>TSUNAMI</td><td class="shu">1 000 000 SHU<div class="bar" style="background:linear-gradient(90deg,#b71c1c,#7f0000);width: 100%;"></div></td></tr>
-			</tbody>
+          <tbody>
+            <tr><td><span class="level-badge">0</span></td><td>Aucune sauce</td><td class="shu">0 SHU<div class="bar" style="background:linear-gradient(90deg,#2e7d32,#2e7d32);width: 0%;"></div></td></tr>
+            <tr><td><span class="level-badge">1</span></td><td>HEGOA</td><td class="shu">1 500 SHU<div class="bar" style="background:linear-gradient(90deg,#2e7d32,#43a047);width: 4%;"></div></td></tr>
+            <tr><td><span class="level-badge">2</span></td><td>SRIRACHA / MISTRAL</td><td class="shu">15 000 SHU<div class="bar" style="background:linear-gradient(90deg,#43a047,#7cb342);width: 10%;"></div></td></tr>
+            <tr><td><span class="level-badge">3</span></td><td>BLIZZARD / EAST IPA / INDIENNE</td><td class="shu">60 000 SHU<div class="bar" style="background:linear-gradient(90deg,#7cb342,#c0ca33);width: 18%;"></div></td></tr>
+            <tr><td><span class="level-badge">4</span></td><td>PHA-YU / NAGA MANGO</td><td class="shu">70 000 SHU<div class="bar" style="background:linear-gradient(90deg,#c0ca33,#f9a825);width: 24%;"></div></td></tr>
+            <tr><td><span class="level-badge">5</span></td><td>SIROCCO</td><td class="shu">75 000 SHU<div class="bar" style="background:linear-gradient(90deg,#f9a825,#fb8c00);width: 45%;"></div></td></tr>
+            <tr><td><span class="level-badge">6</span></td><td>TONNERRE</td><td class="shu">100 000 SHU<div class="bar" style="background:linear-gradient(90deg,#fb8c00,#f4511e);width: 58%;"></div></td></tr>
+            <tr><td><span class="level-badge">7</span></td><td>FOUDRE</td><td class="shu">120 000 SHU<div class="bar" style="background:linear-gradient(90deg,#f4511e,#e53935);width: 70%;"></div></td></tr>
+            <tr><td><span class="level-badge">8</span></td><td>ARMAGEDDON</td><td class="shu">500 000 SHU<div class="bar" style="background:linear-gradient(90deg,#e53935,#c62828);width: 82%;"></div></td></tr>
+            <tr><td><span class="level-badge">9</span></td><td>CAROLINA REAPER</td><td class="shu">800 000 SHU<div class="bar" style="background:linear-gradient(90deg,#c62828,#b71c1c);width: 92%;"></div></td></tr>
+            <tr><td><span class="level-badge">10</span></td><td>TSUNAMI</td><td class="shu">1 000 000 SHU<div class="bar" style="background:linear-gradient(90deg,#b71c1c,#7f0000);width: 100%;"></div></td></tr>
+          </tbody>
         </table>
       </div>
       <p style="margin-top:1rem; color:var(--text-muted); line-height:1.7; font-size:.9rem;">Les aliments pour accompagner vos sauces seront du poulet frit 🍗, des croquettes de fromage 🧀 ou de legumes 🥦. Prevoir les allergies alimentaire et faire signer une charte de securite alimentaire avec un consentement clair.</p>
@@ -1349,13 +1604,13 @@
     <div class="form-card" style="text-align:center;max-width:600px;margin:0 auto;">
       <h2>❤️ Nous soutenir</h2>
       <p style="color:var(--text-muted);margin-bottom:1.5rem;font-size:0.95rem;line-height:1.6;">
-        Vous aimez le concept Scoville Tournament et souhaitez aider l'association à organiser
+        Vous aimez le concept Scoville Tournament et souhaitez nous aider à organiser
         de nouveaux événements, améliorer les dotations et faire grandir la communauté ?
         Vous pouvez nous soutenir via un don libre sur PayPal.
       </p>
 
       <a
-        href="TON_LIEN_PAYPAL_ICI"
+        href="https://paypal.me/NicolasAntigny"
         target="_blank"
         rel="noopener noreferrer"
         class="btn-primary"
@@ -1365,7 +1620,7 @@
       </a>
 
       <p style="color:var(--text-muted);margin-top:1rem;font-size:0.85rem;">
-        Chaque contribution aide à faire monter la température 🌶️
+        Chaque contribution nous aidera à faire monter la température 🌶️
       </p>
     </div>
   </div>
@@ -1373,7 +1628,7 @@
 
 <footer>
   <div class="footer-left">scoville-tournament.net</div>
-  <div class="footer-right">Prototype adapte pour vos tournois Pokemon TCG · Palette rouge / vert · Pokemon TCG appartient a Nintendo / The Pokemon Company</div>
+  <div class="footer-right">Copyright scoville-tournament by Nemsis_TCG © 2026 · Tous droits réservés · Pokemon TCG appartient a Nintendo / The Pokemon Company</div>
 </footer>
 
 <script>
@@ -1387,12 +1642,66 @@
     window.scrollTo({ top: 0, behavior: 'smooth' });
   }
 
+  function showTournament(event, tournamentId) {
+    const tournaments = document.querySelectorAll('.tournament-result');
+    const cards = document.querySelectorAll('.archive-card');
+
+    tournaments.forEach(tournament => {
+      tournament.style.display = 'none';
+      tournament.classList.remove('active');
+    });
+
+    cards.forEach(card => {
+      card.classList.remove('active');
+    });
+
+    const selectedTournament = document.getElementById(tournamentId);
+    if (selectedTournament) {
+      selectedTournament.style.display = 'block';
+      selectedTournament.classList.add('active');
+    }
+
+    if (event && event.currentTarget) {
+      event.currentTarget.classList.add('active');
+    }
+  }
+
   document.querySelectorAll('nav a[data-section]').forEach(link => {
     link.addEventListener('click', function(event) {
       event.preventDefault();
       showSection(this.dataset.section);
     });
   });
+
+  const form = document.getElementById('inscription-form');
+  const message = document.getElementById('form-message');
+
+  if (form) {
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+
+      const formData = new FormData(form);
+      message.textContent = "Envoi de votre inscription...";
+
+      try {
+        const response = await fetch(form.action, {
+          method: 'POST',
+          body: formData
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+          message.textContent = "Votre inscription a bien été envoyée 🌶️";
+          form.reset();
+        } else {
+          message.textContent = "Erreur : " + result.message;
+        }
+      } catch (error) {
+        message.textContent = "Impossible d'envoyer le formulaire pour le moment.";
+      }
+    });
+  }
 </script>
 </body>
 </html>
