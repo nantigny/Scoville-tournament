@@ -4,6 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>scoville-tournament.net | Tournois Pokemon TCG</title>
+
+<!-- ══════════ PATCH 1 : META SEO & OPEN GRAPH ══════════ -->
+<meta name="description" content="Scoville Tournament organise des tournois Pokémon TCG à Rennes en format Standard et Off-Meta. Plus tu perds, plus le piquant monte. Inscris-toi !">
+<meta name="robots" content="index, follow">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://scoville-tournament.net/">
+<meta property="og:title" content="Scoville Tournament | Tournois Pokémon TCG pimentés">
+<meta property="og:description" content="Des tournois Pokémon TCG à Rennes en format Standard et Off-Meta. Chaque défaite monte l'échelle Scoville 🌶️">
+<meta property="og:image" content="https://scoville-tournament.net/images/logo-scoville-tournament.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Scoville Tournament | Tournois Pokémon TCG pimentés">
+<meta name="twitter:description" content="Tournois Pokémon TCG à Rennes. Standard & Off-Meta. Plus tu perds, plus ça pique.">
+<meta name="twitter:image" content="https://scoville-tournament.net/images/logo-scoville-tournament.png">
+<link rel="icon" type="image/png" href="images/logo-scoville-tournament.png">
+<!-- ══════════ FIN PATCH 1 ══════════ -->
+
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -96,17 +112,6 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
-  <!--
-  .logo-sub {
-    display: block;
-    font-size: 0.72rem;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--text-muted);
-    margin-top: 2px;
-	font-weight: 700;
-  }
-	-->
   nav {
     display: flex;
     align-items: center;
@@ -117,7 +122,7 @@
   }
   nav::-webkit-scrollbar { display: none; }
   nav a {
-    font-family: 'Barlow Condensed', sans-serif; <!--'HotSauce',-->
+    font-family: 'Barlow Condensed', sans-serif;
     font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 1.5px;
@@ -132,16 +137,8 @@
     transition: .2s ease;
     white-space: nowrap;
   }
-  nav a:hover {
-    color: var(--green);
-    border-bottom-color: var(--green);
-    font-weight: 800;
-  }
-  nav a.active {
-    color: var(--red);
-    border-bottom-color: var(--red);
-	font-weight: 800;
-  }
+  nav a:hover { color: var(--green); border-bottom-color: var(--green); font-weight: 800; }
+  nav a.active { color: var(--red); border-bottom-color: var(--red); font-weight: 800; }
 
   .section { display: none; position: relative; z-index: 1; min-height: calc(100vh - 78px); }
   .section.active { display: block; }
@@ -157,7 +154,6 @@
   }
   .page-title span.red { color: var(--red); }
   .page-title span.green { color: var(--green); }
-  .page-title span.green { color: var(--gold); }
   .page-line {
     width: 72px;
     height: 4px;
@@ -220,7 +216,7 @@
     text-transform: uppercase;
     color: var(--gold);
     margin-bottom: 1.1rem;
-	font-weight: 800;
+    font-weight: 800;
   }
   .hero-desc {
     max-width: 720px;
@@ -249,6 +245,7 @@
     font-weight: 700;
     font-size: .95rem;
     transition: .2s ease;
+    border: none;
   }
   .btn-primary {
     color: #fff;
@@ -257,6 +254,11 @@
     box-shadow: 0 12px 24px rgba(232,34,10,0.18);
   }
   .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(232,34,10,0.32); }
+  .btn-primary:disabled {
+    opacity: 0.65;
+    cursor: not-allowed;
+    transform: none;
+  }
   .btn-secondary {
     color: var(--green);
     background: rgba(62,207,26,0.08);
@@ -268,6 +270,23 @@
     background: rgba(240,192,64,0.08);
     border: 1px solid rgba(240,192,64,0.24);
   }
+
+  /* ══════════ PATCH 2 : SPINNER ══════════ */
+  .spinner {
+    display: inline-block;
+    width: 14px;
+    height: 14px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: spin .7s linear infinite;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .form-message-success { color: var(--green); font-weight: 600; }
+  .form-message-error { color: var(--red); font-weight: 600; }
+  /* ══════════ FIN PATCH 2 ══════════ */
 
   .hero-stats {
     display: grid;
@@ -281,23 +300,10 @@
     border: 1px solid var(--border);
     box-shadow: var(--shadow);
   }
-	.stat-num {
-	  font-family: 'HotSauce', 'Bebas Neue', sans-serif;
-	  font-size: 2rem;
-	  letter-spacing: 1px;
-	}
-
-	.stat-red {
-	  color: var(--red);
-	}
-
-	.stat-gold {
-	  color: var(--gold);
-	}
-
-	.stat-green {
-	  color: var(--green);
-	}
+  .stat-num { font-family: 'HotSauce', 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 1px; }
+  .stat-red { color: var(--red); }
+  .stat-gold { color: var(--gold); }
+  .stat-green { color: var(--green); }
   .stat-label { color: var(--text-muted); font-size: .85rem; line-height: 1.5; }
 
   .hero-panel {
@@ -318,11 +324,7 @@
     background: radial-gradient(circle, rgba(62,207,26,0.16), transparent 70%);
     pointer-events: none;
   }
-  .hero-logo-wrap {
-    display: flex;
-    justify-content: center;
-    margin-bottom: 1.6rem;
-  }
+  .hero-logo-wrap { display: flex; justify-content: center; margin-bottom: 1.6rem; }
   .hero-logo {
     width: 320px;
     max-width: 100%;
@@ -331,7 +333,7 @@
   }
   .panel-title {
     font-family: 'HotSauce', 'Bebas Neue', sans-serif;
-	color: var(--gold);
+    color: var(--gold);
     font-size: 1.8rem;
     letter-spacing: 2px;
     margin-bottom: 1rem;
@@ -348,30 +350,17 @@
     border: 1px solid rgba(255,255,255,0.05);
   }
   .path-num {
-    width: 44px;
-    height: 44px;
-    border-radius: 12px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    width: 44px; height: 44px; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
     background: linear-gradient(135deg, var(--red), var(--green));
     color: #0c0c0c;
     font-family: 'Bebas Neue', sans-serif;
     font-size: 1.3rem;
   }
-  .path-item h4 {
-    font-family: 'Barlow Condensed', sans-serif;
-    color: var(--gold);	
-    font-size: 1rem;
-    letter-spacing: 1px;
-    margin-bottom: .2rem;
-  }
+  .path-item h4 { font-family: 'Barlow Condensed', sans-serif; color: var(--gold); font-size: 1rem; letter-spacing: 1px; margin-bottom: .2rem; }
   .path-item p { color: var(--text-muted); font-size: .88rem; line-height: 1.55; }
 
-  .grid-2, .grid-3 {
-    display: grid;
-    gap: 1.3rem;
-  }
+  .grid-2, .grid-3 { display: grid; gap: 1.3rem; }
   .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 
@@ -384,16 +373,10 @@
   .card, .info-card, .rule-card, .account-card { padding: 1.35rem; }
 
   .pill {
-    display: inline-flex;
-    align-items: center;
-    gap: .4rem;
-    border-radius: 999px;
-    padding: .33rem .65rem;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    font-size: .74rem;
+    display: inline-flex; align-items: center; gap: .4rem;
+    border-radius: 999px; padding: .33rem .65rem;
+    font-family: 'Barlow Condensed', sans-serif; font-weight: 700;
+    text-transform: uppercase; letter-spacing: 1.5px; font-size: .74rem;
     border: 1px solid transparent;
   }
   .pill.standard { background: rgba(232,34,10,0.12); color: var(--red); border-color: rgba(232,34,10,0.28); }
@@ -403,21 +386,20 @@
   .pill.open { background: rgba(62,207,26,0.12); color: var(--green); border-color: rgba(62,207,26,0.28); }
   .pill.wait { background: rgba(240,192,64,0.12); color: var(--gold); border-color: rgba(240,192,64,0.22); }
   .pill.done { background: rgba(255,255,255,0.08); color: #d8d8d8; border-color: rgba(255,255,255,0.14); }
+  /* ══════════ PATCH 3 : badge "À venir" ══════════ */
+  .pill.upcoming { background: rgba(80,110,255,0.12); color: #8ea2ff; border-color: rgba(80,110,255,0.25); }
+  /* ══════════ FIN PATCH 3 ══════════ */
 
   .event-list { display: grid; gap: 1rem; }
   .event-card {
     display: grid;
     grid-template-columns: 108px 1fr auto;
-    gap: 1.2rem;
-    padding: 1.2rem;
-    align-items: center;
-    transition: .2s ease;
+    gap: 1.2rem; padding: 1.2rem;
+    align-items: center; transition: .2s ease;
   }
   .event-card:hover { transform: translateY(-2px); border-color: rgba(240,192,64,0.25); }
   .event-date {
-    border-radius: 14px;
-    padding: .9rem .6rem;
-    text-align: center;
+    border-radius: 14px; padding: .9rem .6rem; text-align: center;
     background: linear-gradient(135deg, rgba(232,34,10,0.22), rgba(158,21,5,0.45));
     border: 1px solid rgba(232,34,10,0.24);
   }
@@ -425,143 +407,47 @@
     background: linear-gradient(135deg, rgba(62,207,26,0.18), rgba(26,122,8,0.4));
     border-color: rgba(62,207,26,0.24);
   }
-  .event-day {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2.4rem;
-    line-height: 1;
-  }
-  .event-month {
-    font-family: 'Barlow Condensed', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    font-size: .84rem;
-    color: rgba(255,255,255,0.7);
-  }
-  .event-main h3 {
-    font-family: 'Barlow Condensed', sans-serif;
-    color: var(--gold);	
-    font-size: 1.25rem;
-    letter-spacing: 1px;
-    margin-bottom: .3rem;
-  }
+  .event-day { font-family: 'Bebas Neue', sans-serif; font-size: 2.4rem; line-height: 1; }
+  .event-month { font-family: 'Barlow Condensed', sans-serif; text-transform: uppercase; letter-spacing: 2px; font-size: .84rem; color: rgba(255,255,255,0.7); }
+  .event-main h3 { font-family: 'Barlow Condensed', sans-serif; color: var(--gold); font-size: 1.25rem; letter-spacing: 1px; margin-bottom: .3rem; }
   .event-main p { color: var(--text-muted); line-height: 1.6; margin-bottom: .55rem; font-size: .92rem; }
   .event-tags { display: flex; flex-wrap: wrap; gap: .45rem; }
   .event-actions { display: flex; flex-direction: column; gap: .7rem; align-items: flex-end; }
 
-  .results-head {
-    display: flex;
-    flex-wrap: wrap;
-    gap: .8rem;
-    align-items: center;
-    justify-content: space-between;
-    margin-bottom: 1.6rem;
-  }
+  .results-head { display: flex; flex-wrap: wrap; gap: .8rem; align-items: center; justify-content: space-between; margin-bottom: 1.6rem; }
   .results-head .meta { color: var(--text-muted); }
-
-  .results-intro {
-    margin-bottom: 1.5rem;
-    color: var(--text-muted);
-    font-family: 'Barlow', sans-serif;
-  }
-
-  .results-archive-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 1rem;
-    margin-bottom: 2rem;
-  }
+  .results-intro { margin-bottom: 1.5rem; color: var(--text-muted); font-family: 'Barlow', sans-serif; }
+  .results-archive-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin-bottom: 2rem; }
 
   .archive-card {
     text-align: left;
     background: rgba(255,255,255,.04);
     border: 1px solid rgba(255,255,255,.08);
-    border-radius: 16px;
-    padding: 1.1rem;
-    cursor: pointer;
-    transition: .2s ease;
-    color: inherit;
+    border-radius: 16px; padding: 1.1rem;
+    cursor: pointer; transition: .2s ease; color: inherit;
   }
+  .archive-card:hover { transform: translateY(-3px); border-color: rgba(232,34,10,.5); background: rgba(255,255,255,.06); }
+  .archive-card.active { border-color: #e8220a; background: rgba(232,34,10,.08); box-shadow: 0 0 0 1px rgba(232,34,10,.15); }
+  .archive-card h3 { margin: .7rem 0 .35rem; font-size: 1.05rem; font-family: 'Bebas Neue', sans-serif; color: var(--gold); }
+  .archive-card p { margin: 0 0 .45rem; color: var(--text-muted); font-size: .92rem; }
+  .archive-meta { display: inline-block; font-size: .82rem; color: var(--text-muted); }
 
-  .archive-card:hover {
-    transform: translateY(-3px);
-    border-color: rgba(232,34,10,.5);
-    background: rgba(255,255,255,.06);
-  }
+  /* ══════════ PATCH 3 : badge "À venir" sur archive-card ══════════ */
+  .archive-card.upcoming-event { opacity: 0.55; cursor: default; pointer-events: none; }
+  .archive-card.upcoming-event:hover { transform: none; }
+  /* ══════════ FIN PATCH 3 ══════════ */
 
-  .archive-card.active {
-    border-color: #e8220a;
-    background: rgba(232,34,10,.08);
-    box-shadow: 0 0 0 1px rgba(232,34,10,.15);
-  }
+  .archive-badge { display: inline-block; padding: .3rem .55rem; border-radius: 999px; font-size: .72rem; font-weight: 700; letter-spacing: .03em; text-transform: uppercase; }
+  .archive-badge.standard { background: var(--red-soft); color: var(--red); }
+  .archive-badge.offmeta { background: var(--green-soft); color: var(--green); }
+  .archive-badge.online { background: rgba(80,110,255,.14); color: #8ea2ff; }
+  .archive-badge.future { background: rgba(255,255,255,0.08); color: #a8a8a8; }
 
-  .archive-card h3 {
-    margin: .7rem 0 .35rem;
-    font-size: 1.05rem;
-    font-family: 'Bebas Neue', sans-serif;
-	color: var(--gold);	
-  }
+  .tournament-result { animation: fadeResult .2s ease; }
+  @keyframes fadeResult { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: translateY(0); } }
 
-  .archive-card p {
-    margin: 0 0 .45rem;
-    color: var(--text-muted);
-    font-size: .92rem;
-  }
-
-  .archive-meta {
-    display: inline-block;
-    font-size: .82rem;
-    color: var(--text-muted);
-  }
-
-  .archive-badge {
-    display: inline-block;
-    padding: .3rem .55rem;
-    border-radius: 999px;
-    font-size: .72rem;
-    font-weight: 700;
-    letter-spacing: .03em;
-    text-transform: uppercase;
-  }
-
-  .archive-badge.standard {
-	background: var(--red-soft);
-	color: var(--red);
-  }
-
-  .archive-badge.offmeta {
-	background: var(--green-soft);
-	color: var(--green);
-  }
-
-  .archive-badge.online {
-    background: rgba(80,110,255,.14);
-    color: #8ea2ff;
-  }
-
-  .tournament-result {
-    animation: fadeResult .2s ease;
-  }
-
-  @keyframes fadeResult {
-    from { opacity: 0; transform: translateY(6px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  .podium {
-    display: flex;
-    align-items: end;
-    justify-content: center;
-    gap: 1rem;
-    margin: 2rem 0 2.4rem;
-  }
-  .podium-step {
-    flex: 1;
-    max-width: 240px;
-    text-align: center;
-    padding: 1.3rem 1rem 1rem;
-    border-radius: 18px 18px 0 0;
-    border: 1px solid var(--border);
-  }
+  .podium { display: flex; align-items: end; justify-content: center; gap: 1rem; margin: 2rem 0 2.4rem; }
+  .podium-step { flex: 1; max-width: 240px; text-align: center; padding: 1.3rem 1rem 1rem; border-radius: 18px 18px 0 0; border: 1px solid var(--border); }
   .p1 { height: 220px; background: linear-gradient(180deg, rgba(240,192,64,0.2), rgba(240,192,64,0.05)); }
   .p2 { height: 182px; background: linear-gradient(180deg, rgba(220,220,220,0.14), rgba(220,220,220,0.04)); }
   .p3 { height: 154px; background: linear-gradient(180deg, rgba(170,102,55,0.16), rgba(170,102,55,0.04)); }
@@ -573,283 +459,56 @@
   .podium-deck, .podium-score { color: var(--text-muted); font-size: .86rem; }
 
   table { width: 100%; border-collapse: collapse; }
-  th {
-    text-align: left;
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: .78rem;
-    text-transform: uppercase;
-    letter-spacing: 1.8px;
-    color: var(--text-muted);
-    padding: .85rem 1rem;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
-  }
-  td {
-    padding: 1rem;
-    border-bottom: 1px solid rgba(255,255,255,0.05);
-    font-size: .93rem;
-    vertical-align: top;
-  }
+  th { text-align: left; font-family: 'Barlow Condensed', sans-serif; font-size: .78rem; text-transform: uppercase; letter-spacing: 1.8px; color: var(--text-muted); padding: .85rem 1rem; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  td { padding: 1rem; border-bottom: 1px solid rgba(255,255,255,0.05); font-size: .93rem; vertical-align: top; }
   tbody tr:hover td { background: rgba(255,255,255,0.025); }
 
-  .heat-level {
-    display: inline-flex;
-    align-items: center;
-    gap: .5rem;
-    color: var(--green);
-    font-weight: 700;
-  }
-  .heat-dots {
-    letter-spacing: 1px;
-    min-width: 34px;
-    display: inline-block;
-  }
-
-  .deck-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.2rem; }
-  .deck-card { overflow: hidden; }
-  .deck-banner {
-    height: 110px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 3rem;
-  }
-  .deck-banner.fire { background: linear-gradient(135deg, #3a0904, #9e1505); }
-  .deck-banner.green { background: linear-gradient(135deg, #0d2108, #1a7a08); }
-  .deck-banner.gold { background: linear-gradient(135deg, #332809, #7a6400); }
-  .deck-banner.blue { background: linear-gradient(135deg, #061b2f, #005a8a); }
-  .deck-body { padding: 1.2rem; }
-  .deck-row {
-    display: flex;
-    justify-content: space-between;
-    gap: .8rem;
-    align-items: center;
-    margin-bottom: .35rem;
-  }
-  .deck-body h3 {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-size: 1.15rem;
-    letter-spacing: 1px;
-  }
-  .deck-body p { color: var(--text-muted); font-size: .88rem; line-height: 1.65; margin-bottom: .9rem; }
-  .tier {
-    font-family: 'Bebas Neue', sans-serif;
-    letter-spacing: 1px;
-    font-size: 1rem;
-  }
-  .tier.s { color: var(--red); }
-  .tier.a { color: var(--gold); }
-  .tier.off { color: var(--green); }
-
-  .upload-box {
-    margin-top: 2rem;
-    padding: 1.4rem;
-    border-radius: var(--radius);
-    border: 1px dashed rgba(240,192,64,0.35);
-    background: rgba(240,192,64,0.05);
-  }
-  .upload-box h3 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.5rem;
-    letter-spacing: 2px;
-    margin-bottom: .5rem;
-    color: var(--gold);
-  }
-  .upload-box p { color: var(--text-muted); line-height: 1.7; }
+  .heat-level { display: inline-flex; align-items: center; gap: .5rem; color: var(--green); font-weight: 700; }
 
   .form-card { padding: 1.6rem; }
-  .form-card h2 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.65rem;
-    letter-spacing: 2px;
-    margin-bottom: 1rem;
-    color: var(--gold);
-  }
-  .notice {
-    display: flex;
-    gap: 1rem;
-    align-items: flex-start;
-    padding: 1rem 1.1rem;
-    margin-bottom: 1.4rem;
-    border-radius: 14px;
-    background: linear-gradient(135deg, rgba(232,34,10,0.12), rgba(62,207,26,0.08));
-    border: 1px solid rgba(240,192,64,0.22);
-  }
+  .form-card h2 { font-family: 'Bebas Neue', sans-serif; font-size: 1.65rem; letter-spacing: 2px; margin-bottom: 1rem; color: var(--gold); }
+  .notice { display: flex; gap: 1rem; align-items: flex-start; padding: 1rem 1.1rem; margin-bottom: 1.4rem; border-radius: 14px; background: linear-gradient(135deg, rgba(232,34,10,0.12), rgba(62,207,26,0.08)); border: 1px solid rgba(240,192,64,0.22); }
   .notice-icon { font-size: 1.6rem; }
-  .notice h4 {
-    font-family: 'Barlow Condensed', sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    margin-bottom: .2rem;
-    color: var(--gold);
-  }
+  .notice h4 { font-family: 'Barlow Condensed', sans-serif; text-transform: uppercase; letter-spacing: 1.5px; margin-bottom: .2rem; color: var(--gold); }
   .notice p { color: var(--text-muted); font-size: .9rem; line-height: 1.6; }
 
   .form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1rem 1.2rem; }
   .form-group { display: flex; flex-direction: column; gap: .42rem; }
   .form-group.full { grid-column: 1 / -1; }
-  label {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
-    text-transform: uppercase;
-    letter-spacing: 1.5px;
-    color: var(--text-muted);
-    font-size: .82rem;
-  }
-  input, select, textarea {
-    width: 100%;
-    background: var(--dark4);
-    color: var(--text);
-    border: 1px solid rgba(255,255,255,0.08);
-    border-radius: 12px;
-    padding: .9rem 1rem;
-    font-size: .95rem;
-    font-family: 'Barlow', sans-serif;
-    outline: none;
-    transition: .2s ease;
-  }
+  label { font-family: 'Barlow Condensed', sans-serif; font-weight: 700; text-transform: uppercase; letter-spacing: 1.5px; color: var(--text-muted); font-size: .82rem; }
+  input, select, textarea { width: 100%; background: var(--dark4); color: var(--text); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; padding: .9rem 1rem; font-size: .95rem; font-family: 'Barlow', sans-serif; outline: none; transition: .2s ease; }
   input:focus, select:focus, textarea:focus { border-color: rgba(240,192,64,0.55); }
   textarea { resize: vertical; min-height: 110px; }
 
-  .account-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 1.2rem; }
-  .account-card h3, .rule-card h3, .card h3, .info-card h3 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.5rem;
-    letter-spacing: 2px;
-    margin-bottom: .65rem;
-    color: var(--gold);
-  }
-  .account-card p, .rule-card p, .card p, .info-card p, .account-card li, .rule-card li {
-    color: var(--text-muted);
-    line-height: 1.7;
-    font-size: .92rem;
-  }
-  .account-card ul, .rule-card ul { padding-left: 1.1rem; }
-
-  .mini-list { display: grid; gap: .8rem; margin-top: 1rem; }
-  .mini-item {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-    padding: .95rem 1rem;
-    border-radius: 14px;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid rgba(255,255,255,0.06);
-  }
-  .mini-item strong { display: block; margin-bottom: .2rem; }
-  .mini-item span { color: var(--text-muted); font-size: .88rem; }
-
   .rules-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.2rem; margin-bottom: 1.2rem; }
   .scoville-table-wrap { overflow-x: auto; }
-  .level-badge {
-    display: inline-flex;
-    min-width: 72px;
-    justify-content: center;
-    padding: .32rem .65rem;
-    border-radius: 999px;
-    background: rgba(62,207,26,0.12);
-    color: var(--green);
-    font-weight: 700;
-    font-size: .82rem;
-  }
+  .level-badge { display: inline-flex; min-width: 72px; justify-content: center; padding: .32rem .65rem; border-radius: 999px; background: rgba(62,207,26,0.12); color: var(--green); font-weight: 700; font-size: .82rem; }
   .shu { color: var(--gold); font-weight: 700; }
-  .bar {
-    height: 8px;
-    border-radius: 999px;
-    margin-top: 6px;
-    background: linear-gradient(90deg, #f9a825, #ff7043, #e53935, #b71c1c);
-  }
+  .bar { height: 8px; border-radius: 999px; margin-top: 6px; background: linear-gradient(90deg, #f9a825, #ff7043, #e53935, #b71c1c); }
 
-  .community-grid { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 1.2rem; }
-  .community-card { padding: 1.3rem; }
-  .community-card h3 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 1.4rem;
-    letter-spacing: 2px;
-    margin-bottom: .55rem;
-  }
-  .community-card p { color: var(--text-muted); line-height: 1.7; font-size: .9rem; }
+  .about-split { display: grid; grid-template-columns: 1fr; gap: 2rem; align-items: start; margin-bottom: 2.2rem; }
+  .about-img-wrap { display: flex; justify-content: center; align-items: center; text-align: center; }
+  .about-img-wrap img { width: 100%; max-width: 240px; height: auto; object-fit: contain; filter: drop-shadow(0 0 28px rgba(232,34,10,0.28)) drop-shadow(0 0 28px rgba(62,207,26,0.22)); }
+  .about-text { max-width: 760px; margin: 0 auto; text-align: center; }
+  .about-text h2 { font-family: 'Bebas Neue', sans-serif; font-size: 2rem; letter-spacing: 2px; margin-bottom: 1rem; color: var(--gold); }
+  .about-text p { color: var(--text-muted); line-height: 1.8; font-size: .95rem; margin-bottom: 1rem; }
+  .stat-row { display: flex; justify-content: center; flex-wrap: wrap; gap: .9rem; margin-top: 1.6rem; }
+  .stat-box { min-width: 150px; padding: .9rem 1rem; border-radius: 14px; background: rgba(255,255,255,0.03); border: 1px solid var(--border); box-shadow: var(--shadow); text-align: center; }
 
-  .about-split {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    align-items: start;
-    margin-bottom: 2.2rem;
-  }
-  .about-img-wrap {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-  }
-  .about-img-wrap img {
-    width: 100%;
-    max-width: 240px;
-    height: auto;
-    object-fit: contain;
-    filter: drop-shadow(0 0 28px rgba(232,34,10,0.28)) drop-shadow(0 0 28px rgba(62,207,26,0.22));
-  }
-  .about-text {
-    max-width: 760px;
-    margin: 0 auto;
-    text-align: center;
-  }
-  .about-text h2 {
-    font-family: 'Bebas Neue', sans-serif;
-    font-size: 2rem;
-    letter-spacing: 2px;
-    margin-bottom: 1rem;
-    color: var(--gold);
-  }
-  .about-text p {
-    color: var(--text-muted);
-    line-height: 1.8;
-    font-size: .95rem;
-    margin-bottom: 1rem;
-  }
-  .stat-row {
-    display: flex;
-    justify-content: center;
-    flex-wrap: wrap;
-    gap: .9rem;
-    margin-top: 1.6rem;
-  }
-  .stat-box {
-    min-width: 150px;
-    padding: .9rem 1rem;
-    border-radius: 14px;
-    background: rgba(255,255,255,0.03);
-    border: 1px solid var(--border);
-    box-shadow: var(--shadow);
-    text-align: center;
-  }
+  .rule-card { padding: 1.35rem; }
+  .rule-card h3 { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 2px; margin-bottom: .65rem; color: var(--gold); }
+  .rule-card p, .rule-card li { color: var(--text-muted); line-height: 1.7; font-size: .92rem; }
+  .rule-card ul { padding-left: 1.1rem; }
 
-  footer {
-    position: relative;
-    z-index: 1;
-    padding: 1.6rem 2rem;
-    border-top: 1px solid rgba(255,255,255,0.06);
-    background: var(--dark2);
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 1rem;
-  }
-  .footer-left {
-    font-family: 'HotSauce', 'BebasBebas Neue', sans-serif;
-    letter-spacing: 2px;
-    font-size: 1.15rem;
-    color: var(--text-muted);
-  }
+  footer { position: relative; z-index: 1; padding: 1.6rem 2rem; border-top: 1px solid rgba(255,255,255,0.06); background: var(--dark2); display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
+  .footer-left { font-family: 'HotSauce', 'Bebas Neue', sans-serif; letter-spacing: 2px; font-size: 1.15rem; color: var(--text-muted); }
   .footer-right { color: #666; font-size: .82rem; line-height: 1.6; text-align: right; }
 
   @media (max-width: 1050px) {
-    .hero-shell, .account-grid, .grid-2, .grid-3, .rules-grid, .deck-grid, .community-grid { grid-template-columns: 1fr; }
+    .hero-shell, .grid-2, .grid-3, .rules-grid { grid-template-columns: 1fr; }
     .hero-panel { order: -1; }
     .hero-stats { grid-template-columns: 1fr; }
   }
-
   @media (max-width: 820px) {
     header { padding: 0 1rem; }
     .page-inner { padding: 3rem 1rem 4rem; }
@@ -862,9 +521,7 @@
     footer { flex-direction: column; text-align: center; }
     .footer-right { text-align: center; }
   }
-
   @media (max-width: 640px) {
-    .logo-sub { display: none; }
     .hero-title { font-size: 3.7rem; }
     .results-table-wrap, .scoville-table-wrap { overflow-x: auto; }
     table { min-width: 720px; }
@@ -878,23 +535,19 @@
     <img src="images/logo-scoville-tournament.png" alt="Logo scoville Tournament" onerror="this.style.display='none'">
     <div class="logo-text-wrap">
       <span class="logo-text">scoville-tournament.net</span>
-      <!--<span class="logo-sub">scoville-tournament.net</span> -->
     </div>
   </a>
-
   <nav>
     <a href="#" class="active" data-section="home">Accueil</a>
     <a href="#" data-section="calendrier">Calendrier</a>
-    <!--<a href="#" data-section="decks">Decks</a> -->
     <a href="#" data-section="inscription">Inscription</a>
-    <!--<a href="#" data-section="mesinscriptions">Mes inscriptions</a> -->
     <a href="#" data-section="resultats">Resultats</a>
     <a href="#" data-section="regles">Regles</a>
-    <!--<a href="#" data-section="communaute">Communaute</a> -->
     <a href="#" data-section="apropos">A propos</a>
   </nav>
 </header>
 
+<!-- ══════════ HOME ══════════ -->
 <section id="home" class="section active">
   <div class="hero-shell">
     <div class="hero-left">
@@ -913,18 +566,17 @@
         <a class="btn-primary" href="#" onclick="showSection('inscription')">S'inscrire</a>
         <a class="btn-primary" href="#" onclick="showSection('regles')">Voir les regles scoville</a>
       </div>
-
       <div class="hero-stats">
         <div class="stat-card">
-    <div class="stat-num stat-red">1</div>
+          <div class="stat-num stat-red">1</div>
           <div class="stat-label">Concept : plus tu perds, plus le piquant devient intense</div>
         </div>
         <div class="stat-card">
-    <div class="stat-num stat-gold">8</div>
+          <div class="stat-num stat-gold">8</div>
           <div class="stat-label">Niveaux associés a une sauce pimentée</div>
         </div>
         <div class="stat-card">
-    <div class="stat-num stat-green">2</div>
+          <div class="stat-num stat-green">2</div>
           <div class="stat-label">Formats proposes : Standard et Off-meta</div>
         </div>
       </div>
@@ -968,9 +620,8 @@
     <div class="page-title"><span class="red">Calendrier</span></div>
     <div class="page-line"></div>
     <p class="page-intro">
-      Cet onglet a ete adapte pour devenir la porte d'entree vers les evenements. Chaque carte peut rediriger vers une page detaillee, une plateforme externe ou un formulaire d'inscription.
+      Retrouvez ici les prochains evenements. Chaque carte peut rediriger vers une page detaillee ou un formulaire d'inscription.
     </p>
-
     <div class="event-list">
       <article class="event-card">
         <div class="event-date">
@@ -1032,55 +683,6 @@
   </div>
 </section>
 
-<!-- ══════════ DECKS ══════════ -->
-<!--<section id="decks" class="section">
-  <div class="page-inner">
-    <div class="page-title"><span class="red">Decks lists</span></div>
-    <div class="page-line"></div>
-    <p class="page-intro">
-      Cet onglet a ete adapte pour servir a la fois de vitrine meta et d'espace de depot pour les deck lists des joueurs. Il pourra ensuite etre branche a un vrai formulaire ou a une base de donnees.
-    </p>
-
-    <div class="deck-grid">
-      <article class="deck-card">
-        <div class="deck-banner fire">🦎</div>
-        <div class="deck-body">
-          <div class="deck-row"><h3>Charizard ex</h3><span class="tier s">Tier S</span></div>
-          <p>Deck reference du format Standard. Solide, explosif et parfait pour illustrer les listes les plus attendues sur vos evenements competitifs.</p>
-          <div class="event-tags"><span class="pill standard">Standard</span></div>
-        </div>
-      </article>
-
-      <article class="deck-card">
-        <div class="deck-banner blue">🌊</div>
-        <div class="deck-body">
-          <div class="deck-row"><h3>Gardevoir ex</h3><span class="tier a">Tier A</span></div>
-          <p>Excellent exemple de deck technique a afficher dans les resultats avec son pilote, son classement et son niveau de piquant atteint.</p>
-          <div class="event-tags"><span class="pill standard">Standard</span></div>
-        </div>
-      </article>
-
-      <article class="deck-card">
-        <div class="deck-banner green">🌿</div>
-        <div class="deck-body">
-          <div class="deck-row"><h3>Lost Zone Box</h3><span class="tier off">Off-meta</span></div>
-          <p>Exemple de liste creative pour vos soirees Off-meta. Cette carte de section peut aussi contenir le nom du joueur et un lien vers sa liste complete.</p>
-          <div class="event-tags"><span class="pill offmeta">Off-meta</span></div>
-        </div>
-      </article>
-    </div>
-
-    <div class="upload-box">
-      <h3>Depot de deck list</h3>
-      <p>
-        Les joueurs pourront ici renseigner le nom du deck, coller leur liste complete, choisir le tournoi concerne, indiquer le format et enregistrer leur deck avant validation par l'organisation.
-        Cet onglet correspond bien a ta contrainte "deck" dans laquelle les joueurs pourront mettre leur deck list.
-      </p>
-    </div>
-  </div>
-</section>
--->
-
 <!-- ══════════ INSCRIPTION ══════════ -->
 <section id="inscription" class="section">
   <div class="page-inner">
@@ -1102,126 +704,62 @@
     <div class="form-card">
       <h2>Formulaire d'inscription joueur</h2>
 
-      <!-- Remplace l'URL ci-dessous par celle de ton Google Apps Script -->
       <form id="inscription-form" action="https://script.google.com/macros/s/AKfycbybDzOnji8WEiy5YHO-1z01CHJu9zLN7saEbm5g1VyNWIhCIIiJEZJ6uJlcVP7v4wTh0g/exec" method="POST">
         <div class="form-grid">
           <div class="form-group">
             <label for="prenom">Prénom</label>
             <input type="text" id="prenom" name="Prénom" placeholder="Ash" required>
           </div>
-
           <div class="form-group">
             <label for="nom">Nom</label>
             <input type="text" id="nom" name="Nom" placeholder="Ketchum" required>
           </div>
-
           <div class="form-group">
             <label for="player-id">Player ID</label>
             <input type="text" id="player-id" name="Player_ID" placeholder="123456789" required>
           </div>
-
           <div class="form-group">
             <label for="annee-naissance">Année de naissance</label>
             <input type="number" id="annee-naissance" name="Année_de_naissance" placeholder="2001" min="1900" max="2100" required>
           </div>
-
           <div class="form-group full">
             <label for="email">Email de contact</label>
             <input type="email" id="email" name="Email_de_contact" placeholder="ash@pokemon.com" required>
           </div>
-
           <div class="form-group full">
             <label for="tournoi">Tournoi choisi</label>
             <select id="tournoi" name="Tournoi_choisi" required>
               <option value="">-- Sélectionnez un tournoi --</option>
-              <option value="cup1">Scoville Cup #1</option>
-              <option value="offmeta1">Scoville Off-Meta #1</option>
-              <option value="online1">Scoville Online Night #1</option>
+              <option value="cup1">Scoville Cup #1 — 19 Avril 2026</option>
+              <option value="offmeta1">Scoville Off-Meta #1 — 10 Mai 2026</option>
+              <option value="online1">Scoville Online Night #1 — 7 Juin 2026</option>
             </select>
           </div>
-
           <div class="form-group full">
             <label for="remarques">Remarques</label>
-            <textarea
-              id="remarques"
-              name="Remarques"
-              placeholder="Allergies, restrictions alimentaires, informations utiles..."
-            ></textarea>
+            <textarea id="remarques" name="Remarques" placeholder="Allergies, restrictions alimentaires, informations utiles..."></textarea>
           </div>
         </div>
 
-        <!-- Valeur envoyée automatiquement au Sheet -->
         <input type="hidden" name="Statut_inscription" value="En attente">
 
         <div style="display:flex; align-items:flex-start; gap:.7rem; margin-top:1.2rem;">
-          <input
-            type="checkbox"
-            id="ok-rules"
-            required
-            style="width:18px;height:18px;margin-top:3px;accent-color:#e8220a;"
-          >
-          <label
-            for="ok-rules"
-            style="text-transform:none; letter-spacing:0; font-size:.9rem; color:var(--text-muted); font-family:'Barlow',sans-serif;"
-          >
-            J'accepte les règles du tournoi, les conditions de participation
-            et le principe de la montée en piquant.
+          <input type="checkbox" id="ok-rules" required style="width:18px;height:18px;margin-top:3px;accent-color:#e8220a;">
+          <label for="ok-rules" style="text-transform:none; letter-spacing:0; font-size:.9rem; color:var(--text-muted); font-family:'Barlow',sans-serif;">
+            J'accepte les règles du tournoi, les conditions de participation et le principe de la montée en piquant.
           </label>
         </div>
 
-        <div style="margin-top:1.4rem; display:flex; gap:1rem; flex-wrap:wrap;">
-          <button type="submit" class="btn-primary">Confirmer mon inscription</button>
-          <!--<a class="btn-secondary" href="#" onclick="showSection('mesinscriptions')">Voir mes inscriptions</a>-->
+        <!-- ══════════ PATCH 2 : bouton avec spinner ══════════ -->
+        <div style="margin-top:1.4rem; display:flex; gap:1rem; flex-wrap:wrap; align-items:center;">
+          <button type="submit" id="submit-btn" class="btn-primary">Confirmer mon inscription</button>
         </div>
-
-        <p id="form-message" style="margin-top:1rem; color:var(--text-muted); font-family:'Barlow',sans-serif;"></p>
+        <p id="form-message" style="margin-top:1rem; font-family:'Barlow',sans-serif;"></p>
+        <!-- ══════════ FIN PATCH 2 ══════════ -->
       </form>
     </div>
   </div>
 </section>
-
-<!-- ══════════ MES INSCRIPTIONS ══════════ -->
-<!--<section id="mesinscriptions" class="section">
-  <div class="page-inner">
-    <div class="page-title"><span class="red">Mes inscriptions</span></div>
-    <div class="page-line"></div>
-    <p class="page-intro">
-      Cet onglet a ete ajoute pour repondre a ta demande : les joueurs peuvent y retrouver les tournois auxquels ils sont deja inscrits, leur statut, leur deck et les informations utiles.
-    </p>
-
-    <div class="account-grid">
-      <div class="account-card">
-        <h3>Tournois enregistres</h3>
-        <div class="mini-list">
-          <div class="mini-item">
-            <div>
-              <strong>Scoville Cup #1 - Standard Clash</strong>
-              <span>19 Avril 2026 · Rennes · Deck declare : Charizard ex</span>
-            </div>
-            <span class="pill open">Confirme</span>
-          </div>
-          <div class="mini-item">
-            <div>
-              <strong>Scoville Online #1 - Ladder Heat</strong>
-              <span>07 Juin 2026 · En ligne · Deck declare : en attente</span>
-            </div>
-            <span class="pill wait">A completer</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="account-card">
-        <h3>Informations joueur</h3>
-        <ul>
-          <li>Deck list soumise ou en attente de validation</li>
-          <li>Check-in ouvert le jour du tournoi</li>
-          <li>Statut du paiement ou de la participation</li>
-          <li>Rappel des restrictions alimentaires declarees</li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section> -->
 
 <!-- ══════════ RESULTATS ══════════ -->
 <section id="resultats" class="section">
@@ -1229,21 +767,22 @@
     <div class="page-title"><span class="red">Resultats</span></div>
     <div class="page-line"></div>
 
+    <!-- ══════════ PATCH 3 : séparation "À venir" / archives ══════════ -->
     <div class="results-intro">
-      <p>
-        Retrouvez les podiums, decks marquants et niveaux de piquant de nos précédents événements.
-      </p>
+      <p>Les événements à venir n'ont pas encore de résultats. Revenez après chaque tournoi !</p>
     </div>
 
     <div class="results-archive-grid">
-      <button class="archive-card active" onclick="showTournament(event, 'tournament1')">
-        <span class="archive-badge standard">Standard</span>
+      <!-- Événement futur : grisé, non cliquable -->
+      <div class="archive-card upcoming-event">
+        <span class="archive-badge future">À venir</span>
         <h3>Scoville Cup #1</h3>
         <p>19 Avril 2026</p>
-        <span class="archive-meta">16 joueurs</span>
-      </button>
+        <span class="archive-meta">Résultats disponibles après l'événement</span>
+      </div>
 
-      <button class="archive-card" onclick="showTournament(event, 'tournament2')">
+      <!-- Archives passées : cliquables -->
+      <button class="archive-card active" onclick="showTournament(event, 'tournament2')">
         <span class="archive-badge offmeta">Off-Meta</span>
         <h3>Scoville Off-Meta #1</h3>
         <p>10 Mars 2026</p>
@@ -1257,96 +796,14 @@
         <span class="archive-meta">24 joueurs</span>
       </button>
     </div>
+    <!-- ══════════ FIN PATCH 3 ══════════ -->
 
-    <!-- ══════════ TOURNOI 1 ══════════ -->
-    <div class="tournament-result active" id="tournament1">
-      <div class="results-head">
-        <p class="meta">Scoville Cup #1 · 19 Avril 2026 · Format Standard · 16 joueurs</p>
-        <span class="pill standard">Archive tournoi</span>
-      </div>
-
-      <div class="podium">
-        <div class="podium-step p2">
-          <div class="podium-rank">2</div>
-          <div class="podium-name">Misty TCG</div>
-          <div class="podium-deck">Lugia VSTAR</div>
-          <div class="podium-score">4V - 1D · Niveau 2</div>
-        </div>
-        <div class="podium-step p1">
-          <div class="podium-rank">1</div>
-          <div class="podium-name">Red Trainer</div>
-          <div class="podium-deck">Charizard ex</div>
-          <div class="podium-score">5V - 0D · Niveau 0</div>
-        </div>
-        <div class="podium-step p3">
-          <div class="podium-rank">3</div>
-          <div class="podium-name">Brock Onix</div>
-          <div class="podium-deck">Gardevoir ex</div>
-          <div class="podium-score">4V - 1D · Niveau 2</div>
-        </div>
-      </div>
-
-      <div class="results-table-wrap card" style="padding:0; overflow:hidden;">
-        <table>
-          <thead>
-            <tr>
-              <th>#</th>
-              <th>Joueur</th>
-              <th>Deck</th>
-              <th>Format</th>
-              <th>Win/Lose/Tie</th>
-              <th>Niveau de piquant</th>
-              <th>Sauce / SHU</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td><td>Red Trainer</td><td>Charizard ex</td><td>Standard</td><td>4V/0D/0T</td>
-              <td><span class="heat-level">Niveau 1</span></td>
-              <td>HEGOA · 1 500 SHU</td>
-            </tr>
-            <tr>
-              <td>2</td><td>Misty TCG</td><td>Lugia VSTAR</td><td>Standard</td><td>3W/0D/1T</td>
-              <td><span class="heat-level">Niveau 2</span></td>
-              <td>MISTRAL · 15 000 SHU</td>
-            </tr>
-            <tr>
-              <td>3</td><td>Brock Onix</td><td>Gardevoir ex</td><td>Standard</td><td>3W/0D/1T</td>
-              <td><span class="heat-level">Niveau 2</span></td>
-              <td>MISTRAL · 15 000 SHU</td>
-            </tr>
-            <tr>
-              <td>4</td><td>Gary Oak</td><td>Iron Hands ex</td><td>Standard</td><td>2W/1D/1T</td>
-              <td><span class="heat-level">Niveau 3</span></td>
-              <td>SIROCCO · 75 000 SHU</td>
-            </tr>
-            <tr>
-              <td>5</td><td>Pika Power</td><td>Pikachu ex</td><td>Standard</td><td>1W/2D/1T</td>
-              <td><span class="heat-level">Niveau 4</span></td>
-              <td>TONNERRE · 100 000 SHU</td>
-            </tr>
-            <tr>
-              <td>6</td><td>Ghost Master</td><td>Lost Zone Box</td><td>Off-Meta</td><td>1W/3D/0T</td>
-              <td><span class="heat-level">Niveau 6</span></td>
-              <td>ARMAGEDDON · 500 000 SHU</td>
-            </tr>
-            <tr>
-              <td>7</td><td>Snorlax Fan</td><td>Snorlax Stall</td><td>Off-Meta</td><td>0W/4D/0T</td>
-              <td><span class="heat-level">Niveau 8</span></td>
-              <td>TSUNAMI · 1 000 000 SHU</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <!-- ══════════ TOURNOI 2 ══════════ -->
-    <div class="tournament-result" id="tournament2" style="display:none;">
+    <!-- TOURNOI 2 — Off-Meta #1 (affiché par défaut) -->
+    <div class="tournament-result active" id="tournament2">
       <div class="results-head">
         <p class="meta">Off-Meta Night #1 · 10 Mars 2026 · Format Off-Meta · 12 joueurs</p>
         <span class="pill offmeta">Archive tournoi</span>
       </div>
-
       <div class="podium">
         <div class="podium-step p2">
           <div class="podium-rank">2</div>
@@ -1367,49 +824,28 @@
           <div class="podium-score">3V - 1D · Niveau 5</div>
         </div>
       </div>
-
       <div class="results-table-wrap card" style="padding:0; overflow:hidden;">
         <table>
           <thead>
             <tr>
-              <th>#</th>
-              <th>Joueur</th>
-              <th>Deck</th>
-              <th>Format</th>
-              <th>Victoires</th>
-              <th>Défaites</th>
-              <th>Niveau de piquant</th>
-              <th>Sauce / SHU</th>
+              <th>#</th><th>Joueur</th><th>Deck</th><th>Format</th><th>Win/Lose/Tie</th><th>Niveau de piquant</th><th>Sauce / SHU</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td><td>Red Trainer</td><td>Charizard ex</td><td>Standard</td><td>4V/0D/0T</td>
-              <td><span class="heat-level">Niveau 1</span></td>
-              <td>HEGOA · 1 500 SHU</td>
-            </tr>
-            <tr>
-              <td>2</td><td>Misty TCG</td><td>Lugia VSTAR</td><td>Standard</td><td>3W/0D/1T</td>
-              <td><span class="heat-level">Niveau 2</span></td>
-              <td>MISTRAL · 15 000 SHU</td>
-            </tr>
-            <tr>
-              <td>3</td><td>Brock Onix</td><td>Gardevoir ex</td><td>Standard</td><td>3W/0D/1T</td>
-              <td><span class="heat-level">Niveau 2</span></td>
-              <td>MISTRAL · 15 000 SHU</td>
-            </tr>
+            <tr><td>1</td><td>Chaos Player</td><td>Wugtrio Mill</td><td>Off-Meta</td><td>4V/0D/0T</td><td><span class="heat-level">Niveau 1</span></td><td>HEGOA · 1 500 SHU</td></tr>
+            <tr><td>2</td><td>Ghost Master</td><td>Banette Box</td><td>Off-Meta</td><td>3V/1D/0T</td><td><span class="heat-level">Niveau 4</span></td><td>TONNERRE · 100 000 SHU</td></tr>
+            <tr><td>3</td><td>Snorlax Fan</td><td>Snorlax Stall</td><td>Off-Meta</td><td>3V/1D/0T</td><td><span class="heat-level">Niveau 5</span></td><td>FOUDRE · 120 000 SHU</td></tr>
           </tbody>
         </table>
       </div>
     </div>
 
-    <!-- ══════════ TOURNOI 3 ══════════ -->
+    <!-- TOURNOI 3 — Online #1 -->
     <div class="tournament-result" id="tournament3" style="display:none;">
       <div class="results-head">
         <p class="meta">Scoville Online #1 · 22 Février 2026 · Format Standard · 24 joueurs</p>
         <span class="pill standard">Archive tournoi</span>
       </div>
-
       <div class="podium">
         <div class="podium-step p2">
           <div class="podium-rank">2</div>
@@ -1430,37 +866,17 @@
           <div class="podium-score">4V - 2D · Niveau 4</div>
         </div>
       </div>
-
       <div class="results-table-wrap card" style="padding:0; overflow:hidden;">
         <table>
           <thead>
             <tr>
-              <th>#</th>
-              <th>Joueur</th>
-              <th>Deck</th>
-              <th>Format</th>
-              <th>Victoires</th>
-              <th>Défaites</th>
-              <th>Niveau de piquant</th>
-              <th>Sauce / SHU</th>
+              <th>#</th><th>Joueur</th><th>Deck</th><th>Format</th><th>Win/Lose/Tie</th><th>Niveau de piquant</th><th>Sauce / SHU</th>
             </tr>
           </thead>
           <tbody>
-            <tr>
-              <td>1</td><td>Red Trainer</td><td>Charizard ex</td><td>Standard</td><td>4V/0D/0T</td>
-              <td><span class="heat-level">Niveau 1</span></td>
-              <td>HEGOA · 1 500 SHU</td>
-            </tr>
-            <tr>
-              <td>2</td><td>Misty TCG</td><td>Lugia VSTAR</td><td>Standard</td><td>3W/0D/1T</td>
-              <td><span class="heat-level">Niveau 2</span></td>
-              <td>MISTRAL · 15 000 SHU</td>
-            </tr>
-            <tr>
-              <td>3</td><td>Brock Onix</td><td>Gardevoir ex</td><td>Standard</td><td>3W/0D/1T</td>
-              <td><span class="heat-level">Niveau 2</span></td>
-              <td>MISTRAL · 15 000 SHU</td>
-            </tr>
+            <tr><td>1</td><td>Meta Crusher</td><td>Gardevoir ex</td><td>Standard</td><td>6V/0D/0T</td><td><span class="heat-level">Niveau 0</span></td><td>Aucune sauce</td></tr>
+            <tr><td>2</td><td>Pika Power</td><td>Miraidon ex</td><td>Standard</td><td>5V/1D/0T</td><td><span class="heat-level">Niveau 3</span></td><td>SIROCCO · 75 000 SHU</td></tr>
+            <tr><td>3</td><td>Iron Champ</td><td>Iron Hands ex</td><td>Standard</td><td>4V/2D/0T</td><td><span class="heat-level">Niveau 4</span></td><td>TONNERRE · 100 000 SHU</td></tr>
           </tbody>
         </table>
       </div>
@@ -1475,11 +891,9 @@
     <div class="page-line"></div>
     <p class="page-intro">
       La regle est simple : en fin de tournoi, chaque joueur mange un aliment avec une sauce pimentée en fonction de ses résultats.
-	  Un Tie = +1 sur l'échelle de scoville.
-	  Une Lose = +2 sur l'échelle de Scoville.
+      Un Tie = +1 sur l'échelle de scoville. Une Lose = +2 sur l'échelle de Scoville.
       Humour et un peu de piquant partagée font l'âme de nos événements!
     </p>
-
     <div class="rules-grid">
       <div class="rule-card">
         <h3>⚔️ Format du tournoi</h3>
@@ -1522,60 +936,27 @@
         </ul>
       </div>
     </div>
-
-    <!-- SCOVILLE TABLE -->
     <div class="form-card">
       <h2>🔥 Echelle Scoville</h2>
       <div class="scoville-table-wrap">
         <table>
           <thead>
-            <tr>
-              <th>Niveau de piquant</th>
-              <th>Sauce</th>
-              <th>Scoville</th>
-            </tr>
+            <tr><th>Niveau de piquant</th><th>Sauce</th><th>Scoville</th></tr>
           </thead>
           <tbody>
-            <tr><td><span class="level-badge">0</span></td><td>Aucune sauce</td><td class="shu">0 SHU<div class="bar" style="background:linear-gradient(90deg,#2e7d32,#2e7d32);width: 0%;"></div></td></tr>
-            <tr><td><span class="level-badge">1</span></td><td>HEGOA</td><td class="shu">1 500 SHU<div class="bar" style="background:linear-gradient(90deg,#2e7d32,#43a047);width: 1%;"></div></td></tr>
-            <tr><td><span class="level-badge">2</span></td><td>SRIRACHA / MISTRAL</td><td class="shu">15 000 SHU<div class="bar" style="background:linear-gradient(90deg,#43a047,#7cb342);width: 2%;"></div></td></tr>
-            <!--<tr><td><span class="level-badge">3</span></td><td>BLIZZARD / EAST IPA / INDIENNE</td><td class="shu">60 000 SHU<div class="bar" style="background:linear-gradient(90deg,#7cb342,#c0ca33);width: 18%;"></div></td></tr>-->
-            <!--<tr><td><span class="level-badge">4</span></td><td>PHA-YU / NAGA MANGO</td><td class="shu">70 000 SHU<div class="bar" style="background:linear-gradient(90deg,#c0ca33,#f9a825);width: 24%;"></div></td></tr>-->
-            <tr><td><span class="level-badge">3</span></td><td>SIROCCO</td><td class="shu">75 000 SHU<div class="bar" style="background:linear-gradient(90deg,#f9a825,#fb8c00);width: 8%;"></div></td></tr>
-            <tr><td><span class="level-badge">4</span></td><td>TONNERRE</td><td class="shu">100 000 SHU<div class="bar" style="background:linear-gradient(90deg,#fb8c00,#f4511e);width: 10%;"></div></td></tr>
-            <tr><td><span class="level-badge">5</span></td><td>FOUDRE</td><td class="shu">120 000 SHU<div class="bar" style="background:linear-gradient(90deg,#f4511e,#e53935);width: 12%;"></div></td></tr>
-            <tr><td><span class="level-badge">6</span></td><td>ARMAGEDDON</td><td class="shu">500 000 SHU<div class="bar" style="background:linear-gradient(90deg,#e53935,#c62828);width: 50%;"></div></td></tr>
-            <tr><td><span class="level-badge">7</span></td><td>CAROLINA REAPER</td><td class="shu">800 000 SHU<div class="bar" style="background:linear-gradient(90deg,#c62828,#b71c1c);width: 80%;"></div></td></tr>
-            <tr><td><span class="level-badge">8</span></td><td>TSUNAMI</td><td class="shu">1 000 000 SHU<div class="bar" style="background:linear-gradient(90deg,#b71c1c,#7f0000);width: 100%;"></div></td></tr>
+            <tr><td><span class="level-badge">0</span></td><td>Aucune sauce</td><td class="shu">0 SHU<div class="bar" style="background:linear-gradient(90deg,#2e7d32,#2e7d32);width:0%;"></div></td></tr>
+            <tr><td><span class="level-badge">1</span></td><td>HEGOA</td><td class="shu">1 500 SHU<div class="bar" style="background:linear-gradient(90deg,#2e7d32,#43a047);width:1%;"></div></td></tr>
+            <tr><td><span class="level-badge">2</span></td><td>SRIRACHA / MISTRAL</td><td class="shu">15 000 SHU<div class="bar" style="background:linear-gradient(90deg,#43a047,#7cb342);width:2%;"></div></td></tr>
+            <tr><td><span class="level-badge">3</span></td><td>SIROCCO</td><td class="shu">75 000 SHU<div class="bar" style="background:linear-gradient(90deg,#f9a825,#fb8c00);width:8%;"></div></td></tr>
+            <tr><td><span class="level-badge">4</span></td><td>TONNERRE</td><td class="shu">100 000 SHU<div class="bar" style="background:linear-gradient(90deg,#fb8c00,#f4511e);width:10%;"></div></td></tr>
+            <tr><td><span class="level-badge">5</span></td><td>FOUDRE</td><td class="shu">120 000 SHU<div class="bar" style="background:linear-gradient(90deg,#f4511e,#e53935);width:12%;"></div></td></tr>
+            <tr><td><span class="level-badge">6</span></td><td>ARMAGEDDON</td><td class="shu">500 000 SHU<div class="bar" style="background:linear-gradient(90deg,#e53935,#c62828);width:50%;"></div></td></tr>
+            <tr><td><span class="level-badge">7</span></td><td>CAROLINA REAPER</td><td class="shu">800 000 SHU<div class="bar" style="background:linear-gradient(90deg,#c62828,#b71c1c);width:80%;"></div></td></tr>
+            <tr><td><span class="level-badge">8</span></td><td>TSUNAMI</td><td class="shu">1 000 000 SHU<div class="bar" style="background:linear-gradient(90deg,#b71c1c,#7f0000);width:100%;"></div></td></tr>
           </tbody>
         </table>
       </div>
       <p style="margin-top:1rem; color:var(--text-muted); line-height:1.7; font-size:.9rem;">Les aliments pour accompagner vos sauces seront du poulet frit 🍗, des croquettes de fromage 🧀 ou de legumes 🥦. Prevoir les allergies alimentaire et faire signer une charte de securite alimentaire avec un consentement clair.</p>
-    </div>
-  </div>
-</section>
-
-<section id="communaute" class="section">
-  <div class="page-inner">
-    <div class="page-title"><span class="red">Communaute</span></div>
-    <div class="page-line"></div>
-    <p class="page-intro">
-      J'ai ajoute cet onglet complementaire avec un role utile : centraliser les photos, les actualites et le contact. C'est un bon complement aux onglets principaux sans alourdir la navigation.
-    </p>
-
-    <div class="community-grid">
-      <div class="community-card card">
-        <h3>Galerie</h3>
-        <p>Photos de podium, moments forts, degustations et ambiance des evenements precedents.</p>
-      </div>
-      <div class="community-card card">
-        <h3>Actualites</h3>
-        <p>Annonces des prochains tournois, changements de format, ouverture des inscriptions et publication des resultats.</p>
-      </div>
-      <div class="community-card card">
-        <h3>Contact</h3>
-        <p>Demandes d'information, partenariats, propositions de lieu, animations locales et coordination avec la communaute.</p>
-      </div>
     </div>
   </div>
 </section>
@@ -1593,7 +974,7 @@
       <div class="about-text">
         <h2>✌ QUI SOMMES-NOUS ?</h2>
         <p>
-          Scoville Tournament est un concept de tournois Pokémon TCG née d'une simple idée : rendre les défaites mémorables. 
+          Scoville Tournament est un concept de tournois Pokémon TCG née d'une simple idée : rendre les défaites mémorables.
           Parce que perdre sur le tapis de jeu, c'est une chose — mais perdre <strong>ET</strong> devoir manger une croquette de fromage avec de la sauce Tsunami, c'est une autre histoire.
         </p>
         <p>
@@ -1602,61 +983,48 @@
         <p>
           Basés à Rennes, nous organisons des tournois en présentiel et en ligne. La communauté d'abord, la compétition ensuite — et le piment toujours.
         </p>
-
         <div class="stat-row">
           <div class="stat-box">
             <div class="stat-label">Tournoi organisé</div>
-		    <div class="stat-num stat-red">1</div>
+            <div class="stat-num stat-red">1</div>
           </div>
           <div class="stat-box">
             <div class="stat-label">Joueurs</div>
-			<div class="stat-num stat-green">12</div>
+            <div class="stat-num stat-green">12</div>
           </div>
         </div>
       </div>
     </div>
 
-	<div class="form-card" style="text-align:center;max-width:600px;margin:0 auto 2rem auto;">
-	  <h2>✉️ NOUS CONTACTER</h2>
-	  <p style="color:var(--text-muted);margin-bottom:1.5rem;font-size:0.9rem;">
-		Une question ? Une suggestion ? Envie d'organiser un tournoi avec nous ?
-	  </p>
+    <div class="form-card" style="text-align:center;max-width:600px;margin:0 auto 2rem auto;">
+      <h2>✉️ NOUS CONTACTER</h2>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;font-size:0.9rem;">
+        Une question ? Une suggestion ? Envie d'organiser un tournoi avec nous ?
+      </p>
+      <form id="contact-form" action="https://script.google.com/macros/s/AKfycbxNAaU0qNO219emBdIb1qB8QdH_iXNA_Giqh88zSkdD5__oBFLtv85kyvSiWV4V5UnJ2w/exec" method="POST">
+        <div class="form-group" style="margin-bottom:1rem;">
+          <label for="contact-email">Votre email</label>
+          <input type="email" id="contact-email" name="email" placeholder="dresseur@pokemon.com" required>
+        </div>
+        <div class="form-group" style="margin-bottom:1.5rem;">
+          <label for="contact-message">Message</label>
+          <textarea id="contact-message" name="message" rows="4" placeholder="Votre message..." required></textarea>
+        </div>
+        <button type="submit" id="contact-submit-btn" class="btn-primary" style="width:100%">Envoyer</button>
+        <p id="contact-form-message" style="margin-top:1rem; font-family:'Barlow',sans-serif;"></p>
+      </form>
+    </div>
 
-	  <form id="contact-form" action="https://script.google.com/macros/s/AKfycbxNAaU0qNO219emBdIb1qB8QdH_iXNA_Giqh88zSkdD5__oBFLtv85kyvSiWV4V5UnJ2w/exec" method="POST">
-		<div class="form-group" style="margin-bottom:1rem;">
-		  <label for="contact-email">Votre email</label>
-		  <input type="email" id="contact-email" name="email" placeholder="dresseur@pokemon.com" required>
-		</div>
-
-		<div class="form-group" style="margin-bottom:1.5rem;">
-		  <label for="contact-message">Message</label>
-		  <textarea id="contact-message" name="message" rows="4" placeholder="Votre message..." required></textarea>
-		</div>
-
-		<button type="submit" class="btn-primary" style="width:100%">Envoyer️</button>
-		<p id="contact-form-message" style="margin-top:1rem; color:var(--text-muted); font-family:'Barlow',sans-serif;"></p>
-	  </form>
-	</div>
-
-    <!-- ══════════ NOUS SOUTENIR ══════════ -->
     <div class="form-card" style="text-align:center;max-width:600px;margin:0 auto;">
       <h2>❤️ NOUS SOUTENIR</h2>
       <p style="color:var(--text-muted);margin-bottom:1.5rem;font-size:0.95rem;line-height:1.6;">
         Vous aimez le concept Scoville Tournament et souhaitez nous aider à organiser
         de nouveaux événements, améliorer les dotations et faire grandir la communauté ?
-        Vous pouvez nous soutenir via un don libre sur PayPal. 
+        Vous pouvez nous soutenir via un don libre sur PayPal.
       </p>
-
-      <a
-        href="https://paypal.me/NicolasAntigny"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="btn-primary"
-        style="display:inline-block; text-decoration:none;"
-      >
+      <a href="https://paypal.me/NicolasAntigny" target="_blank" rel="noopener noreferrer" class="btn-primary" style="display:inline-block; text-decoration:none;">
         Faire un don via PayPal
       </a>
-
       <p style="color:var(--text-muted);margin-top:1rem;font-size:0.85rem;">
         Chaque contribution nous aidera à faire monter la température 🌶️
       </p>
@@ -1664,47 +1032,222 @@
   </div>
 </section>
 
+<!-- ══════════════════════════════════════════════════════════
+     SECTION RGPD / MENTIONS LÉGALES — scoville-tournament.net
+     
+     INTÉGRATION :
+     1. Ajouter ce bloc <section> dans le body, avant le </body>
+     2. Dans le <nav>, ajouter :
+        <a href="#" data-section="rgpd">Mentions légales</a>
+        (ou garder le lien footer uniquement)
+     3. Dans le footer, remplacer le lien actuel par :
+        <a href="#" onclick="showSection('rgpd')" style="color:#666;text-decoration:underline;">Mentions légales & RGPD</a>
+══════════════════════════════════════════════════════════ -->
+
+<section id="rgpd" class="section">
+  <div class="page-inner">
+    <div class="page-title"><span class="red">Mentions légales</span><br><span style="font-size:clamp(1.4rem,3vw,2.4rem);color:var(--gold);">& Protection des données</span></div>
+    <div class="page-line"></div>
+    <p class="page-intro">
+      Conformément au Règlement Général sur la Protection des Données (RGPD — UE 2016/679)
+      et à la loi Informatique et Libertés, voici les informations relatives au traitement
+      de vos données personnelles par Scoville Tournament.
+    </p>
+
+    <!-- MENTIONS LÉGALES -->
+    <div class="rule-card" style="margin-bottom:1.2rem;">
+      <h3>🏛️ Éditeur du site</h3>
+      <p>
+        <strong style="color:var(--text);">Nom du site :</strong> scoville-tournament.net<br>
+        <strong style="color:var(--text);">Responsable de publication :</strong> Nicolas Antigny (alias Nemsis_TCG)<br>
+        <strong style="color:var(--text);">Localisation :</strong> Rennes, France<br>
+        <strong style="color:var(--text);">Contact :</strong> via le formulaire de contact disponible sur la page « À propos »<br>
+        <strong style="color:var(--text);">Activité :</strong> Organisation de tournois Pokémon TCG à titre associatif / non commercial
+      </p>
+      <p style="margin-top:.8rem;">
+        Ce site est hébergé par un prestataire tiers. Il n'est pas enregistré au Registre du Commerce
+        et ne constitue pas une activité commerciale déclarée. Scoville Tournament est une initiative
+        communautaire indépendante, sans lien avec Nintendo, The Pokémon Company ou leurs partenaires.
+      </p>
+    </div>
+
+    <!-- DONNÉES COLLECTÉES -->
+    <div class="rule-card" style="margin-bottom:1.2rem;">
+      <h3>📋 Données collectées</h3>
+      <p>Dans le cadre des formulaires présents sur ce site, nous collectons les données suivantes :</p>
+      <ul style="margin-top:.8rem;">
+        <li><strong style="color:var(--text);">Formulaire d'inscription tournoi :</strong> prénom, nom, Player ID Pokémon, année de naissance, adresse e-mail, tournoi choisi, remarques éventuelles (allergies, restrictions alimentaires)</li>
+        <li style="margin-top:.5rem;"><strong style="color:var(--text);">Formulaire de contact :</strong> adresse e-mail, contenu du message</li>
+      </ul>
+      <p style="margin-top:.8rem;">
+        Aucune donnée bancaire, aucun mot de passe, aucune donnée de santé au sens strict n'est collectée.
+        Les informations relatives aux allergies et restrictions alimentaires, renseignées librement par le participant,
+        sont des données à caractère sensible : elles sont utilisées <em>uniquement</em> dans le cadre de l'organisation
+        logistique de l'événement concerné et supprimées après celui-ci.
+      </p>
+    </div>
+
+    <!-- FINALITÉS ET BASE LÉGALE -->
+    <div class="rule-card" style="margin-bottom:1.2rem;">
+      <h3>🎯 Finalités et base légale du traitement</h3>
+
+      <!-- Tableau responsive -->
+      <div style="overflow-x:auto; margin-top:.8rem;">
+        <table style="min-width:560px;">
+          <thead>
+            <tr>
+              <th>Donnée</th>
+              <th>Finalité</th>
+              <th>Base légale (RGPD art. 6)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Prénom, nom, Player ID</td>
+              <td>Identification du joueur, établissement du classement</td>
+              <td>Exécution d'un contrat (participation au tournoi)</td>
+            </tr>
+            <tr>
+              <td>Année de naissance</td>
+              <td>Vérification des catégories d'âge Pokémon officiel</td>
+              <td>Exécution d'un contrat</td>
+            </tr>
+            <tr>
+              <td>Adresse e-mail</td>
+              <td>Confirmation d'inscription, communication pré/post-événement</td>
+              <td>Consentement / Exécution d'un contrat</td>
+            </tr>
+            <tr>
+              <td>Allergies / restrictions alimentaires</td>
+              <td>Adaptation des aliments servis lors du défi pimenté</td>
+              <td>Consentement explicite (case à cocher)</td>
+            </tr>
+            <tr>
+              <td>Contenu du message de contact</td>
+              <td>Répondre aux demandes d'information</td>
+              <td>Intérêt légitime / Consentement</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <!-- DURÉE DE CONSERVATION -->
+    <div class="rule-card" style="margin-bottom:1.2rem;">
+      <h3>⏱️ Durée de conservation</h3>
+      <ul>
+        <li><strong style="color:var(--text);">Données d'inscription :</strong> conservées 12 mois après la date du tournoi concerné, puis supprimées ou anonymisées dans les fichiers de résultats publics</li>
+        <li style="margin-top:.5rem;"><strong style="color:var(--text);">Données relatives aux allergies :</strong> supprimées dans les 30 jours suivant la tenue de l'événement</li>
+        <li style="margin-top:.5rem;"><strong style="color:var(--text);">Messages de contact :</strong> conservés le temps nécessaire au traitement de la demande, au maximum 6 mois</li>
+        <li style="margin-top:.5rem;"><strong style="color:var(--text);">Résultats de tournoi (prénom, nom, deck, classement) :</strong> publiés sur le site à titre d'archive communautaire, sur la base de l'intérêt légitime — tout joueur peut demander leur retrait</li>
+      </ul>
+    </div>
+
+    <!-- DESTINATAIRES -->
+    <div class="rule-card" style="margin-bottom:1.2rem;">
+      <h3>📤 Destinataires des données</h3>
+      <p>
+        Les données collectées via les formulaires sont transmises à un <strong style="color:var(--text);">Google Sheet</strong>
+        hébergé par Google LLC (États-Unis), accessible uniquement à l'organisateur du site.
+        Google agit en tant que sous-traitant au sens du RGPD.
+        La transmission s'effectue via l'API Google Apps Script, en HTTPS.
+      </p>
+      <p style="margin-top:.8rem;">
+        Vos données ne sont <strong style="color:var(--text);">jamais vendues, cédées ou partagées</strong> à des tiers
+        à des fins commerciales ou publicitaires.
+        Elles ne sont pas utilisées pour du profilage ni pour de la prise de décision automatisée.
+      </p>
+      <p style="margin-top:.8rem;">
+        Pour les transferts vers les États-Unis (Google), des garanties appropriées sont en place
+        via les <em>Standard Contractual Clauses</em> de la Commission européenne.
+      </p>
+    </div>
+
+    <!-- VOS DROITS -->
+    <div class="rule-card" style="margin-bottom:1.2rem;">
+      <h3>⚖️ Vos droits</h3>
+      <p>Conformément au RGPD, vous disposez des droits suivants concernant vos données personnelles :</p>
+      <ul style="margin-top:.8rem;">
+        <li><strong style="color:var(--gold);">Droit d'accès (art. 15) :</strong> obtenir confirmation que vos données sont traitées et en recevoir une copie</li>
+        <li style="margin-top:.5rem;"><strong style="color:var(--gold);">Droit de rectification (art. 16) :</strong> corriger des données inexactes ou incomplètes</li>
+        <li style="margin-top:.5rem;"><strong style="color:var(--gold);">Droit à l'effacement (art. 17) :</strong> demander la suppression de vos données (« droit à l'oubli »)</li>
+        <li style="margin-top:.5rem;"><strong style="color:var(--gold);">Droit à la limitation (art. 18) :</strong> demander la suspension temporaire du traitement</li>
+        <li style="margin-top:.5rem;"><strong style="color:var(--gold);">Droit à la portabilité (art. 20) :</strong> recevoir vos données dans un format structuré et lisible par machine</li>
+        <li style="margin-top:.5rem;"><strong style="color:var(--gold);">Droit d'opposition (art. 21) :</strong> vous opposer au traitement fondé sur l'intérêt légitime</li>
+        <li style="margin-top:.5rem;"><strong style="color:var(--gold);">Retrait du consentement :</strong> à tout moment, sans effet sur les traitements antérieurs</li>
+      </ul>
+      <p style="margin-top:1rem;">
+        Pour exercer ces droits, contactez-nous via le formulaire « À propos » en précisant votre demande.
+        Nous nous engageons à y répondre dans un délai d'un mois (art. 12 RGPD).
+      </p>
+      <p style="margin-top:.8rem;">
+        Vous avez également le droit d'introduire une réclamation auprès de la
+        <strong style="color:var(--text);">CNIL</strong> (Commission Nationale de l'Informatique et des Libertés) :
+        <span style="color:var(--text-muted);">www.cnil.fr — 3 Place de Fontenoy, 75007 Paris</span>
+      </p>
+    </div>
+
+    <!-- COOKIES -->
+    <div class="rule-card" style="margin-bottom:1.2rem;">
+      <h3>🍪 Cookies et traceurs</h3>
+      <p>
+        Ce site n'utilise <strong style="color:var(--text);">aucun cookie de traçage ou publicitaire</strong>.
+        Aucun outil d'analyse d'audience (Google Analytics, Matomo, etc.) n'est actuellement actif.
+      </p>
+      <p style="margin-top:.8rem;">
+        Les seuls cookies éventuellement déposés sont des cookies <strong style="color:var(--text);">strictement nécessaires au fonctionnement</strong>
+        du site (session, sécurité des formulaires). Ils ne requièrent pas de consentement selon la directive ePrivacy.
+      </p>
+      <p style="margin-top:.8rem;">
+        Les polices Google Fonts sont chargées depuis les serveurs de Google, ce qui peut impliquer
+        la transmission de votre adresse IP à Google. Vous pouvez bloquer ces requêtes via votre navigateur ou un bloqueur de contenu.
+      </p>
+    </div>
+
+    <!-- SÉCURITÉ -->
+    <div class="rule-card" style="margin-bottom:1.2rem;">
+      <h3>🔒 Sécurité des données</h3>
+      <p>
+        Toutes les transmissions de données entre votre navigateur et nos serveurs sont chiffrées via
+        <strong style="color:var(--text);">HTTPS (TLS)</strong>. L'accès au Google Sheet de collecte est
+        restreint au seul organisateur, protégé par authentification à deux facteurs.
+      </p>
+      <p style="margin-top:.8rem;">
+        En cas de violation de données susceptible d'engendrer un risque pour vos droits et libertés,
+        nous nous engageons à notifier la CNIL dans les 72 heures (art. 33 RGPD)
+        et à vous en informer sans délai si le risque est élevé (art. 34 RGPD).
+      </p>
+    </div>
+
+    <!-- MISE À JOUR -->
+    <div class="notice" style="margin-top:2rem;">
+      <div class="notice-icon">📅</div>
+      <div>
+        <h4>Mise à jour de cette politique</h4>
+        <p>
+          Cette page de politique de confidentialité a été mise à jour en <strong>avril 2026</strong>.
+          Toute modification substantielle fera l'objet d'une notification sur la page d'accueil.
+          Nous vous encourageons à consulter cette page régulièrement.
+        </p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
 <footer>
   <div class="footer-left">scoville-tournament.net</div>
-  <div class="footer-right">Copyright © 2026 scoville-tournament by Nemsis_TCG · Tous droits réservés · Pokemon TCG appartient a Nintendo / The Pokemon Company</div>
+  <div class="footer-right">
+    Copyright © 2026 scoville-tournament by Nemsis_TCG · Tous droits réservés · Pokemon TCG appartient a Nintendo / The Pokemon Company
+        <a href="#" onclick="showSection('rgpd')" style="color:#666;text-decoration:underline;">Mentions légales & RGPD</a>
+  </div>
 </footer>
 
 <script>
-  const contactForm = document.getElementById('contact-form');
-  const contactMessage = document.getElementById('contact-form-message');
-
-  if (contactForm) {
-    contactForm.addEventListener('submit', async function(e) {
-      e.preventDefault();
-
-      const formData = new FormData(contactForm);
-      contactMessage.textContent = "Envoi de votre message...";
-
-      try {
-        const response = await fetch(contactForm.action, {
-          method: 'POST',
-          body: formData
-        });
-
-        const result = await response.json();
-
-        if (result.success) {
-          contactMessage.textContent = "Votre message a bien été envoyé.";
-          contactForm.reset();
-        } else {
-          contactMessage.textContent = "Erreur : " + result.message;
-        }
-      } catch (error) {
-        contactMessage.textContent = "Impossible d'envoyer le message pour le moment.";
-      }
-    });
-  }
-</script>
-
-<script>
+  /* ══════════ NAVIGATION ══════════ */
   function showSection(id) {
-    document.querySelectorAll('.section').forEach(section => section.classList.remove('active'));
-    document.querySelectorAll('nav a').forEach(link => link.classList.remove('active'));
+    document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+    document.querySelectorAll('nav a').forEach(l => l.classList.remove('active'));
     const target = document.getElementById(id);
     if (target) target.classList.add('active');
     const navLink = document.querySelector('nav a[data-section="' + id + '"]');
@@ -1713,65 +1256,84 @@
   }
 
   function showTournament(event, tournamentId) {
-    const tournaments = document.querySelectorAll('.tournament-result');
-    const cards = document.querySelectorAll('.archive-card');
-
-    tournaments.forEach(tournament => {
-      tournament.style.display = 'none';
-      tournament.classList.remove('active');
-    });
-
-    cards.forEach(card => {
-      card.classList.remove('active');
-    });
-
-    const selectedTournament = document.getElementById(tournamentId);
-    if (selectedTournament) {
-      selectedTournament.style.display = 'block';
-      selectedTournament.classList.add('active');
-    }
-
-    if (event && event.currentTarget) {
-      event.currentTarget.classList.add('active');
-    }
+    document.querySelectorAll('.tournament-result').forEach(t => { t.style.display = 'none'; t.classList.remove('active'); });
+    document.querySelectorAll('.archive-card:not(.upcoming-event)').forEach(c => c.classList.remove('active'));
+    const selected = document.getElementById(tournamentId);
+    if (selected) { selected.style.display = 'block'; selected.classList.add('active'); }
+    if (event && event.currentTarget) event.currentTarget.classList.add('active');
   }
 
   document.querySelectorAll('nav a[data-section]').forEach(link => {
-    link.addEventListener('click', function(event) {
-      event.preventDefault();
-      showSection(this.dataset.section);
-    });
+    link.addEventListener('click', function(e) { e.preventDefault(); showSection(this.dataset.section); });
   });
 
-  const form = document.getElementById('inscription-form');
-  const message = document.getElementById('form-message');
+  /* ══════════ PATCH 2 : FORMULAIRE INSCRIPTION avec spinner & anti-doublon ══════════ */
+  (function() {
+    const form = document.getElementById('inscription-form');
+    const btn = document.getElementById('submit-btn');
+    const msg = document.getElementById('form-message');
+    if (!form) return;
 
-  if (form) {
     form.addEventListener('submit', async function(e) {
       e.preventDefault();
-
-      const formData = new FormData(form);
-      message.textContent = "Envoi de votre inscription...";
+      btn.disabled = true;
+      btn.innerHTML = '<span class="spinner"></span>Envoi en cours…';
+      msg.textContent = '';
+      msg.className = '';
 
       try {
-        const response = await fetch(form.action, {
-          method: 'POST',
-          body: formData
-        });
-
+        const response = await fetch(form.action, { method: 'POST', body: new FormData(form) });
         const result = await response.json();
-
         if (result.success) {
-          message.textContent = "Votre inscription a bien été envoyée 🌶️";
+          msg.textContent = '✅ Inscription confirmée ! À bientôt sur le tapis de jeu 🌶️';
+          msg.className = 'form-message-success';
           form.reset();
+          btn.innerHTML = '✅ Inscription envoyée';
         } else {
-          message.textContent = "Erreur : " + result.message;
+          throw new Error(result.message || 'Erreur serveur');
         }
-      } catch (error) {
-        message.textContent = "Impossible d'envoyer le formulaire pour le moment.";
+      } catch (err) {
+        msg.textContent = '❌ Erreur : ' + err.message + '. Réessaie ou contacte-nous.';
+        msg.className = 'form-message-error';
+        btn.disabled = false;
+        btn.innerHTML = 'Confirmer mon inscription';
       }
     });
-  }
+  })();
+
+  /* ══════════ PATCH 2 : FORMULAIRE CONTACT avec spinner & anti-doublon ══════════ */
+  (function() {
+    const form = document.getElementById('contact-form');
+    const btn = document.getElementById('contact-submit-btn');
+    const msg = document.getElementById('contact-form-message');
+    if (!form) return;
+
+    form.addEventListener('submit', async function(e) {
+      e.preventDefault();
+      btn.disabled = true;
+      btn.innerHTML = '<span class="spinner"></span>Envoi…';
+      msg.textContent = '';
+      msg.className = '';
+
+      try {
+        const response = await fetch(form.action, { method: 'POST', body: new FormData(form) });
+        const result = await response.json();
+        if (result.success) {
+          msg.textContent = '✅ Message envoyé, merci !';
+          msg.className = 'form-message-success';
+          form.reset();
+          btn.innerHTML = '✅ Message envoyé';
+        } else {
+          throw new Error(result.message || 'Erreur serveur');
+        }
+      } catch (err) {
+        msg.textContent = '❌ Impossible d\'envoyer. Réessaie ou contacte-nous directement.';
+        msg.className = 'form-message-error';
+        btn.disabled = false;
+        btn.innerHTML = 'Envoyer';
+      }
+    });
+  })();
 </script>
 </body>
 </html>
