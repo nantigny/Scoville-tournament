@@ -96,6 +96,7 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
   }
+  <!--
   .logo-sub {
     display: block;
     font-size: 0.72rem;
@@ -103,19 +104,21 @@
     text-transform: uppercase;
     color: var(--text-muted);
     margin-top: 2px;
+	font-weight: 700;
   }
-
+	-->
   nav {
     display: flex;
     align-items: center;
     gap: .2rem;
     overflow-x: auto;
     scrollbar-width: none;
+    font-weight: 800;
   }
   nav::-webkit-scrollbar { display: none; }
   nav a {
-    font-family: 'Barlow Condensed', sans-serif;
-    font-weight: 700;
+    font-family: 'Barlow Condensed', sans-serif; <!--'HotSauce',-->
+    font-weight: 800;
     text-transform: uppercase;
     letter-spacing: 1.5px;
     font-size: 0.92rem;
@@ -132,10 +135,12 @@
   nav a:hover {
     color: var(--green);
     border-bottom-color: var(--green);
+    font-weight: 800;
   }
   nav a.active {
     color: var(--red);
     border-bottom-color: var(--red);
+	font-weight: 800;
   }
 
   .section { display: none; position: relative; z-index: 1; min-height: calc(100vh - 78px); }
@@ -152,6 +157,7 @@
   }
   .page-title span.red { color: var(--red); }
   .page-title span.green { color: var(--green); }
+  .page-title span.green { color: var(--gold); }
   .page-line {
     width: 72px;
     height: 4px;
@@ -214,6 +220,7 @@
     text-transform: uppercase;
     color: var(--gold);
     margin-bottom: 1.1rem;
+	font-weight: 800;
   }
   .hero-desc {
     max-width: 720px;
@@ -274,12 +281,23 @@
     border: 1px solid var(--border);
     box-shadow: var(--shadow);
   }
-  .stat-num {
-    font-family: 'HotSauce', 'Bebas Neue', sans-serif;
-    font-size: 2rem;
-    color: var(--text);
-    letter-spacing: 1px;
-  }
+	.stat-num {
+	  font-family: 'HotSauce', 'Bebas Neue', sans-serif;
+	  font-size: 2rem;
+	  letter-spacing: 1px;
+	}
+
+	.stat-red {
+	  color: var(--red);
+	}
+
+	.stat-gold {
+	  color: var(--gold);
+	}
+
+	.stat-green {
+	  color: var(--green);
+	}
   .stat-label { color: var(--text-muted); font-size: .85rem; line-height: 1.5; }
 
   .hero-panel {
@@ -313,6 +331,7 @@
   }
   .panel-title {
     font-family: 'HotSauce', 'Bebas Neue', sans-serif;
+	color: var(--gold);
     font-size: 1.8rem;
     letter-spacing: 2px;
     margin-bottom: 1rem;
@@ -342,6 +361,7 @@
   }
   .path-item h4 {
     font-family: 'Barlow Condensed', sans-serif;
+    color: var(--gold);	
     font-size: 1rem;
     letter-spacing: 1px;
     margin-bottom: .2rem;
@@ -376,8 +396,8 @@
     font-size: .74rem;
     border: 1px solid transparent;
   }
-  .pill.standard { background: rgba(62,207,26,0.12); color: var(--green); border-color: rgba(62,207,26,0.28); }
-  .pill.offmeta { background: rgba(232,34,10,0.12); color: var(--red); border-color: rgba(232,34,10,0.28); }
+  .pill.standard { background: rgba(232,34,10,0.12); color: var(--red); border-color: rgba(232,34,10,0.28); }
+  .pill.offmeta { background: rgba(62,207,26,0.12); color: var(--green); border-color: rgba(62,207,26,0.28); }
   .pill.online { background: rgba(80,110,255,0.12); color: #8ea2ff; border-color: rgba(80,110,255,0.25); }
   .pill.irl { background: rgba(240,192,64,0.12); color: var(--gold); border-color: rgba(240,192,64,0.22); }
   .pill.open { background: rgba(62,207,26,0.12); color: var(--green); border-color: rgba(62,207,26,0.28); }
@@ -419,6 +439,7 @@
   }
   .event-main h3 {
     font-family: 'Barlow Condensed', sans-serif;
+    color: var(--gold);	
     font-size: 1.25rem;
     letter-spacing: 1px;
     margin-bottom: .3rem;
@@ -477,6 +498,7 @@
     margin: .7rem 0 .35rem;
     font-size: 1.05rem;
     font-family: 'Bebas Neue', sans-serif;
+	color: var(--gold);	
   }
 
   .archive-card p {
@@ -502,13 +524,13 @@
   }
 
   .archive-badge.standard {
-    background: rgba(232,34,10,.12);
-    color: #ff6b57;
+	background: var(--red-soft);
+	color: var(--red);
   }
 
   .archive-badge.offmeta {
-    background: rgba(255,193,7,.14);
-    color: #ffd54f;
+	background: var(--green-soft);
+	color: var(--green);
   }
 
   .archive-badge.online {
@@ -815,7 +837,7 @@
     gap: 1rem;
   }
   .footer-left {
-    font-family: 'HotSauce', 'Bebas Neue', sans-serif;
+    font-family: 'HotSauce', 'BebasBebas Neue', sans-serif;
     letter-spacing: 2px;
     font-size: 1.15rem;
     color: var(--text-muted);
@@ -855,8 +877,8 @@
   <a class="logo-wrap" href="#" onclick="showSection('home')">
     <img src="images/logo-scoville-tournament.png" alt="Logo scoville Tournament" onerror="this.style.display='none'">
     <div class="logo-text-wrap">
-      <span class="logo-text">scoville Tournament</span>
-      <span class="logo-sub">scoville-tournament.net</span>
+      <span class="logo-text">scoville-tournament.net</span>
+      <!--<span class="logo-sub">scoville-tournament.net</span> -->
     </div>
   </a>
 
@@ -869,7 +891,7 @@
     <a href="#" data-section="resultats">Resultats</a>
     <a href="#" data-section="regles">Regles</a>
     <!--<a href="#" data-section="communaute">Communaute</a> -->
-    <a href="#" data-section="apropos">À propos</a>
+    <a href="#" data-section="apropos">A propos</a>
   </nav>
 </header>
 
@@ -884,25 +906,25 @@
       <div class="hero-sub">Des evenements reguliers pour jouer, gagner et monter en piquant</div>
       <p class="hero-desc">
         scoville-tournament.net annonce et organise des tournois Pokemon TCG en format <strong>Standard</strong> ou <strong>Off-meta</strong>.
-        Chaque joueur peut retrouver le calendrier des evenements, s'inscrire, suivre ses resultats et decouvrir le niveau de sauce atteint en fonction de son nombre de defaites.
+        Chaque joueur peut retrouver le calendrier des evenements, s'inscrire, suivre ses resultats et decouvrir le niveau de sauce atteint en fonction de ses résultats.
       </p>
       <div class="hero-ctas">
         <a class="btn-primary" href="#" onclick="showSection('calendrier')">Voir les prochains tournois</a>
-        <a class="btn-secondary" href="#" onclick="showSection('inscription')">S'inscrire</a>
-        <a class="btn-ghost" href="#" onclick="showSection('regles')">Voir les regles scoville</a>
+        <a class="btn-primary" href="#" onclick="showSection('inscription')">S'inscrire</a>
+        <a class="btn-primary" href="#" onclick="showSection('regles')">Voir les regles scoville</a>
       </div>
 
       <div class="hero-stats">
         <div class="stat-card">
-          <div class="stat-num">1</div>
+    <div class="stat-num stat-red">1</div>
           <div class="stat-label">Concept : plus tu perds, plus le piquant devient intense</div>
         </div>
         <div class="stat-card">
-          <div class="stat-num">10</div>
-          <div class="stat-label">Niveaux de piquant associes a une sauce et a son score scoville</div>
+    <div class="stat-num stat-gold">8</div>
+          <div class="stat-label">Niveaux associés a une sauce pimentée</div>
         </div>
         <div class="stat-card">
-          <div class="stat-num">2</div>
+    <div class="stat-num stat-green">2</div>
           <div class="stat-label">Formats proposes : Standard et Off-meta</div>
         </div>
       </div>
@@ -925,7 +947,7 @@
           <div class="path-num">2</div>
           <div>
             <h4>Je joue le tournoi</h4>
-            <p>Je dispute mes rondes, j'accumule mes victoires... ou sinon je monte grimpe sur l'échelle de Scoville.</p>
+            <p>Je dispute mes rondes, j'accumule mes victoires... ou sinon je grimpe sur l'échelle de Scoville.</p>
           </div>
         </div>
         <div class="path-item">
@@ -1201,10 +1223,10 @@
   </div>
 </section> -->
 
-<!-- ══════════ RÉSULTATS ══════════ -->
+<!-- ══════════ RESULTATS ══════════ -->
 <section id="resultats" class="section">
   <div class="page-inner">
-    <div class="page-title"><span class="red">Résultats</span></div>
+    <div class="page-title"><span class="red">Resultats</span></div>
     <div class="page-line"></div>
 
     <div class="results-intro">
@@ -1272,46 +1294,45 @@
               <th>Joueur</th>
               <th>Deck</th>
               <th>Format</th>
-              <th>Victoires</th>
-              <th>Défaites</th>
+              <th>Win/Lose/Tie</th>
               <th>Niveau de piquant</th>
               <th>Sauce / SHU</th>
             </tr>
           </thead>
           <tbody>
             <tr>
-              <td>1</td><td>Red Trainer</td><td>Charizard ex</td><td>Standard</td><td>5</td><td>0</td>
-              <td><span class="heat-level"><span class="heat-dots">-</span> Niveau 0</span></td>
-              <td>Aucune sauce · 0 SHU</td>
+              <td>1</td><td>Red Trainer</td><td>Charizard ex</td><td>Standard</td><td>4V/0D/0T</td>
+              <td><span class="heat-level">Niveau 1</span></td>
+              <td>HEGOA · 1 500 SHU</td>
             </tr>
             <tr>
-              <td>2</td><td>Misty TCG</td><td>Lugia VSTAR</td><td>Standard</td><td>4</td><td>1</td>
-              <td><span class="heat-level"><span class="heat-dots">🌶️</span> Niveau 2</span></td>
-              <td>SRIRACHA / MISTRAL · 15 000 SHU</td>
+              <td>2</td><td>Misty TCG</td><td>Lugia VSTAR</td><td>Standard</td><td>3W/0D/1T</td>
+              <td><span class="heat-level">Niveau 2</span></td>
+              <td>MISTRAL · 15 000 SHU</td>
             </tr>
             <tr>
-              <td>3</td><td>Brock Onix</td><td>Gardevoir ex</td><td>Standard</td><td>4</td><td>1</td>
-              <td><span class="heat-level"><span class="heat-dots">🌶️</span> Niveau 2</span></td>
-              <td>SRIRACHA / MISTRAL · 15 000 SHU</td>
+              <td>3</td><td>Brock Onix</td><td>Gardevoir ex</td><td>Standard</td><td>3W/0D/1T</td>
+              <td><span class="heat-level">Niveau 2</span></td>
+              <td>MISTRAL · 15 000 SHU</td>
             </tr>
             <tr>
-              <td>4</td><td>Gary Oak</td><td>Iron Hands ex</td><td>Standard</td><td>3</td><td>2</td>
-              <td><span class="heat-level"><span class="heat-dots">🌶️🌶️</span> Niveau 4</span></td>
-              <td>PHA-YU / NAGA MANGO · 70 000 SHU</td>
+              <td>4</td><td>Gary Oak</td><td>Iron Hands ex</td><td>Standard</td><td>2W/1D/1T</td>
+              <td><span class="heat-level">Niveau 3</span></td>
+              <td>SIROCCO · 75 000 SHU</td>
             </tr>
             <tr>
-              <td>5</td><td>Pika Power</td><td>Pikachu ex</td><td>Standard</td><td>2</td><td>3</td>
-              <td><span class="heat-level"><span class="heat-dots">🌶️🌶️🌶️</span> Niveau 6</span></td>
+              <td>5</td><td>Pika Power</td><td>Pikachu ex</td><td>Standard</td><td>1W/2D/1T</td>
+              <td><span class="heat-level">Niveau 4</span></td>
               <td>TONNERRE · 100 000 SHU</td>
             </tr>
             <tr>
-              <td>6</td><td>Ghost Master</td><td>Lost Zone Box</td><td>Off-Meta</td><td>1</td><td>4</td>
-              <td><span class="heat-level"><span class="heat-dots">🔥🔥🔥</span> Niveau 8</span></td>
+              <td>6</td><td>Ghost Master</td><td>Lost Zone Box</td><td>Off-Meta</td><td>1W/3D/0T</td>
+              <td><span class="heat-level">Niveau 6</span></td>
               <td>ARMAGEDDON · 500 000 SHU</td>
             </tr>
             <tr>
-              <td>7</td><td>Snorlax Fan</td><td>Snorlax Stall</td><td>Off-Meta</td><td>0</td><td>5</td>
-              <td><span class="heat-level"><span class="heat-dots">🔥🔥🔥🔥</span> Niveau 10</span></td>
+              <td>7</td><td>Snorlax Fan</td><td>Snorlax Stall</td><td>Off-Meta</td><td>0W/4D/0T</td>
+              <td><span class="heat-level">Niveau 8</span></td>
               <td>TSUNAMI · 1 000 000 SHU</td>
             </tr>
           </tbody>
@@ -1363,19 +1384,19 @@
           </thead>
           <tbody>
             <tr>
-              <td>1</td><td>Chaos Player</td><td>Wugtrio Mill</td><td>Off-Meta</td><td>4</td><td>0</td>
-              <td><span class="heat-level"><span class="heat-dots">-</span> Niveau 1</span></td>
+              <td>1</td><td>Red Trainer</td><td>Charizard ex</td><td>Standard</td><td>4V/0D/0T</td>
+              <td><span class="heat-level">Niveau 1</span></td>
               <td>HEGOA · 1 500 SHU</td>
             </tr>
             <tr>
-              <td>2</td><td>Ghost Master</td><td>Banette Box</td><td>Off-Meta</td><td>3</td><td>1</td>
-              <td><span class="heat-level"><span class="heat-dots">🌶️🌶️</span> Niveau 4</span></td>
-              <td>PHA-YU / NAGA MANGO · 70 000 SHU</td>
+              <td>2</td><td>Misty TCG</td><td>Lugia VSTAR</td><td>Standard</td><td>3W/0D/1T</td>
+              <td><span class="heat-level">Niveau 2</span></td>
+              <td>MISTRAL · 15 000 SHU</td>
             </tr>
             <tr>
-              <td>3</td><td>Snorlax Fan</td><td>Snorlax Stall</td><td>Off-Meta</td><td>3</td><td>1</td>
-              <td><span class="heat-level"><span class="heat-dots">🌶️🌶️🌶️</span> Niveau 5</span></td>
-              <td>SIROCCO · 75 000 SHU</td>
+              <td>3</td><td>Brock Onix</td><td>Gardevoir ex</td><td>Standard</td><td>3W/0D/1T</td>
+              <td><span class="heat-level">Niveau 2</span></td>
+              <td>MISTRAL · 15 000 SHU</td>
             </tr>
           </tbody>
         </table>
@@ -1426,19 +1447,19 @@
           </thead>
           <tbody>
             <tr>
-              <td>1</td><td>Meta Crusher</td><td>Gardevoir ex</td><td>Standard</td><td>6</td><td>0</td>
-              <td><span class="heat-level"><span class="heat-dots">-</span> Niveau 0</span></td>
-              <td>Aucune sauce · 0 SHU</td>
+              <td>1</td><td>Red Trainer</td><td>Charizard ex</td><td>Standard</td><td>4V/0D/0T</td>
+              <td><span class="heat-level">Niveau 1</span></td>
+              <td>HEGOA · 1 500 SHU</td>
             </tr>
             <tr>
-              <td>2</td><td>Pika Power</td><td>Miraidon ex</td><td>Standard</td><td>5</td><td>1</td>
-              <td><span class="heat-level"><span class="heat-dots">🌶️</span> Niveau 3</span></td>
-              <td>BLIZZARD / EAST IPA / INDIENNE · 60 000 SHU</td>
+              <td>2</td><td>Misty TCG</td><td>Lugia VSTAR</td><td>Standard</td><td>3W/0D/1T</td>
+              <td><span class="heat-level">Niveau 2</span></td>
+              <td>MISTRAL · 15 000 SHU</td>
             </tr>
             <tr>
-              <td>3</td><td>Iron Champ</td><td>Iron Hands ex</td><td>Standard</td><td>4</td><td>2</td>
-              <td><span class="heat-level"><span class="heat-dots">🌶️🌶️</span> Niveau 4</span></td>
-              <td>PHA-YU / NAGA MANGO · 70 000 SHU</td>
+              <td>3</td><td>Brock Onix</td><td>Gardevoir ex</td><td>Standard</td><td>3W/0D/1T</td>
+              <td><span class="heat-level">Niveau 2</span></td>
+              <td>MISTRAL · 15 000 SHU</td>
             </tr>
           </tbody>
         </table>
@@ -1453,8 +1474,10 @@
     <div class="page-title"><span class="red">Regles</span></div>
     <div class="page-line"></div>
     <p class="page-intro">
-      La regle est simple : en fin de tournoi, chaque joueur mange un aliment avec une sauce pimentée en fonction de son nombre de défaites.
-      Humour et un peu de souffrance partagée font l'âme de nos événements!
+      La regle est simple : en fin de tournoi, chaque joueur mange un aliment avec une sauce pimentée en fonction de ses résultats.
+	  Un Tie = +1 sur l'échelle de scoville.
+	  Une Lose = +2 sur l'échelle de Scoville.
+      Humour et un peu de piquant partagée font l'âme de nos événements!
     </p>
 
     <div class="rules-grid">
@@ -1507,23 +1530,23 @@
         <table>
           <thead>
             <tr>
-              <th>Niveau</th>
+              <th>Niveau de piquant</th>
               <th>Sauce</th>
               <th>Scoville</th>
             </tr>
           </thead>
           <tbody>
             <tr><td><span class="level-badge">0</span></td><td>Aucune sauce</td><td class="shu">0 SHU<div class="bar" style="background:linear-gradient(90deg,#2e7d32,#2e7d32);width: 0%;"></div></td></tr>
-            <tr><td><span class="level-badge">1</span></td><td>HEGOA</td><td class="shu">1 500 SHU<div class="bar" style="background:linear-gradient(90deg,#2e7d32,#43a047);width: 4%;"></div></td></tr>
-            <tr><td><span class="level-badge">2</span></td><td>SRIRACHA / MISTRAL</td><td class="shu">15 000 SHU<div class="bar" style="background:linear-gradient(90deg,#43a047,#7cb342);width: 10%;"></div></td></tr>
-            <tr><td><span class="level-badge">3</span></td><td>BLIZZARD / EAST IPA / INDIENNE</td><td class="shu">60 000 SHU<div class="bar" style="background:linear-gradient(90deg,#7cb342,#c0ca33);width: 18%;"></div></td></tr>
-            <tr><td><span class="level-badge">4</span></td><td>PHA-YU / NAGA MANGO</td><td class="shu">70 000 SHU<div class="bar" style="background:linear-gradient(90deg,#c0ca33,#f9a825);width: 24%;"></div></td></tr>
-            <tr><td><span class="level-badge">5</span></td><td>SIROCCO</td><td class="shu">75 000 SHU<div class="bar" style="background:linear-gradient(90deg,#f9a825,#fb8c00);width: 45%;"></div></td></tr>
-            <tr><td><span class="level-badge">6</span></td><td>TONNERRE</td><td class="shu">100 000 SHU<div class="bar" style="background:linear-gradient(90deg,#fb8c00,#f4511e);width: 58%;"></div></td></tr>
-            <tr><td><span class="level-badge">7</span></td><td>FOUDRE</td><td class="shu">120 000 SHU<div class="bar" style="background:linear-gradient(90deg,#f4511e,#e53935);width: 70%;"></div></td></tr>
-            <tr><td><span class="level-badge">8</span></td><td>ARMAGEDDON</td><td class="shu">500 000 SHU<div class="bar" style="background:linear-gradient(90deg,#e53935,#c62828);width: 82%;"></div></td></tr>
-            <tr><td><span class="level-badge">9</span></td><td>CAROLINA REAPER</td><td class="shu">800 000 SHU<div class="bar" style="background:linear-gradient(90deg,#c62828,#b71c1c);width: 92%;"></div></td></tr>
-            <tr><td><span class="level-badge">10</span></td><td>TSUNAMI</td><td class="shu">1 000 000 SHU<div class="bar" style="background:linear-gradient(90deg,#b71c1c,#7f0000);width: 100%;"></div></td></tr>
+            <tr><td><span class="level-badge">1</span></td><td>HEGOA</td><td class="shu">1 500 SHU<div class="bar" style="background:linear-gradient(90deg,#2e7d32,#43a047);width: 1%;"></div></td></tr>
+            <tr><td><span class="level-badge">2</span></td><td>SRIRACHA / MISTRAL</td><td class="shu">15 000 SHU<div class="bar" style="background:linear-gradient(90deg,#43a047,#7cb342);width: 2%;"></div></td></tr>
+            <!--<tr><td><span class="level-badge">3</span></td><td>BLIZZARD / EAST IPA / INDIENNE</td><td class="shu">60 000 SHU<div class="bar" style="background:linear-gradient(90deg,#7cb342,#c0ca33);width: 18%;"></div></td></tr>-->
+            <!--<tr><td><span class="level-badge">4</span></td><td>PHA-YU / NAGA MANGO</td><td class="shu">70 000 SHU<div class="bar" style="background:linear-gradient(90deg,#c0ca33,#f9a825);width: 24%;"></div></td></tr>-->
+            <tr><td><span class="level-badge">3</span></td><td>SIROCCO</td><td class="shu">75 000 SHU<div class="bar" style="background:linear-gradient(90deg,#f9a825,#fb8c00);width: 8%;"></div></td></tr>
+            <tr><td><span class="level-badge">4</span></td><td>TONNERRE</td><td class="shu">100 000 SHU<div class="bar" style="background:linear-gradient(90deg,#fb8c00,#f4511e);width: 10%;"></div></td></tr>
+            <tr><td><span class="level-badge">5</span></td><td>FOUDRE</td><td class="shu">120 000 SHU<div class="bar" style="background:linear-gradient(90deg,#f4511e,#e53935);width: 12%;"></div></td></tr>
+            <tr><td><span class="level-badge">6</span></td><td>ARMAGEDDON</td><td class="shu">500 000 SHU<div class="bar" style="background:linear-gradient(90deg,#e53935,#c62828);width: 50%;"></div></td></tr>
+            <tr><td><span class="level-badge">7</span></td><td>CAROLINA REAPER</td><td class="shu">800 000 SHU<div class="bar" style="background:linear-gradient(90deg,#c62828,#b71c1c);width: 80%;"></div></td></tr>
+            <tr><td><span class="level-badge">8</span></td><td>TSUNAMI</td><td class="shu">1 000 000 SHU<div class="bar" style="background:linear-gradient(90deg,#b71c1c,#7f0000);width: 100%;"></div></td></tr>
           </tbody>
         </table>
       </div>
@@ -1577,17 +1600,17 @@
           Nos événements se veulent accessibles à tous les niveaux, des débutants aux joueurs compétitifs, avec deux formats distincts : le <strong>Standard</strong> pour les stratèges de la méta, et l'<strong>Off-Meta</strong> pour les créatifs qui veulent surprendre.
         </p>
         <p>
-          Basés à Rennes, nous organisons des tournois en présentiel et en ligne. La communauté d'abord, la compétition ensuite — et la sauce toujours.
+          Basés à Rennes, nous organisons des tournois en présentiel et en ligne. La communauté d'abord, la compétition ensuite — et le piment toujours.
         </p>
 
         <div class="stat-row">
           <div class="stat-box">
             <div class="stat-label">Tournoi organisé</div>
-            <div class="stat-num">1</div>
+		    <div class="stat-num stat-red">1</div>
           </div>
           <div class="stat-box">
             <div class="stat-label">Joueurs</div>
-            <div class="stat-num">12</div>
+			<div class="stat-num stat-green">12</div>
           </div>
         </div>
       </div>
