@@ -1,0 +1,1295 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Scoville Tournament | Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --red: #e8220a;
+      --red-dark: #9e1505;
+      --red-soft: rgba(232, 34, 10, 0.12);
+      --green: #3ecf1a;
+      --green-dark: #1a7a08;
+      --green-soft: rgba(62, 207, 26, 0.12);
+      --gold: #f0c040;
+      --dark: #070707;
+      --dark2: #101010;
+      --dark3: #171717;
+      --dark4: #202020;
+      --text: #f0ede8;
+      --text-muted: #b8b8b8;
+      --border: rgba(255,255,255,0.08);
+      --radius: 18px;
+      --shadow: 0 18px 40px rgba(0,0,0,0.34);
+    }
+
+    @font-face {
+      font-family: 'HotSauce';
+      src: url('../fonts/HotSauce/HotSauce.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+      font-display: swap;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Barlow', sans-serif;
+      background: var(--dark);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background:
+        radial-gradient(circle at 10% 20%, rgba(232,34,10,0.12) 0%, transparent 28%),
+        radial-gradient(circle at 88% 22%, rgba(62,207,26,0.12) 0%, transparent 26%),
+        radial-gradient(circle at 50% 100%, rgba(240,192,64,0.05) 0%, transparent 35%);
+      z-index: 0;
+    }
+
+    a { color: inherit; }
+
+    .page {
+      position: relative;
+      z-index: 1;
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    .topbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      padding: 1rem 1.2rem;
+      margin-bottom: 1.5rem;
+      border: 1px solid rgba(240,192,64,0.14);
+      border-radius: 20px;
+      background: rgba(7,7,7,0.78);
+      backdrop-filter: blur(14px);
+      box-shadow: var(--shadow);
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      min-width: 0;
+    }
+
+    .brand img {
+      width: 52px;
+      height: 52px;
+      object-fit: contain;
+      filter: drop-shadow(0 0 16px rgba(232,34,10,0.3)) drop-shadow(0 0 16px rgba(62,207,26,0.25));
+    }
+
+    .brand-title {
+      font-family: 'HotSauce', 'Bebas Neue', sans-serif;
+      font-size: 1.55rem;
+      letter-spacing: 1px;
+      background: linear-gradient(135deg, var(--red), var(--gold), var(--green));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .brand-sub {
+      display: block;
+      margin-top: .15rem;
+      font-size: .82rem;
+      color: var(--text-muted);
+      letter-spacing: 1px;
+    }
+
+    .topbar-actions {
+      display: flex;
+      gap: .8rem;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    .btn, .btn-danger {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: .5rem;
+      cursor: pointer;
+      border: none;
+      border-radius: 12px;
+      padding: .9rem 1.2rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-weight: 700;
+      font-size: .94rem;
+      transition: .2s ease;
+      text-decoration: none;
+    }
+
+    .btn {
+      background: linear-gradient(135deg, var(--red-dark), var(--red));
+      color: #fff;
+      box-shadow: 0 12px 24px rgba(232,34,10,0.18);
+    }
+
+    .btn:hover { transform: translateY(-2px); box-shadow: 0 14px 30px rgba(232,34,10,0.32); }
+    .btn.secondary {
+      color: var(--green);
+      background: rgba(62,207,26,0.08);
+      border: 1px solid rgba(62,207,26,0.35);
+      box-shadow: none;
+    }
+    .btn.secondary:hover { background: rgba(62,207,26,0.14); }
+    .btn.ghost {
+      color: var(--gold);
+      background: rgba(240,192,64,0.08);
+      border: 1px solid rgba(240,192,64,0.28);
+      box-shadow: none;
+    }
+    .btn.ghost:hover { background: rgba(240,192,64,0.12); }
+
+    .btn-danger {
+      color: #fff;
+      background: linear-gradient(135deg, #6c0f05, #9e1505);
+    }
+
+    .grid {
+      display: grid;
+      grid-template-columns: 340px minmax(0, 1fr);
+      gap: 1.5rem;
+    }
+
+    .panel, .card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.05), rgba(255,255,255,0.025));
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .panel { padding: 1.4rem; }
+    .card { padding: 1.25rem; }
+
+    .section-title {
+      font-family: 'HotSauce', 'Bebas Neue', sans-serif;
+      color: var(--gold);
+      font-size: 1.8rem;
+      letter-spacing: 1px;
+      margin-bottom: .25rem;
+    }
+
+    .section-subtitle {
+      color: rgba(240,237,232,0.72);
+      line-height: 1.7;
+      font-size: .95rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .login-wrap {
+      max-width: 520px;
+      margin: 10vh auto 0;
+    }
+
+    .stack { display: grid; gap: 1rem; }
+    .muted { color: var(--text-muted); }
+
+    .field-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 1rem;
+    }
+
+    .field, .field-full {
+      display: flex;
+      flex-direction: column;
+      gap: .42rem;
+    }
+
+    .field-full { grid-column: 1 / -1; }
+
+    label {
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      color: var(--text-muted);
+      font-size: .82rem;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      background: var(--dark4);
+      color: var(--text);
+      border: 1px solid rgba(255,255,255,0.08);
+      border-radius: 12px;
+      padding: .92rem 1rem;
+      font-size: .95rem;
+      font-family: 'Barlow', sans-serif;
+      outline: none;
+      transition: .2s ease;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      border-color: rgba(240,192,64,0.58);
+      box-shadow: 0 0 0 3px rgba(240,192,64,0.08);
+    }
+
+    textarea { min-height: 120px; resize: vertical; }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      border-radius: 999px;
+      padding: .33rem .65rem;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      font-size: .74rem;
+      border: 1px solid transparent;
+    }
+    .pill.standard { background: rgba(232,34,10,0.12); color: var(--red); border-color: rgba(232,34,10,0.28); }
+    .pill.offmeta { background: rgba(62,207,26,0.12); color: var(--green); border-color: rgba(62,207,26,0.28); }
+    .pill.open { background: rgba(62,207,26,0.12); color: var(--green); border-color: rgba(62,207,26,0.28); }
+    .pill.wait { background: rgba(240,192,64,0.12); color: var(--gold); border-color: rgba(240,192,64,0.22); }
+    .pill.done { background: rgba(255,255,255,0.08); color: #d8d8d8; border-color: rgba(255,255,255,0.14); }
+    .pill.online { background: rgba(80,110,255,0.12); color: #8ea2ff; border-color: rgba(80,110,255,0.25); }
+    .pill.irl { background: rgba(240,192,64,0.12); color: var(--gold); border-color: rgba(240,192,64,0.22); }
+
+    .list {
+      display: grid;
+      gap: .9rem;
+    }
+
+    .tournament-item {
+      padding: 1rem;
+      border-radius: 16px;
+      background: rgba(255,255,255,0.035);
+      border: 1px solid rgba(255,255,255,0.06);
+      transition: .2s ease;
+      cursor: pointer;
+    }
+
+    .tournament-item:hover,
+    .tournament-item.active {
+      border-color: rgba(232,34,10,.45);
+      background: rgba(232,34,10,.08);
+      transform: translateY(-2px);
+    }
+
+    .tournament-top {
+      display: flex;
+      justify-content: space-between;
+      gap: .75rem;
+      align-items: start;
+      margin-bottom: .55rem;
+    }
+
+    .tournament-name {
+      font-family: 'Bebas Neue', sans-serif;
+      font-size: 1.15rem;
+      letter-spacing: 1px;
+      color: var(--gold);
+    }
+
+    .tournament-meta {
+      color: var(--text-muted);
+      font-size: .9rem;
+      line-height: 1.6;
+    }
+
+    .toolbar {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .toolbar-right {
+      display: flex;
+      gap: .8rem;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .empty-state {
+      border: 1px dashed rgba(240,192,64,0.28);
+      border-radius: 18px;
+      padding: 1.2rem;
+      color: var(--text-muted);
+      background: rgba(240,192,64,0.04);
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: .6rem;
+    }
+
+    th {
+      text-align: left;
+      font-family: 'Barlow Condensed', sans-serif;
+      font-size: .78rem;
+      text-transform: uppercase;
+      letter-spacing: 1.8px;
+      color: var(--text-muted);
+      padding: .8rem .85rem;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+    }
+
+    td {
+      padding: .85rem;
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+      font-size: .92rem;
+      vertical-align: top;
+    }
+
+    tbody tr:hover td { background: rgba(255,255,255,0.025); }
+
+    .status {
+      margin-top: .8rem;
+      min-height: 1.2rem;
+      font-size: .92rem;
+    }
+    .status.success { color: var(--green); }
+    .status.error { color: #ff7f72; }
+    .status.info { color: var(--gold); }
+
+    .small-note {
+      margin-top: .65rem;
+      color: rgba(240,237,232,0.6);
+      font-size: .83rem;
+      line-height: 1.6;
+    }
+
+    .hidden { display: none !important; }
+
+    .split-cards {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+    }
+
+    code.inline {
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+      background: rgba(255,255,255,0.08);
+      border-radius: 6px;
+      padding: .1rem .35rem;
+      font-size: .9em;
+    }
+
+    @media (max-width: 1100px) {
+      .grid { grid-template-columns: 1fr; }
+    }
+
+    @media (max-width: 720px) {
+      .page { padding: 1rem; }
+      .field-grid, .split-cards { grid-template-columns: 1fr; }
+      .topbar { flex-direction: column; align-items: stretch; }
+      .topbar-actions { justify-content: stretch; }
+      .topbar-actions > * { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+  <div class="page">
+    <header class="topbar">
+      <div class="brand">
+        <img src="../images/logo-scoville-tournament.png" alt="Logo Scoville Tournament" onerror="this.style.display='none'">
+        <div>
+          <div class="brand-title">Scoville Tournament</div>
+          <span class="brand-sub">Administration privée</span>
+        </div>
+      </div>
+      <div class="topbar-actions">
+        <a class="btn ghost" href="../">Retour au site</a>
+        <button id="logoutBtn" class="btn-danger hidden" type="button">Déconnexion</button>
+      </div>
+    </header>
+
+    <section id="loginView" class="login-wrap panel">
+      <h1 class="section-title">Connexion admin</h1>
+      <p class="section-subtitle">
+        Cette page est pensée pour être servie à part, idéalement via <code class="inline">/admin</code>.
+        Pour un vrai déploiement protégé, remplace la vérification locale par un backend Google Apps Script.
+      </p>
+      <div class="stack">
+        <div class="field">
+          <label for="adminPassword">Mot de passe administrateur</label>
+          <input type="password" id="adminPassword" placeholder="Saisir le mot de passe" autocomplete="current-password">
+        </div>
+        <button id="loginBtn" class="btn" type="button">Se connecter</button>
+        <p id="loginStatus" class="status"></p>
+        <p class="small-note">
+          Démo locale : le mot de passe est configuré dans le JavaScript. En production, ne laisse pas cette version telle quelle.
+        </p>
+      </div>
+    </section>
+
+    <section id="adminView" class="hidden">
+      <div class="grid">
+        <aside class="panel">
+          <div class="toolbar">
+            <div>
+              <h2 class="section-title">Tournois</h2>
+              <p class="section-subtitle">Créer, éditer, supprimer et sélectionner un tournoi.</p>
+            </div>
+          </div>
+
+          <div class="stack" style="margin-bottom: 1rem;">
+            <button id="newTournamentBtn" class="btn secondary" type="button">+ Nouveau tournoi</button>
+            <button id="exportJsonBtn" class="btn ghost" type="button">Exporter la base JSON</button>
+          </div>
+
+          <div id="tournamentList" class="list"></div>
+        </aside>
+
+        <main class="stack">
+          <section class="card">
+            <div class="toolbar">
+              <div>
+                <h2 class="section-title">Fiche tournoi</h2>
+                <p class="section-subtitle">Les données sont stockées localement dans cette version de démonstration.</p>
+              </div>
+              <div class="toolbar-right">
+                <button id="duplicateBtn" class="btn ghost hidden" type="button">Dupliquer</button>
+                <button id="deleteBtn" class="btn-danger hidden" type="button">Supprimer</button>
+              </div>
+            </div>
+
+            <form id="tournamentForm" class="stack">
+              <div class="field-grid">
+                <div class="field">
+                  <label for="tournamentName">Nom du tournoi</label>
+                  <input id="tournamentName" type="text" placeholder="Scoville Cup #2" required>
+                </div>
+                <div class="field">
+                  <label for="tournamentSlug">Slug / identifiant</label>
+                  <input id="tournamentSlug" type="text" placeholder="scoville-cup-2" required>
+                </div>
+
+                <div class="field">
+                  <label for="tournamentDate">Date</label>
+                  <input id="tournamentDate" type="date" required>
+                </div>
+                <div class="field">
+                  <label for="tournamentCity">Ville</label>
+                  <input id="tournamentCity" type="text" placeholder="Rennes" required>
+                </div>
+
+                <div class="field">
+                  <label for="tournamentFormat">Format</label>
+                  <select id="tournamentFormat">
+                    <option value="standard">Standard</option>
+                    <option value="offmeta">Off-Meta</option>
+                  </select>
+                </div>
+                <div class="field">
+                  <label for="tournamentType">Type</label>
+                  <select id="tournamentType">
+                    <option value="irl">Présentiel</option>
+                    <option value="online">En ligne</option>
+                  </select>
+                </div>
+
+                <div class="field">
+                  <label for="tournamentCapacity">Capacité max</label>
+                  <input id="tournamentCapacity" type="number" min="2" step="1" placeholder="24">
+                </div>
+                <div class="field">
+                  <label for="tournamentStatus">Statut</label>
+                  <select id="tournamentStatus">
+                    <option value="open">Inscriptions ouvertes</option>
+                    <option value="wait">Ouverture bientôt</option>
+                    <option value="done">Terminé</option>
+                  </select>
+                </div>
+
+                <div class="field-full">
+                  <label for="tournamentDescription">Description</label>
+                  <textarea id="tournamentDescription" placeholder="Rennes · 24 joueurs max · Swiss 4 rondes + top cut..."></textarea>
+                </div>
+
+                <div class="field-full">
+                  <label for="registrationUrl">URL d'inscription / lien externe</label>
+                  <input id="registrationUrl" type="url" placeholder="https://...">
+                </div>
+              </div>
+
+              <div class="split-cards">
+                <div class="card" style="padding: 1rem;">
+                  <label style="margin-bottom:.55rem; display:block;">Aperçu badges</label>
+                  <div style="display:flex; gap:.45rem; flex-wrap:wrap;">
+                    <span id="previewFormat" class="pill standard">Standard</span>
+                    <span id="previewType" class="pill irl">Présentiel</span>
+                    <span id="previewStatus" class="pill open">Inscriptions ouvertes</span>
+                  </div>
+                </div>
+                <div class="card" style="padding: 1rem;">
+                  <label style="margin-bottom:.55rem; display:block;">Résumé</label>
+                  <div id="summaryBox" class="muted">Aucun tournoi chargé.</div>
+                </div>
+              </div>
+
+              <div style="display:flex; gap:1rem; flex-wrap:wrap;">
+                <button class="btn" type="submit">Enregistrer le tournoi</button>
+                <button id="resetFormBtn" class="btn ghost" type="button">Réinitialiser</button>
+              </div>
+              <p id="formStatus" class="status"></p>
+            </form>
+          </section>
+
+          <section class="card">
+            <div class="toolbar">
+              <div>
+                <h2 class="section-title">Import des résultats .tdf</h2>
+                <p class="section-subtitle">Importe un fichier XML .tdf, calcule le niveau Scoville et prépare le classement.</p>
+              </div>
+            </div>
+
+            <div class="field-grid">
+              <div class="field-full">
+                <label for="importTournamentSelect">Tournoi cible</label>
+                <select id="importTournamentSelect"></select>
+              </div>
+              <div class="field-full">
+                <label for="tdfFile">Fichier .tdf</label>
+                <input id="tdfFile" type="file" accept=".tdf,.xml,text/xml,application/xml">
+              </div>
+            </div>
+
+            <div style="display:flex; gap:1rem; flex-wrap:wrap; margin-top:1rem;">
+              <button id="importTdfBtn" class="btn secondary" type="button">Importer le .tdf</button>
+              <button id="clearResultsBtn" class="btn ghost" type="button">Effacer les résultats du tournoi</button>
+            </div>
+            <p id="importStatus" class="status"></p>
+            <p class="small-note">
+              Hypothèse de calcul Scoville utilisée ici : <strong>tie = +1</strong>, <strong>loss = +2</strong>, puis plafonné au niveau 8.
+              Les decks ne sont pas présents dans la plupart des fichiers .tdf : tu pourras les compléter manuellement si besoin.
+            </p>
+          </section>
+
+          <section class="card">
+            <div class="toolbar">
+              <div>
+                <h2 class="section-title">Résultats importés</h2>
+                <p class="section-subtitle">Prévisualisation du classement stocké pour le tournoi sélectionné.</p>
+              </div>
+            </div>
+
+            <div id="resultsWrap" class="empty-state">Aucun résultat importé pour ce tournoi.</div>
+          </section>
+
+          <section class="card">
+            <h2 class="section-title">Passage en production</h2>
+            <p class="section-subtitle">
+              Pour une vraie sécurité, branche cette page à un Google Apps Script. Dans cette version, tout est stocké en <code class="inline">localStorage</code>.
+            </p>
+            <div class="stack muted">
+              <p>1. Déploie cette page dans <code class="inline">/admin/index.html</code> pour obtenir l'URL <code class="inline">/admin</code>.</p>
+              <p>2. Déplace la vérification du mot de passe côté serveur.</p>
+              <p>3. Remplace les fonctions <code class="inline">StorageAPI</code> par des appels <code class="inline">fetch()</code> vers ton Apps Script.</p>
+              <p>4. Fais charger le calendrier et les résultats de la partie publique depuis la même source de données.</p>
+            </div>
+          </section>
+        </main>
+      </div>
+    </section>
+  </div>
+
+  <script>
+    // =====================================================================
+    // CONFIG
+    // =====================================================================
+    const ADMIN_PASSWORD = 'ChangeMoiVite-ScovilleAdmin';
+    const STORAGE_KEY = 'scoville-admin-db-v1';
+    const SESSION_KEY = 'scoville-admin-session';
+
+    const SAUCE_BY_LEVEL = {
+      0: { sauce: 'Aucune sauce', shu: '0 SHU' },
+      1: { sauce: 'HEGOA', shu: '1 500 SHU' },
+      2: { sauce: 'SRIRACHA / MISTRAL', shu: '15 000 SHU' },
+      3: { sauce: 'SIROCCO', shu: '75 000 SHU' },
+      4: { sauce: 'TONNERRE', shu: '100 000 SHU' },
+      5: { sauce: 'FOUDRE', shu: '120 000 SHU' },
+      6: { sauce: 'ARMAGEDDON', shu: '500 000 SHU' },
+      7: { sauce: 'CAROLINA REAPER', shu: '800 000 SHU' },
+      8: { sauce: 'TSUNAMI', shu: '1 000 000 SHU' }
+    };
+
+    const seedDb = {
+      tournaments: [
+        {
+          id: crypto.randomUUID(),
+          slug: 'scoville-cup-1',
+          name: 'Scoville Cup #1',
+          date: '2026-04-19',
+          city: 'Rennes',
+          format: 'standard',
+          type: 'irl',
+          capacity: 24,
+          status: 'open',
+          description: 'Rennes · 24 joueurs max · Swiss 4 rondes + top cut · Vérification des deck lists avant le début',
+          registrationUrl: ''
+        },
+        {
+          id: crypto.randomUUID(),
+          slug: 'scoville-off-meta-1',
+          name: 'Scoville Off-Meta #1',
+          date: '2026-05-10',
+          city: 'Rennes',
+          format: 'offmeta',
+          type: 'irl',
+          capacity: 16,
+          status: 'wait',
+          description: 'Rennes · 16 joueurs max · Archétypes méta bannis ou limités · Validation des listes par l’organisation',
+          registrationUrl: ''
+        }
+      ],
+      results: {}
+    };
+
+    // =====================================================================
+    // STORAGE API (à remplacer ensuite par Apps Script)
+    // =====================================================================
+    const StorageAPI = {
+      read() {
+        const raw = localStorage.getItem(STORAGE_KEY);
+        if (!raw) {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(seedDb));
+          return structuredClone(seedDb);
+        }
+        try {
+          const parsed = JSON.parse(raw);
+          return {
+            tournaments: Array.isArray(parsed.tournaments) ? parsed.tournaments : [],
+            results: parsed.results && typeof parsed.results === 'object' ? parsed.results : {}
+          };
+        } catch {
+          localStorage.setItem(STORAGE_KEY, JSON.stringify(seedDb));
+          return structuredClone(seedDb);
+        }
+      },
+      write(db) {
+        localStorage.setItem(STORAGE_KEY, JSON.stringify(db));
+      },
+      exportJson() {
+        return JSON.stringify(this.read(), null, 2);
+      }
+    };
+
+    // =====================================================================
+    // STATE
+    // =====================================================================
+    const state = {
+      db: StorageAPI.read(),
+      selectedTournamentId: null
+    };
+
+    // =====================================================================
+    // HELPERS
+    // =====================================================================
+    const $ = (id) => document.getElementById(id);
+
+    function escapeHtml(value) {
+      return String(value ?? '')
+        .replace(/&/g, '&amp;')
+        .replace(/</g, '&lt;')
+        .replace(/>/g, '&gt;')
+        .replace(/"/g, '&quot;')
+        .replace(/'/g, '&#039;');
+    }
+
+    function formatDate(value) {
+      if (!value) return '—';
+      const d = new Date(value + 'T00:00:00');
+      return d.toLocaleDateString('fr-FR', { day: '2-digit', month: 'long', year: 'numeric' });
+    }
+
+    function slugify(input) {
+      return input
+        .toLowerCase()
+        .normalize('NFD')
+        .replace(/[\u0300-\u036f]/g, '')
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '')
+        .replace(/-{2,}/g, '-');
+    }
+
+    function getStatusLabel(status) {
+      switch (status) {
+        case 'open': return 'Inscriptions ouvertes';
+        case 'wait': return 'Ouverture bientôt';
+        case 'done': return 'Terminé';
+        default: return status;
+      }
+    }
+
+    function getFormatLabel(format) {
+      return format === 'offmeta' ? 'Off-Meta' : 'Standard';
+    }
+
+    function getTypeLabel(type) {
+      return type === 'online' ? 'En ligne' : 'Présentiel';
+    }
+
+    function getScovilleLevelFromRecord(record) {
+      const losses = Number(record.losses || 0);
+      const ties = Number(record.ties || 0);
+      return Math.max(0, Math.min(8, losses * 2 + ties));
+    }
+
+    function ensureUniqueSlug(baseSlug, ignoreId = null) {
+      const taken = new Set(
+        state.db.tournaments
+          .filter(t => t.id !== ignoreId)
+          .map(t => t.slug)
+      );
+      if (!taken.has(baseSlug)) return baseSlug;
+      let i = 2;
+      while (taken.has(`${baseSlug}-${i}`)) i += 1;
+      return `${baseSlug}-${i}`;
+    }
+
+    function download(filename, content, mime = 'application/json') {
+      const blob = new Blob([content], { type: mime });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+    }
+
+    function setStatus(el, text, type = 'info') {
+      el.textContent = text;
+      el.className = `status ${type}`;
+    }
+
+    // =====================================================================
+    // AUTH
+    // =====================================================================
+    function isLoggedIn() {
+      return sessionStorage.getItem(SESSION_KEY) === '1';
+    }
+
+    function showAdmin() {
+      $('loginView').classList.add('hidden');
+      $('adminView').classList.remove('hidden');
+      $('logoutBtn').classList.remove('hidden');
+    }
+
+    function showLogin() {
+      $('adminView').classList.add('hidden');
+      $('loginView').classList.remove('hidden');
+      $('logoutBtn').classList.add('hidden');
+    }
+
+    function setupAuth() {
+      if (isLoggedIn()) showAdmin();
+
+      $('loginBtn').addEventListener('click', () => {
+        const value = $('adminPassword').value;
+        if (value === ADMIN_PASSWORD) {
+          sessionStorage.setItem(SESSION_KEY, '1');
+          $('adminPassword').value = '';
+          setStatus($('loginStatus'), 'Connexion réussie.', 'success');
+          showAdmin();
+        } else {
+          setStatus($('loginStatus'), 'Mot de passe incorrect.', 'error');
+        }
+      });
+
+      $('adminPassword').addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') {
+          e.preventDefault();
+          $('loginBtn').click();
+        }
+      });
+
+      $('logoutBtn').addEventListener('click', () => {
+        sessionStorage.removeItem(SESSION_KEY);
+        showLogin();
+      });
+    }
+
+    // =====================================================================
+    // RENDERING
+    // =====================================================================
+    function renderTournamentList() {
+      const list = $('tournamentList');
+      const tournaments = [...state.db.tournaments].sort((a, b) => a.date.localeCompare(b.date));
+
+      if (!tournaments.length) {
+        list.innerHTML = '<div class="empty-state">Aucun tournoi pour le moment.</div>';
+        return;
+      }
+
+      list.innerHTML = tournaments.map(t => {
+        const activeClass = t.id === state.selectedTournamentId ? 'active' : '';
+        return `
+          <div class="tournament-item ${activeClass}" data-id="${t.id}">
+            <div class="tournament-top">
+              <div>
+                <div class="tournament-name">${escapeHtml(t.name)}</div>
+                <div class="tournament-meta">${escapeHtml(t.city)} · ${escapeHtml(formatDate(t.date))}</div>
+              </div>
+              <span class="pill ${escapeHtml(t.format)}">${escapeHtml(getFormatLabel(t.format))}</span>
+            </div>
+            <div style="display:flex; gap:.45rem; flex-wrap:wrap;">
+              <span class="pill ${escapeHtml(t.type)}">${escapeHtml(getTypeLabel(t.type))}</span>
+              <span class="pill ${escapeHtml(t.status)}">${escapeHtml(getStatusLabel(t.status))}</span>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      list.querySelectorAll('.tournament-item').forEach(item => {
+        item.addEventListener('click', () => {
+          state.selectedTournamentId = item.dataset.id;
+          loadTournamentIntoForm();
+          renderAll();
+        });
+      });
+    }
+
+    function renderImportSelect() {
+      const select = $('importTournamentSelect');
+      const tournaments = [...state.db.tournaments].sort((a, b) => a.date.localeCompare(b.date));
+      select.innerHTML = tournaments.length
+        ? tournaments.map(t => `<option value="${t.id}">${escapeHtml(t.name)} — ${escapeHtml(formatDate(t.date))}</option>`).join('')
+        : '<option value="">Aucun tournoi</option>';
+
+      if (state.selectedTournamentId && tournaments.some(t => t.id === state.selectedTournamentId)) {
+        select.value = state.selectedTournamentId;
+      } else if (tournaments[0]) {
+        state.selectedTournamentId = tournaments[0].id;
+        select.value = tournaments[0].id;
+      }
+    }
+
+    function renderSummary() {
+      const summaryBox = $('summaryBox');
+      const tournament = state.db.tournaments.find(t => t.id === state.selectedTournamentId);
+      const duplicateBtn = $('duplicateBtn');
+      const deleteBtn = $('deleteBtn');
+
+      if (!tournament) {
+        summaryBox.textContent = 'Aucun tournoi chargé.';
+        duplicateBtn.classList.add('hidden');
+        deleteBtn.classList.add('hidden');
+        return;
+      }
+
+      duplicateBtn.classList.remove('hidden');
+      deleteBtn.classList.remove('hidden');
+      summaryBox.innerHTML = `
+        <strong style="color:var(--text);">${escapeHtml(tournament.name)}</strong><br>
+        <span class="muted">${escapeHtml(formatDate(tournament.date))} · ${escapeHtml(tournament.city)} · ${escapeHtml(getFormatLabel(tournament.format))}</span><br>
+        <span class="muted">Capacité : ${escapeHtml(tournament.capacity || '—')} joueurs · Statut : ${escapeHtml(getStatusLabel(tournament.status))}</span>
+      `;
+    }
+
+    function renderResults() {
+      const wrap = $('resultsWrap');
+      const tournamentId = $('importTournamentSelect').value;
+      const rows = state.db.results[tournamentId] || [];
+
+      if (!rows.length) {
+        wrap.className = 'empty-state';
+        wrap.textContent = 'Aucun résultat importé pour ce tournoi.';
+        return;
+      }
+
+      wrap.className = '';
+      wrap.innerHTML = `
+        <div style="overflow-x:auto;">
+          <table>
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Joueur</th>
+                <th>Deck</th>
+                <th>W / L / T</th>
+                <th>Niveau</th>
+                <th>Sauce / SHU</th>
+              </tr>
+            </thead>
+            <tbody>
+              ${rows.map((row, index) => `
+                <tr>
+                  <td>${escapeHtml(row.rank || index + 1)}</td>
+                  <td>${escapeHtml(row.player)}</td>
+                  <td>${escapeHtml(row.deck || 'À compléter')}</td>
+                  <td>${escapeHtml(`${row.wins}V / ${row.losses}D / ${row.ties}T`)}</td>
+                  <td>${escapeHtml(`Niveau ${row.scovilleLevel}`)}</td>
+                  <td>${escapeHtml(`${row.sauce} · ${row.shu}`)}</td>
+                </tr>
+              `).join('')}
+            </tbody>
+          </table>
+        </div>
+      `;
+    }
+
+    function renderPreviewPills() {
+      const format = $('tournamentFormat').value;
+      const type = $('tournamentType').value;
+      const status = $('tournamentStatus').value;
+
+      const formatEl = $('previewFormat');
+      const typeEl = $('previewType');
+      const statusEl = $('previewStatus');
+
+      formatEl.className = `pill ${format}`;
+      formatEl.textContent = getFormatLabel(format);
+
+      typeEl.className = `pill ${type}`;
+      typeEl.textContent = getTypeLabel(type);
+
+      statusEl.className = `pill ${status}`;
+      statusEl.textContent = getStatusLabel(status);
+    }
+
+    function renderAll() {
+      renderTournamentList();
+      renderImportSelect();
+      renderSummary();
+      renderPreviewPills();
+      renderResults();
+    }
+
+    // =====================================================================
+    // FORM BINDING
+    // =====================================================================
+    function resetForm(keepSelection = false) {
+      $('tournamentForm').reset();
+      $('tournamentSlug').value = '';
+      $('formStatus').textContent = '';
+      $('formStatus').className = 'status';
+      if (!keepSelection) state.selectedTournamentId = null;
+      renderPreviewPills();
+      renderSummary();
+      renderTournamentList();
+    }
+
+    function loadTournamentIntoForm() {
+      const t = state.db.tournaments.find(x => x.id === state.selectedTournamentId);
+      if (!t) {
+        resetForm(true);
+        return;
+      }
+
+      $('tournamentName').value = t.name || '';
+      $('tournamentSlug').value = t.slug || '';
+      $('tournamentDate').value = t.date || '';
+      $('tournamentCity').value = t.city || '';
+      $('tournamentFormat').value = t.format || 'standard';
+      $('tournamentType').value = t.type || 'irl';
+      $('tournamentCapacity').value = t.capacity || '';
+      $('tournamentStatus').value = t.status || 'open';
+      $('tournamentDescription').value = t.description || '';
+      $('registrationUrl').value = t.registrationUrl || '';
+      renderPreviewPills();
+      renderSummary();
+    }
+
+    function currentFormValue() {
+      const existing = state.db.tournaments.find(t => t.id === state.selectedTournamentId);
+      const rawSlug = $('tournamentSlug').value.trim() || slugify($('tournamentName').value.trim());
+      return {
+        id: existing?.id || crypto.randomUUID(),
+        name: $('tournamentName').value.trim(),
+        slug: ensureUniqueSlug(slugify(rawSlug), existing?.id || null),
+        date: $('tournamentDate').value,
+        city: $('tournamentCity').value.trim(),
+        format: $('tournamentFormat').value,
+        type: $('tournamentType').value,
+        capacity: Number($('tournamentCapacity').value || 0),
+        status: $('tournamentStatus').value,
+        description: $('tournamentDescription').value.trim(),
+        registrationUrl: $('registrationUrl').value.trim()
+      };
+    }
+
+    function bindFormEvents() {
+      $('tournamentName').addEventListener('input', () => {
+        const existing = state.db.tournaments.find(t => t.id === state.selectedTournamentId);
+        if (!existing) $('tournamentSlug').value = slugify($('tournamentName').value.trim());
+      });
+
+      ['tournamentFormat', 'tournamentType', 'tournamentStatus'].forEach(id => {
+        $(id).addEventListener('change', renderPreviewPills);
+      });
+
+      $('newTournamentBtn').addEventListener('click', () => {
+        state.selectedTournamentId = null;
+        resetForm(false);
+        renderAll();
+      });
+
+      $('resetFormBtn').addEventListener('click', () => {
+        if (state.selectedTournamentId) {
+          loadTournamentIntoForm();
+        } else {
+          resetForm(false);
+        }
+      });
+
+      $('tournamentForm').addEventListener('submit', (e) => {
+        e.preventDefault();
+        const data = currentFormValue();
+
+        if (!data.name || !data.slug || !data.date || !data.city) {
+          setStatus($('formStatus'), 'Merci de remplir les champs obligatoires.', 'error');
+          return;
+        }
+
+        const index = state.db.tournaments.findIndex(t => t.id === data.id);
+        if (index >= 0) state.db.tournaments[index] = data;
+        else state.db.tournaments.push(data);
+
+        state.selectedTournamentId = data.id;
+        StorageAPI.write(state.db);
+        setStatus($('formStatus'), 'Tournoi enregistré.', 'success');
+        renderAll();
+        loadTournamentIntoForm();
+      });
+
+      $('deleteBtn').addEventListener('click', () => {
+        if (!state.selectedTournamentId) return;
+        const tournament = state.db.tournaments.find(t => t.id === state.selectedTournamentId);
+        if (!tournament) return;
+        if (!confirm(`Supprimer le tournoi « ${tournament.name} » ?`)) return;
+
+        state.db.tournaments = state.db.tournaments.filter(t => t.id !== state.selectedTournamentId);
+        delete state.db.results[state.selectedTournamentId];
+        state.selectedTournamentId = null;
+        StorageAPI.write(state.db);
+        resetForm(false);
+        renderAll();
+      });
+
+      $('duplicateBtn').addEventListener('click', () => {
+        const original = state.db.tournaments.find(t => t.id === state.selectedTournamentId);
+        if (!original) return;
+        const clone = {
+          ...structuredClone(original),
+          id: crypto.randomUUID(),
+          name: `${original.name} (copie)`,
+          slug: ensureUniqueSlug(`${original.slug}-copie`)
+        };
+        state.db.tournaments.push(clone);
+        state.selectedTournamentId = clone.id;
+        StorageAPI.write(state.db);
+        renderAll();
+        loadTournamentIntoForm();
+        setStatus($('formStatus'), 'Tournoi dupliqué.', 'success');
+      });
+
+      $('exportJsonBtn').addEventListener('click', () => {
+        download('scoville-admin-export.json', StorageAPI.exportJson());
+      });
+    }
+
+    // =====================================================================
+    // TDF IMPORT
+    // =====================================================================
+    function parseNumber(value, fallback = 0) {
+      const n = Number(String(value || '').replace(',', '.'));
+      return Number.isFinite(n) ? n : fallback;
+    }
+
+    function textFromNode(node, selectors = []) {
+      for (const selector of selectors) {
+        const found = node.querySelector(selector);
+        if (found && found.textContent.trim()) return found.textContent.trim();
+      }
+      return '';
+    }
+
+    function attributeFromNode(node, names = []) {
+      for (const name of names) {
+        const value = node.getAttribute(name);
+        if (value && String(value).trim()) return String(value).trim();
+      }
+      return '';
+    }
+
+    function buildPlayerMap(xmlDoc) {
+      const map = new Map();
+      const playerNodes = xmlDoc.querySelectorAll('player');
+      playerNodes.forEach(playerNode => {
+        const playerId = attributeFromNode(playerNode, ['id', 'playerid', 'userid']) || textFromNode(playerNode, ['id']);
+        const name = textFromNode(playerNode, [
+          'name',
+          'lastname, firstname',
+          'lastname',
+          'firstname'
+        ]) || attributeFromNode(playerNode, ['name']);
+
+        const standing = parseNumber(textFromNode(playerNode, ['standing', 'rank', 'finalstanding']) || attributeFromNode(playerNode, ['standing', 'rank']), 0);
+        const wins = parseNumber(textFromNode(playerNode, ['wins', 'win', 'won']) || attributeFromNode(playerNode, ['wins', 'win']), 0);
+        const losses = parseNumber(textFromNode(playerNode, ['losses', 'lose', 'lost']) || attributeFromNode(playerNode, ['losses', 'lose']), 0);
+        const ties = parseNumber(textFromNode(playerNode, ['ties', 'draws']) || attributeFromNode(playerNode, ['ties', 'draws']), 0);
+
+        const key = playerId || name;
+        if (!key) return;
+
+        map.set(key, {
+          playerId,
+          player: name || `Joueur ${key}`,
+          rank: standing || 999,
+          wins,
+          losses,
+          ties,
+          deck: ''
+        });
+      });
+      return map;
+    }
+
+    function parseTdf(xmlText) {
+      const parser = new DOMParser();
+      const xml = parser.parseFromString(xmlText, 'application/xml');
+      const parserError = xml.querySelector('parsererror');
+      if (parserError) throw new Error('Le fichier .tdf n\'est pas un XML valide.');
+
+      const tournamentInfo = xml.querySelector('tournament');
+      const tournamentName = tournamentInfo ? (attributeFromNode(tournamentInfo, ['name']) || textFromNode(tournamentInfo, ['name'])) : '';
+      const tournamentCity = tournamentInfo ? (attributeFromNode(tournamentInfo, ['city']) || textFromNode(tournamentInfo, ['city'])) : '';
+      const tournamentDate = tournamentInfo ? (attributeFromNode(tournamentInfo, ['startdate', 'date']) || textFromNode(tournamentInfo, ['startdate', 'date'])) : '';
+
+      const playerMap = buildPlayerMap(xml);
+
+      // Si le fichier ne fournit pas losses/ties, on essaie de les reconstituer depuis les matchs.
+      const matchNodes = xml.querySelectorAll('match, pairing');
+      matchNodes.forEach(matchNode => {
+        const p1 = attributeFromNode(matchNode, ['player1', 'player1id', 'p1']) || textFromNode(matchNode, ['player1', 'player1id', 'p1']);
+        const p2 = attributeFromNode(matchNode, ['player2', 'player2id', 'p2']) || textFromNode(matchNode, ['player2', 'player2id', 'p2']);
+        const winner = attributeFromNode(matchNode, ['winner', 'winnerid']) || textFromNode(matchNode, ['winner', 'winnerid']);
+        const draw = (attributeFromNode(matchNode, ['draw']) || textFromNode(matchNode, ['draw'])).toLowerCase();
+
+        if (draw === 'true' || draw === '1') {
+          if (playerMap.has(p1)) playerMap.get(p1).ties += 1;
+          if (playerMap.has(p2)) playerMap.get(p2).ties += 1;
+          return;
+        }
+
+        if (winner && playerMap.has(winner)) {
+          if (p1 && p2 && winner === p1 && playerMap.has(p2)) playerMap.get(p2).losses += 1;
+          if (p1 && p2 && winner === p2 && playerMap.has(p1)) playerMap.get(p1).losses += 1;
+        }
+      });
+
+      const rows = [...playerMap.values()]
+        .map(player => {
+          const scovilleLevel = getScovilleLevelFromRecord(player);
+          const sauceInfo = SAUCE_BY_LEVEL[scovilleLevel] || SAUCE_BY_LEVEL[8];
+          return {
+            ...player,
+            scovilleLevel,
+            sauce: sauceInfo.sauce,
+            shu: sauceInfo.shu
+          };
+        })
+        .sort((a, b) => {
+          const rankA = a.rank || 999;
+          const rankB = b.rank || 999;
+          if (rankA !== rankB) return rankA - rankB;
+          if (b.wins !== a.wins) return b.wins - a.wins;
+          if (a.losses !== b.losses) return a.losses - b.losses;
+          return a.player.localeCompare(b.player, 'fr');
+        })
+        .map((row, index) => ({ ...row, rank: row.rank && row.rank !== 999 ? row.rank : index + 1 }));
+
+      return {
+        tournamentName,
+        tournamentCity,
+        tournamentDate,
+        rows
+      };
+    }
+
+    function bindImportEvents() {
+      $('importTournamentSelect').addEventListener('change', (e) => {
+        state.selectedTournamentId = e.target.value || null;
+        loadTournamentIntoForm();
+        renderAll();
+      });
+
+      $('importTdfBtn').addEventListener('click', async () => {
+        const file = $('tdfFile').files[0];
+        const tournamentId = $('importTournamentSelect').value;
+        if (!tournamentId) {
+          setStatus($('importStatus'), 'Sélectionne d\'abord un tournoi.', 'error');
+          return;
+        }
+        if (!file) {
+          setStatus($('importStatus'), 'Choisis un fichier .tdf à importer.', 'error');
+          return;
+        }
+
+        try {
+          const text = await file.text();
+          const parsed = parseTdf(text);
+          state.db.results[tournamentId] = parsed.rows;
+          StorageAPI.write(state.db);
+          renderResults();
+          setStatus($('importStatus'), `Import réussi : ${parsed.rows.length} joueurs détectés.`, 'success');
+        } catch (error) {
+          setStatus($('importStatus'), `Import impossible : ${error.message}`, 'error');
+        }
+      });
+
+      $('clearResultsBtn').addEventListener('click', () => {
+        const tournamentId = $('importTournamentSelect').value;
+        if (!tournamentId) return;
+        if (!confirm('Effacer les résultats enregistrés pour ce tournoi ?')) return;
+        delete state.db.results[tournamentId];
+        StorageAPI.write(state.db);
+        renderResults();
+        setStatus($('importStatus'), 'Résultats effacés.', 'success');
+      });
+    }
+
+    // =====================================================================
+    // INIT
+    // =====================================================================
+    function init() {
+      setupAuth();
+      bindFormEvents();
+      bindImportEvents();
+
+      if (!state.selectedTournamentId && state.db.tournaments[0]) {
+        state.selectedTournamentId = state.db.tournaments[0].id;
+      }
+
+      if (state.selectedTournamentId) {
+        loadTournamentIntoForm();
+      } else {
+        resetForm(false);
+      }
+
+      renderAll();
+    }
+
+    init();
+  </script>
+</body>
+</html>
