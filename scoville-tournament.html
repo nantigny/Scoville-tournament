@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>scoville-tournament.net | Tournois Pokemon TCG</title>
+
+  <meta name="description" content="Scoville Tournament organise des tournois Pokémon TCG à Rennes en format Standard et Off-Meta. Plus tu perds, plus le piquant monte. Inscris-toi !">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://scoville-tournament.net/">
+  <meta property="og:title" content="Scoville Tournament | Tournois Pokémon TCG pimentés">
+  <meta property="og:description" content="Des tournois Pokémon TCG à Rennes en format Standard et Off-Meta. Chaque défaite monte l'échelle Scoville 🌶️">
+  <meta property="og:image" content="https://scoville-tournament.net/images/logo-scoville-tournament.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Scoville Tournament | Tournois Pokémon TCG pimentés">
+  <meta name="twitter:description" content="Tournois Pokémon TCG à Rennes. Standard & Off-Meta. Plus tu perds, plus ça pique.">
+  <meta name="twitter:image" content="https://scoville-tournament.net/images/logo-scoville-tournament.png">
+
+  <link rel="icon" type="image/png" href="images/logo-scoville-tournament.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700&family=Barlow:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+<header>
+  <a class="logo-wrap" href="#" onclick="showSection('home'); return false;">
+    <img src="images/logo-scoville-tournament.png" alt="Logo scoville Tournament" onerror="this.style.display='none'">
+    <div class="logo-text-wrap">
+      <span class="logo-text">scoville-tournament.net</span>
+    </div>
+  </a>
+
+  <nav>
+    <a href="#" class="active" data-section="home">Accueil</a>
+    <a href="#" data-section="calendrier">Calendrier</a>
+    <a href="#" data-section="inscription">Inscription</a>
+    <a href="#" data-section="resultats">Resultats</a>
+    <a href="#" data-section="regles">Regles</a>
+    <a href="#" data-section="apropos">A propos</a>
+  </nav>
+</header>
+
+<section id="home" class="section active">
+  <div class="hero-shell">
+
+    <div class="hero-card hero-left-card">
+      <div class="hero-left">
+        <div class="hero-title">
+          <div class="red">Scoville</div>
+          <div class="green">TOURNAMENT</div>
+        </div>
+
+        <div class="hero-sub">Pokemon TCG · Tournois Standard & Off-meta · Defaites piquantes</div>
+
+        <p class="hero-desc">
+          scoville-tournament.net annonce et organise régulièrement des tournois Pokemon TCG en format <strong>Standard</strong> ou <strong>Off-meta</strong>.
+          Chaque joueur peut retrouver le calendrier des evenements, s'inscrire, suivre ses resultats et decouvrir le niveau de piquant atteint en fonction de ses résultats.
+        </p>
+
+        <div class="hero-ctas">
+          <a class="btn-primary" href="#" onclick="showSection('calendrier'); return false;">Voir les prochains tournois</a>
+          <a class="btn-secondary" href="#" onclick="showSection('regles'); return false;">Voir les regles scoville</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-card">
+            <div class="stat-num stat-red">1</div>
+            <div class="stat-label">Concept : plus tu perds, plus le piquant devient intense</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num stat-gold">8</div>
+            <div class="stat-label">Niveaux associés a une sauce pimentée</div>
+          </div>
+          <div class="stat-card">
+            <div class="stat-num stat-green">2</div>
+            <div class="stat-label">Formats proposes : Standard et Off-meta</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <aside class="hero-card hero-right-card">
+      <div class="hero-right-inner">
+        <div class="hero-logo-wrap">
+          <img src="images/logo-scoville-tournament.png" class="hero-logo" alt="scoville Tournament" onerror="this.style.display='none'">
+        </div>
+
+        <div class="panel-title">Parcours d'un joueur</div>
+
+        <div class="path-list">
+          <div class="path-item">
+            <div class="path-num">1</div>
+            <div>
+              <h4>Je choisis mon tournoi</h4>
+              <p>Depuis l'onglet Calendrier, je consulte les evenements et je rejoins celui qui m'interesse.</p>
+            </div>
+          </div>
+
+          <div class="path-item">
+            <div class="path-num">2</div>
+            <div>
+              <h4>Je joue le tournoi</h4>
+              <p>Je dispute mes rondes, j'accumule mes victoires... ou sinon je grimpe sur l'échelle de Scoville.</p>
+            </div>
+          </div>
+
+          <div class="path-item">
+            <div class="path-num">3</div>
+            <div>
+              <h4>Je consulte mes resultats</h4>
+              <p>Classement, deck joue, niveau de piquant et historique de participation sont conserves.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+  </div>
+</section>
+
+<section id="calendrier" class="section">
+  <div class="page-inner">
+    <div class="page-title"><span class="red">Calendrier</span></div>
+    <div class="page-line"></div>
+    <p class="page-intro">Retrouvez ici les prochains evenements. Chaque carte peut rediriger vers une page detaillee ou un formulaire d'inscription.</p>
+
+    <div class="event-list">
+      <article class="event-card">
+        <div class="event-date">
+          <div class="event-day">19</div>
+          <div class="event-month">Avril</div>
+        </div>
+        <div class="event-main">
+          <h3>Scoville Cup #1</h3>
+          <p>Rennes · 24 joueurs max · Swiss 4 rondes + top cut · Verification des deck lists avant le debut</p>
+          <div class="event-tags">
+            <span class="pill standard">Standard</span>
+            <span class="pill irl">Presentiel</span>
+            <span class="pill open">Inscriptions ouvertes</span>
+          </div>
+        </div>
+        <div class="event-actions">
+          <a class="btn-primary" href="#" onclick="showSection('inscription'); return false;">S'inscrire</a>
+        </div>
+      </article>
+
+      <article class="event-card">
+        <div class="event-date green">
+          <div class="event-day">10</div>
+          <div class="event-month">Mai</div>
+        </div>
+        <div class="event-main">
+          <h3>Scoville Off-Meta #1</h3>
+          <p>Rennes · 16 joueurs max · Archetypes meta bannis ou limites · Validation des listes par l'organisation</p>
+          <div class="event-tags">
+            <span class="pill offmeta">Off-meta</span>
+            <span class="pill irl">Presentiel</span>
+            <span class="pill wait">Ouverture bientot</span>
+          </div>
+        </div>
+        <div class="event-actions">
+          <a class="btn-primary" href="#" onclick="showSection('inscription'); return false;">S'inscrire</a>
+        </div>
+      </article>
+
+      <article class="event-card">
+        <div class="event-date">
+          <div class="event-day">07</div>
+          <div class="event-month">Juin</div>
+        </div>
+        <div class="event-main">
+          <h3>Scoville Online Night #1</h3>
+          <p>En ligne via PTCG Live · 64 joueurs max · Pairings publies en ligne · Saisie des resultats et decks sur le site</p>
+          <div class="event-tags">
+            <span class="pill standard">Standard</span>
+            <span class="pill online">En ligne</span>
+            <span class="pill wait">Ouverture bientot</span>
+          </div>
+        </div>
+        <div class="event-actions">
+          <a class="btn-primary" href="#" onclick="showSection('inscription'); return false;">S'inscrire</a>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section id="inscription" class="section">
+  <div class="page-inner">
+    <div class="page-title"><span class="red">Inscription</span></div>
+    <div class="page-line"></div>
+
+    <div class="notice">
+      <div class="notice-icon">🌶️</div>
+      <div>
+        <h4>Règles Scoville</h4>
+        <p>En vous inscrivant, vous acceptez le principe du défi pimenté. Pensez à signaler les allergies, intolérances, restrictions alimentaires et sensibilités au piment dans le champ remarques.</p>
+      </div>
+    </div>
+
+    <div class="form-card">
+      <h2>Formulaire d'inscription joueur</h2>
+      <form id="inscription-form" action="https://script.google.com/macros/s/AKfycbybDzOnji8WEiy5YHO-1z01CHJu9zLN7saEbm5g1VyNWIhCIIiJEZJ6uJlcVP7v4wTh0g/exec" method="POST">
+        <div class="form-grid">
+          <div class="form-group">
+            <label for="prenom">Prénom</label>
+            <input type="text" id="prenom" name="Prénom" placeholder="Ash" required>
+          </div>
+          <div class="form-group">
+            <label for="nom">Nom</label>
+            <input type="text" id="nom" name="Nom" placeholder="Ketchum" required>
+          </div>
+          <div class="form-group">
+            <label for="player-id">Player ID</label>
+            <input type="text" id="player-id" name="Player_ID" placeholder="123456789" required>
+          </div>
+          <div class="form-group">
+            <label for="annee-naissance">Année de naissance</label>
+            <input type="number" id="annee-naissance" name="Année_de_naissance" placeholder="2001" min="1900" max="2100" required>
+          </div>
+          <div class="form-group full">
+            <label for="email">Email de contact</label>
+            <input type="email" id="email" name="Email_de_contact" placeholder="ash@pokemon.com" required>
+          </div>
+          <div class="form-group full">
+            <label for="tournoi">Tournoi choisi</label>
+            <select id="tournoi" name="Tournoi_choisi" required>
+              <option value="">-- Sélectionnez un tournoi --</option>
+              <option value="cup1">Scoville Cup #1 — 19 Avril 2026</option>
+              <option value="offmeta1">Scoville Off-Meta #1 — 10 Mai 2026</option>
+              <option value="online1">Scoville Online Night #1 — 7 Juin 2026</option>
+            </select>
+          </div>
+          <div class="form-group full">
+            <label for="remarques">Remarques</label>
+            <textarea id="remarques" name="Remarques" placeholder="Allergies, restrictions alimentaires, informations utiles..."></textarea>
+          </div>
+        </div>
+
+        <input type="hidden" name="Statut_inscription" value="En attente">
+
+        <div class="checkbox-row">
+          <input type="checkbox" id="ok-rules" required>
+          <label for="ok-rules" class="checkbox-label">
+            J'accepte les règles du tournoi, les conditions de participation et le principe de la montée en piquant.
+          </label>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" id="submit-btn" class="btn-primary">Confirmer mon inscription</button>
+        </div>
+
+        <p id="form-message" class="form-message"></p>
+      </form>
+    </div>
+  </div>
+</section>
+
+<section id="resultats" class="section">
+  <div class="page-inner">
+    <div class="page-title"><span class="red">Resultats</span></div>
+    <div class="page-line"></div>
+
+    <div class="results-intro">
+      <p>Les événements à venir n'ont pas encore de résultats. Revenez après chaque tournoi !</p>
+    </div>
+
+    <div class="results-archive-grid">
+      <div class="archive-card upcoming-event">
+        <span class="archive-badge future">À venir</span>
+        <h3>Scoville Cup #1</h3>
+        <p>19 Avril 2026</p>
+        <span class="archive-meta">Résultats disponibles après l'événement</span>
+      </div>
+
+      <button class="archive-card active" onclick="showTournament(event, 'tournament2')">
+        <span class="archive-badge offmeta">Off-Meta</span>
+        <h3>Scoville Off-Meta #1</h3>
+        <p>10 Mars 2026</p>
+        <span class="archive-meta">12 joueurs</span>
+      </button>
+
+      <button class="archive-card" onclick="showTournament(event, 'tournament3')">
+        <span class="archive-badge standard">Standard</span>
+        <h3>Scoville Online Night #1</h3>
+        <p>22 Février 2026</p>
+        <span class="archive-meta">24 joueurs</span>
+      </button>
+    </div>
+
+    <div class="tournament-result active" id="tournament2">
+      <div class="results-head">
+        <p class="meta">Off-Meta Night #1 · 10 Mars 2026 · Format Off-Meta · 12 joueurs</p>
+        <span class="pill offmeta">Archive tournoi</span>
+      </div>
+
+      <div class="podium">
+        <div class="podium-step p2">
+          <div class="podium-rank">2</div>
+          <div class="podium-name">Ghost Master</div>
+          <div class="podium-deck">Banette Box</div>
+          <div class="podium-score">3V - 1D · Niveau 4</div>
+        </div>
+        <div class="podium-step p1">
+          <div class="podium-rank">1</div>
+          <div class="podium-name">Chaos Player</div>
+          <div class="podium-deck">Wugtrio Mill</div>
+          <div class="podium-score">4V - 0D · Niveau 1</div>
+        </div>
+        <div class="podium-step p3">
+          <div class="podium-rank">3</div>
+          <div class="podium-name">Snorlax Fan</div>
+          <div class="podium-deck">Snorlax Stall</div>
+          <div class="podium-score">3V - 1D · Niveau 5</div>
+        </div>
+      </div>
+
+      <div class="results-table-wrap card card-no-padding">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Joueur</th>
+              <th>Deck</th>
+              <th>Format</th>
+              <th>Win/Lose/Tie</th>
+              <th>Niveau de piquant</th>
+              <th>Sauce / SHU</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>Chaos Player</td><td>Wugtrio Mill</td><td>Off-Meta</td><td>4V/0D/0T</td><td><span class="heat-level">Niveau 1</span></td><td>HEGOA · 1 500 SHU</td></tr>
+            <tr><td>2</td><td>Ghost Master</td><td>Banette Box</td><td>Off-Meta</td><td>3V/1D/0T</td><td><span class="heat-level">Niveau 4</span></td><td>TONNERRE · 100 000 SHU</td></tr>
+            <tr><td>3</td><td>Snorlax Fan</td><td>Snorlax Stall</td><td>Off-Meta</td><td>3V/1D/0T</td><td><span class="heat-level">Niveau 5</span></td><td>FOUDRE · 120 000 SHU</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="tournament-result" id="tournament3" style="display:none;">
+      <div class="results-head">
+        <p class="meta">Scoville Online #1 · 22 Février 2026 · Format Standard · 24 joueurs</p>
+        <span class="pill standard">Archive tournoi</span>
+      </div>
+
+      <div class="podium">
+        <div class="podium-step p2">
+          <div class="podium-rank">2</div>
+          <div class="podium-name">Pika Power</div>
+          <div class="podium-deck">Miraidon ex</div>
+          <div class="podium-score">5V - 1D · Niveau 3</div>
+        </div>
+        <div class="podium-step p1">
+          <div class="podium-rank">1</div>
+          <div class="podium-name">Meta Crusher</div>
+          <div class="podium-deck">Gardevoir ex</div>
+          <div class="podium-score">6V - 0D · Niveau 0</div>
+        </div>
+        <div class="podium-step p3">
+          <div class="podium-rank">3</div>
+          <div class="podium-name">Iron Champ</div>
+          <div class="podium-deck">Iron Hands ex</div>
+          <div class="podium-score">4V - 2D · Niveau 4</div>
+        </div>
+      </div>
+
+      <div class="results-table-wrap card card-no-padding">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Joueur</th>
+              <th>Deck</th>
+              <th>Format</th>
+              <th>Win/Lose/Tie</th>
+              <th>Niveau de piquant</th>
+              <th>Sauce / SHU</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>1</td><td>Meta Crusher</td><td>Gardevoir ex</td><td>Standard</td><td>6V/0D/0T</td><td><span class="heat-level">Niveau 0</span></td><td>Aucune sauce</td></tr>
+            <tr><td>2</td><td>Pika Power</td><td>Miraidon ex</td><td>Standard</td><td>5V/1D/0T</td><td><span class="heat-level">Niveau 3</span></td><td>SIROCCO · 75 000 SHU</td></tr>
+            <tr><td>3</td><td>Iron Champ</td><td>Iron Hands ex</td><td>Standard</td><td>4V/2D/0T</td><td><span class="heat-level">Niveau 4</span></td><td>TONNERRE · 100 000 SHU</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="regles" class="section">
+  <div class="page-inner">
+    <div class="page-title"><span class="red">Regles</span></div>
+    <div class="page-line"></div>
+
+    <div class="notice notice-large">
+      <div class="notice-icon">🌶️</div>
+      <div>
+        <h4>Règle Scoville</h4>
+        <p>
+          En fin de tournoi, chaque joueur déguste un aliment avec une sauce pimentée selon ses résultats.
+          <strong class="text-strong">+2 niveaux par défaite · +1 niveau par match nul.</strong>
+          Zéro défaite = zéro sauce. Le reste, c'est du courage.
+        </p>
+      </div>
+    </div>
+
+    <div class="rules-grid">
+      <div class="rule-card">
+        <h3>⚔️ Format</h3>
+        <ul>
+          <li><span class="rule-dot"></span>Système Suisse — rondes appariées par résultats</li>
+          <li><span class="rule-dot"></span>50 min par ronde + 15 min extra (3 tours max)</li>
+          <li><span class="rule-dot"></span>Best-of-3 pour déterminer le gagnant de la ronde</li>
+          <li><span class="rule-dot"></span>Deck liste obligatoire à l'inscription</li>
+          <li><span class="rule-dot"></span>Arbitrage disponible en cas de litige</li>
+          <li><span class="rule-dot"></span>Format Standard ou Off-Meta selon l'événement</li>
+        </ul>
+      </div>
+
+      <div class="rule-card">
+        <h3>😊 Conduite</h3>
+        <ul>
+          <li><span class="rule-dot"></span>Respect envers tous les joueurs</li>
+          <li><span class="rule-dot"></span>Pas de slow-play intentionnel</li>
+          <li><span class="rule-dot"></span>Pas de triche (double shuffling, stack…)</li>
+          <li><span class="rule-dot"></span>Bonne humeur et fair-play obligatoires</li>
+          <li><span class="rule-dot"></span>La règle Scoville est acceptée dès l'inscription</li>
+        </ul>
+      </div>
+
+      <div class="rule-card">
+        <h3>🎴 Standard</h3>
+        <ul>
+          <li><span class="rule-dot"></span>Cartes légales dans le format Standard Pokémon en vigueur</li>
+          <li><span class="rule-dot"></span>Deck de 60 cartes obligatoire</li>
+          <li><span class="rule-dot"></span>Aucune proxy autorisée</li>
+          <li><span class="rule-dot"></span>Sleeves obligatoires et uniformes</li>
+        </ul>
+      </div>
+
+      <div class="rule-card">
+        <h3>🐱‍👤 Off-Meta</h3>
+        <ul>
+          <li><span class="rule-dot"></span>Archétypes Tier S interdits</li>
+          <li><span class="rule-dot"></span>Liste des decks bannis publiée avant chaque tournoi</li>
+          <li><span class="rule-dot"></span>Deck validé par l'organisation avant le tournoi</li>
+          <li><span class="rule-dot"></span>Non-respect = défaite forfait immédiate</li>
+          <li><span class="rule-dot"></span>L'objectif : créativité avant performance</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="form-card scoville-card">
+      <div class="scoville-header">
+        <h2>🔥 Échelle Scoville</h2>
+        <span>Niveau 0 = aucune sauce · Niveau 8 = 1 000 000 SHU</span>
+      </div>
+
+      <div class="sc-levels">
+        <div class="sc-level-row">
+          <div class="sc-badge-num level-0">0</div>
+          <div class="sc-sauce-name level-0-text">Aucune sauce</div>
+          <div class="sc-shu-val">0 SHU</div>
+          <div class="sc-bar-track"><div class="sc-bar-fill level-0-bar" style="width:0%;"></div></div>
+        </div>
+        <div class="sc-level-row">
+          <div class="sc-badge-num level-1">1</div>
+          <div class="sc-sauce-name level-1-text">Hegoa</div>
+          <div class="sc-shu-val">1 500 SHU</div>
+          <div class="sc-bar-track"><div class="sc-bar-fill level-1-bar" style="width:1%;"></div></div>
+        </div>
+        <div class="sc-level-row">
+          <div class="sc-badge-num level-2">2</div>
+          <div class="sc-sauce-name level-2-text">Sriracha / Mistral</div>
+          <div class="sc-shu-val">15 000 SHU</div>
+          <div class="sc-bar-track"><div class="sc-bar-fill level-2-bar" style="width:2%;"></div></div>
+        </div>
+        <div class="sc-level-row">
+          <div class="sc-badge-num level-3">3</div>
+          <div class="sc-sauce-name level-3-text">Sirocco</div>
+          <div class="sc-shu-val">75 000 SHU</div>
+          <div class="sc-bar-track"><div class="sc-bar-fill level-3-bar" style="width:8%;"></div></div>
+        </div>
+        <div class="sc-level-row">
+          <div class="sc-badge-num level-4">4</div>
+          <div class="sc-sauce-name level-4-text">Tonnerre</div>
+          <div class="sc-shu-val">100 000 SHU</div>
+          <div class="sc-bar-track"><div class="sc-bar-fill level-4-bar" style="width:10%;"></div></div>
+        </div>
+        <div class="sc-level-row">
+          <div class="sc-badge-num level-5">5</div>
+          <div class="sc-sauce-name level-5-text">Foudre</div>
+          <div class="sc-shu-val">120 000 SHU</div>
+          <div class="sc-bar-track"><div class="sc-bar-fill level-5-bar" style="width:12%;"></div></div>
+        </div>
+        <div class="sc-level-row">
+          <div class="sc-badge-num level-6">6</div>
+          <div class="sc-sauce-name level-6-text">Armageddon</div>
+          <div class="sc-shu-val">500 000 SHU</div>
+          <div class="sc-bar-track"><div class="sc-bar-fill level-6-bar" style="width:50%;"></div></div>
+        </div>
+        <div class="sc-level-row">
+          <div class="sc-badge-num level-7">7</div>
+          <div class="sc-sauce-name level-7-text">Carolina Reaper</div>
+          <div class="sc-shu-val">800 000 SHU</div>
+          <div class="sc-bar-track"><div class="sc-bar-fill level-7-bar" style="width:80%;"></div></div>
+        </div>
+        <div class="sc-level-row">
+          <div class="sc-badge-num level-8">8</div>
+          <div class="sc-sauce-name level-8-text">Tsunami</div>
+          <div class="sc-shu-val">1 000 000 SHU</div>
+          <div class="sc-bar-track"><div class="sc-bar-fill level-8-bar" style="width:100%;"></div></div>
+        </div>
+      </div>
+
+      <div class="scoville-note">
+        Aliments servis : poulet frit 🍗, croquettes de fromage 🧀 ou de légumes 🥦.
+        Les allergies et restrictions alimentaires sont à déclarer à l'inscription.
+        Une charte de sécurité alimentaire sera signée par chaque participant.
+      </div>
+    </div>
+
+    <div class="sc-calc-wrap">
+      <h3>🧮 Calcule ton niveau</h3>
+      <div class="sc-calc-controls">
+        <div class="sc-calc-group">
+          <label>Défaites</label>
+          <button class="sc-counter-btn" id="lose-minus" type="button">−</button>
+          <span class="sc-counter-val" id="lose-val">0</span>
+          <button class="sc-counter-btn" id="lose-plus" type="button">+</button>
+          <span class="calc-note">× 2 niveaux</span>
+        </div>
+        <div class="sc-calc-group">
+          <label>Nuls</label>
+          <button class="sc-counter-btn" id="tie-minus" type="button">−</button>
+          <span class="sc-counter-val" id="tie-val">0</span>
+          <button class="sc-counter-btn" id="tie-plus" type="button">+</button>
+          <span class="calc-note">× 1 niveau</span>
+        </div>
+      </div>
+
+      <div class="sc-result-box">
+        <div class="sc-result-num" id="res-level" style="color:#3ecf1a;">0</div>
+        <div>
+          <div class="sc-result-sauce" id="res-name" style="color:#3ecf1a;">Aucune sauce — bien joué !</div>
+          <div class="sc-result-shu" id="res-shu">0 SHU</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="apropos" class="section">
+  <div class="page-inner">
+    <div class="page-title"><span class="red">À propos</span></div>
+    <div class="page-line"></div>
+
+    <div class="about-split">
+      <div class="about-img-wrap">
+        <img src="images/logo-scoville-tournament.png" alt="Scovilain Cup" onerror="this.style.background='linear-gradient(135deg,#9e1505,#1a7a08)';this.style.height='180px';this.style.borderRadius='12px'">
+      </div>
+
+      <div class="about-text">
+        <h2>✌ QUI SOMMES-NOUS ?</h2>
+        <p>Scoville Tournament est un concept de tournois Pokémon TCG née d'une simple idée : rendre les défaites mémorables. Parce que perdre sur le tapis de jeu, c'est une chose — mais perdre <strong>ET</strong> devoir manger une croquette de fromage avec de la sauce Tsunami, c'est une autre histoire.</p>
+        <p>Nos événements se veulent accessibles à tous les niveaux, des débutants aux joueurs compétitifs, avec deux formats distincts : le <strong>Standard</strong> pour les stratèges de la méta, et l'<strong>Off-Meta</strong> pour les créatifs qui veulent surprendre.</p>
+        <p>Basés à Rennes, nous organisons des tournois en présentiel et en ligne. La communauté d'abord, la compétition ensuite — et le piment toujours.</p>
+
+        <div class="stat-row">
+          <div class="stat-box">
+            <div class="stat-label">Tournoi organisé</div>
+            <div class="stat-num stat-red">1</div>
+          </div>
+          <div class="stat-box">
+            <div class="stat-label">Joueurs</div>
+            <div class="stat-num stat-green">12</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-card form-card-centered">
+      <h2>✉️ NOUS CONTACTER</h2>
+      <p class="support-text">Une question ? Une suggestion ? Envie d'organiser un tournoi avec nous ?</p>
+
+      <form id="contact-form" action="https://script.google.com/macros/s/AKfycbxNAaU0qNO219emBdIb1qB8QdH_iXNA_Giqh88zSkdD5__oBFLtv85kyvSiWV4V5UnJ2w/exec" method="POST">
+        <div class="form-group form-group-spaced">
+          <label for="contact-email">Votre email</label>
+          <input type="email" id="contact-email" name="email" placeholder="dresseur@pokemon.com" required>
+        </div>
+        <div class="form-group form-group-spaced-lg">
+          <label for="contact-message">Message</label>
+          <textarea id="contact-message" name="message" rows="4" placeholder="Votre message..." required></textarea>
+        </div>
+        <button type="submit" id="contact-submit-btn" class="btn-primary btn-full">Envoyer</button>
+        <p id="contact-form-message" class="form-message"></p>
+      </form>
+    </div>
+
+    <div class="form-card form-card-centered">
+      <h2>❤️ NOUS SOUTENIR</h2>
+      <p class="support-text support-text-large">Vous aimez le concept Scoville Tournament et souhaitez nous aider à organiser de nouveaux événements, améliorer les dotations et faire grandir la communauté ? Vous pouvez nous soutenir via un don libre sur PayPal.</p>
+      <a href="https://paypal.me/NicolasAntigny" target="_blank" rel="noopener noreferrer" class="btn-primary btn-full">Faire un don</a>
+      <p class="support-note">Chaque contribution nous aidera à faire monter la température 🌶️</p>
+    </div>
+  </div>
+</section>
+
+<section id="rgpd" class="section">
+  <div class="page-inner">
+    <div class="page-title">
+      <span class="red">Mentions légales</span><br>
+      <span class="rgpd-subtitle">& Protection des données</span>
+    </div>
+    <div class="page-line"></div>
+    <p class="page-intro">Conformément au Règlement Général sur la Protection des Données (RGPD — UE 2016/679) et à la loi Informatique et Libertés, voici les informations relatives au traitement de vos données personnelles par Scoville Tournament.</p>
+
+    <div class="rule-card rgpd-card">
+      <h3>🏛️ Éditeur du site</h3>
+      <p><strong class="text-strong">Nom du site :</strong> scoville-tournament.net<br>
+      <strong class="text-strong">Responsable de publication :</strong> Nicolas Antigny (alias C18_Production)<br>
+      <strong class="text-strong">Localisation :</strong> Rennes, France<br>
+      <strong class="text-strong">Contact :</strong> via le formulaire de contact disponible sur la page « À propos »<br>
+      <strong class="text-strong">Activité :</strong> Organisation de tournois Pokémon TCG à titre associatif / non commercial</p>
+      <p class="mt-8">Ce site est hébergé par un prestataire tiers. Il n'est pas enregistré au Registre du Commerce et ne constitue pas une activité commerciale déclarée. Scoville Tournament est une initiative communautaire indépendante, sans lien avec Nintendo, The Pokémon Company ou leurs partenaires.</p>
+    </div>
+
+    <div class="rule-card rgpd-card">
+      <h3>📋 Données collectées</h3>
+      <p>Dans le cadre des formulaires présents sur ce site, nous collectons les données suivantes :</p>
+      <ul class="rgpd-list">
+        <li><strong class="text-strong">Formulaire d'inscription tournoi :</strong> prénom, nom, Player ID Pokémon, année de naissance, adresse e-mail, tournoi choisi, remarques éventuelles (allergies, restrictions alimentaires)</li>
+        <li><strong class="text-strong">Formulaire de contact :</strong> adresse e-mail, contenu du message</li>
+      </ul>
+      <p class="mt-8">Aucune donnée bancaire, aucun mot de passe, aucune donnée de santé au sens strict n'est collectée. Les informations relatives aux allergies et restrictions alimentaires, renseignées librement par le participant, sont des données à caractère sensible : elles sont utilisées <em>uniquement</em> dans le cadre de l'organisation logistique de l'événement concerné et supprimées après celui-ci.</p>
+    </div>
+
+    <div class="rule-card rgpd-card">
+      <h3>🎯 Finalités et base légale du traitement</h3>
+      <div class="table-overflow mt-8">
+        <table class="rgpd-table">
+          <thead>
+            <tr><th>Donnée</th><th>Finalité</th><th>Base légale (RGPD art. 6)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Prénom, nom, Player ID</td><td>Identification du joueur, établissement du classement</td><td>Exécution d'un contrat</td></tr>
+            <tr><td>Année de naissance</td><td>Vérification des catégories d'âge Pokémon officiel</td><td>Exécution d'un contrat</td></tr>
+            <tr><td>Adresse e-mail</td><td>Confirmation d'inscription, communication pré/post-événement</td><td>Consentement / Exécution d'un contrat</td></tr>
+            <tr><td>Allergies / restrictions alimentaires</td><td>Adaptation des aliments servis lors du défi pimenté</td><td>Consentement explicite (case à cocher)</td></tr>
+            <tr><td>Contenu du message de contact</td><td>Répondre aux demandes d'information</td><td>Intérêt légitime / Consentement</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="rule-card rgpd-card">
+      <h3>⏱️ Durée de conservation</h3>
+      <ul class="rgpd-list">
+        <li><strong class="text-strong">Données d'inscription :</strong> conservées 12 mois après la date du tournoi, puis supprimées ou anonymisées</li>
+        <li><strong class="text-strong">Données relatives aux allergies :</strong> supprimées dans les 30 jours suivant la tenue de l'événement</li>
+        <li><strong class="text-strong">Messages de contact :</strong> conservés au maximum 6 mois</li>
+        <li><strong class="text-strong">Résultats de tournoi (prénom, nom, deck, classement) :</strong> publiés à titre d'archive communautaire — tout joueur peut demander leur retrait</li>
+      </ul>
+    </div>
+
+    <div class="rule-card rgpd-card">
+      <h3>📤 Destinataires des données</h3>
+      <p>Les données collectées via les formulaires sont transmises à un <strong class="text-strong">Google Sheet</strong> hébergé par Google LLC (États-Unis), accessible uniquement à l'organisateur du site. Google agit en tant que sous-traitant au sens du RGPD. La transmission s'effectue via l'API Google Apps Script, en HTTPS.</p>
+      <p class="mt-8">Vos données ne sont <strong class="text-strong">jamais vendues, cédées ou partagées</strong> à des tiers à des fins commerciales ou publicitaires. Elles ne sont pas utilisées pour du profilage ni pour de la prise de décision automatisée.</p>
+      <p class="mt-8">Pour les transferts vers les États-Unis (Google), des garanties appropriées sont en place via les <em>Standard Contractual Clauses</em> de la Commission européenne.</p>
+    </div>
+
+    <div class="rule-card rgpd-card">
+      <h3>⚖️ Vos droits</h3>
+      <p>Conformément au RGPD, vous disposez des droits suivants :</p>
+      <ul class="rgpd-list mt-8">
+        <li><strong class="gold-strong">Droit d'accès (art. 15) :</strong> obtenir confirmation que vos données sont traitées et en recevoir une copie</li>
+        <li><strong class="gold-strong">Droit de rectification (art. 16) :</strong> corriger des données inexactes ou incomplètes</li>
+        <li><strong class="gold-strong">Droit à l'effacement (art. 17) :</strong> demander la suppression de vos données</li>
+        <li><strong class="gold-strong">Droit à la limitation (art. 18) :</strong> demander la suspension temporaire du traitement</li>
+        <li><strong class="gold-strong">Droit à la portabilité (art. 20) :</strong> recevoir vos données dans un format structuré</li>
+        <li><strong class="gold-strong">Droit d'opposition (art. 21) :</strong> vous opposer au traitement fondé sur l'intérêt légitime</li>
+        <li><strong class="gold-strong">Retrait du consentement :</strong> à tout moment, sans effet sur les traitements antérieurs</li>
+      </ul>
+      <p class="mt-16">Pour exercer ces droits, contactez-nous via le formulaire « À propos ». Nous nous engageons à répondre dans un délai d'un mois (art. 12 RGPD).</p>
+      <p class="mt-8">Vous avez également le droit d'introduire une réclamation auprès de la <strong class="text-strong">CNIL</strong> : <span class="text-muted">www.cnil.fr — 3 Place de Fontenoy, 75007 Paris</span></p>
+    </div>
+
+    <div class="rule-card rgpd-card">
+      <h3>🍪 Cookies et traceurs</h3>
+      <p>Ce site n'utilise <strong class="text-strong">aucun cookie de traçage ou publicitaire</strong>. Aucun outil d'analyse d'audience n'est actuellement actif.</p>
+      <p class="mt-8">Les polices Google Fonts sont chargées depuis les serveurs de Google, ce qui peut impliquer la transmission de votre adresse IP à Google. Vous pouvez bloquer ces requêtes via votre navigateur ou un bloqueur de contenu.</p>
+    </div>
+
+    <div class="rule-card rgpd-card">
+      <h3>🔒 Sécurité des données</h3>
+      <p>Toutes les transmissions sont chiffrées via <strong class="text-strong">HTTPS (TLS)</strong>. L'accès au Google Sheet est restreint au seul organisateur, protégé par authentification à deux facteurs.</p>
+      <p class="mt-8">En cas de violation de données, nous nous engageons à notifier la CNIL dans les 72 heures (art. 33 RGPD) et à vous en informer sans délai si le risque est élevé (art. 34 RGPD).</p>
+    </div>
+
+    <div class="notice notice-update">
+      <div class="notice-icon">📅</div>
+      <div>
+        <h4>Mise à jour de cette politique</h4>
+        <p>Cette page a été mise à jour en <strong>avril 2026</strong>. Toute modification substantielle fera l'objet d'une notification sur la page d'accueil.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-left">scoville-tournament.net</div>
+
+  <div class="footer-social">
+    <a href="https://www.instagram.com/scovilletournament/" target="_blank" rel="noopener" aria-label="Instagram" class="social-link">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+        <rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect>
+        <circle cx="12" cy="12" r="4"></circle>
+        <circle cx="17.5" cy="6.5" r="1" fill="currentColor" stroke="none"></circle>
+      </svg>
+    </a>
+
+    <a href="https://discord.gg/2QcaRGpFWs" target="_blank" rel="noopener" aria-label="Discord" class="social-link">
+      <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 12.64 12.64 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057c.001.022.015.04.036.05a19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .036-.05c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.418-2.157 2.418zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.418-2.157 2.418z"></path>
+      </svg>
+    </a>
+  </div>
+
+  <div class="footer-right">
+    Copyright © 2026 scoville-tournament by C18_Production · Tous droits réservés · Pokemon TCG appartient a Nintendo / The Pokemon Company
+    · <a href="#" onclick="showSection('rgpd'); return false;" class="footer-link">Mentions légales & RGPD</a>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
