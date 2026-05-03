@@ -966,6 +966,14 @@ tbody tr:hover td {
   line-height: 1.6;
 }
 
+.notice p + p {
+  margin-top: .55rem;
+}
+
+.notice strong {
+  color: var(--gold);
+}
+
 .form-grid {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -1068,7 +1076,8 @@ textarea {
   padding: 1.35rem;
 }
 
-.rule-card h3 {
+.rule-card h3,
+.scoville-header h2 {
   font-family: 'Bebas Neue', sans-serif;
   font-size: 1.5rem;
   letter-spacing: 1px;
@@ -1135,6 +1144,34 @@ textarea {
 .scoville-header span {
   font-size: .82rem;
   color: var(--text-muted);
+}
+
+.scoville-rule-intro {
+  padding: 1.1rem 1.4rem;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  background: rgba(255,255,255,0.025);
+}
+
+.scoville-rule-intro p {
+  color: rgba(240,237,232,0.74);
+  line-height: 1.7;
+  font-size: .92rem;
+}
+
+.scoville-rule-intro strong {
+  color: var(--gold);
+}
+
+.scoville-card .sc-calc-wrap {
+  margin: 1.2rem 1.4rem 1.35rem;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 0;
+}
+
+.scoville-card .sc-calc-wrap h3 {
+  font-size: 1.35rem;
 }
 
 .sc-levels {
