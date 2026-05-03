@@ -222,3 +222,41 @@ document.querySelectorAll('nav a[data-section]').forEach(function(link) {
 
   update();
 })();
+
+(function () {
+  const tournamentPartners = [
+    { name: 'PokéBreizh Trainers', url: '', logo: '' },
+    { name: 'Cards Quest', url: '', logo: '' },
+    { name: 'Bucklr', url: '', logo: '' },
+    { name: 'Sortilèges Rennes', url: '', logo: '' },
+    { name: 'Maison Martin', url: '', logo: '' },
+    { name: 'KFC', url: '', logo: '' },
+    { name: 'McCain', url: '', logo: '' }
+  ];
+
+  function buildPartnerMarquee(trackId) {
+    const track = document.getElementById(trackId);
+    if (!track) return;
+
+    const items = tournamentPartners.concat(tournamentPartners);
+    track.innerHTML = items.map(function (partner) {
+      const logo = partner.logo
+        ? '<img class="plogoimg" src="' + partner.logo + '" alt="Logo ' + partner.name + '" loading="lazy" onerror="this.remove()">'
+        : '<span class="pdot" aria-hidden="true"></span>';
+
+      const linkAttrs = partner.url
+        ? 'href="' + partner.url + '" target="_blank" rel="noopener"'
+        : 'href="#" aria-disabled="true" data-partner-url-pending="true"';
+
+      return '<a ' + linkAttrs + ' class="plogopill" data-partner-name="' + partner.name + '">' + logo + '<span>' + partner.name + '</span></a>';
+    }).join('');
+
+    track.querySelectorAll('[data-partner-url-pending="true"]').forEach(function (link) {
+      link.addEventListener('click', function (event) {
+        event.preventDefault();
+      });
+    });
+  }
+
+  buildPartnerMarquee('st-partners-track');
+})();

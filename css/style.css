@@ -215,6 +215,7 @@ nav a.active {
   display: none;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
   padding: 3rem 2rem 4rem;
 }
 
@@ -348,6 +349,152 @@ nav a.active {
   color: var(--text-muted);
   font-size: .85rem;
   line-height: 1.5;
+}
+
+
+/* PARTENAIRES TOURNOIS */
+
+.home-partners {
+  width: min(100%, 1220px);
+  margin: 2.6rem auto 0;
+  border-radius: 28px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: linear-gradient(180deg, rgba(255,255,255,0.045), rgba(255,255,255,0.02));
+  box-shadow: var(--shadow), inset 0 1px 0 rgba(255,255,255,0.03);
+}
+
+.mqsec {
+  position: relative;
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 12% 50%, rgba(232,34,10,0.16), transparent 34%),
+    radial-gradient(circle at 88% 50%, rgba(62,207,26,0.14), transparent 34%),
+    var(--dark2);
+  border-top: 1px solid rgba(240,192,64,0.14);
+  border-bottom: 1px solid rgba(240,192,64,0.10);
+}
+
+.mqlab {
+  font-family: 'Barlow Condensed', sans-serif;
+  font-size: .84rem;
+  font-weight: 800;
+  color: var(--gold);
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  padding: 1rem 2rem .45rem;
+}
+
+.mqwrap {
+  overflow: hidden;
+  padding: .65rem 0 1.25rem;
+  position: relative;
+}
+
+.mqwrap::before,
+.mqwrap::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 90px;
+  z-index: 2;
+  pointer-events: none;
+}
+
+.mqwrap::before {
+  left: 0;
+  background: linear-gradient(90deg, var(--dark2), transparent);
+}
+
+.mqwrap::after {
+  right: 0;
+  background: linear-gradient(-90deg, var(--dark2), transparent);
+}
+
+.mtrack,
+.mtrack2 {
+  display: flex;
+  gap: 1rem;
+  width: max-content;
+  will-change: transform;
+}
+
+.mtrack {
+  animation: mq 28s linear infinite;
+}
+
+.mtrack2 {
+  animation: mq 24s linear infinite reverse;
+}
+
+.mtrack:hover,
+.mtrack2:hover {
+  animation-play-state: paused;
+}
+
+.plogopill {
+  display: inline-flex;
+  align-items: center;
+  gap: .65rem;
+  min-height: 48px;
+  padding: .7rem 1.15rem;
+  border-radius: 999px;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.12);
+  color: var(--text);
+  font-weight: 800;
+  font-size: .92rem;
+  line-height: 1;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,0.04);
+  transition: transform .2s ease, border-color .2s ease, background .2s ease, color .2s ease;
+}
+
+.plogopill:hover {
+  transform: translateY(-2px);
+  border-color: rgba(240,192,64,0.55);
+  background: rgba(240,192,64,0.12);
+  color: var(--gold);
+}
+
+.plogopill[aria-disabled="true"] {
+  cursor: default;
+}
+
+.pdot {
+  width: 9px;
+  height: 9px;
+  border-radius: 999px;
+  background: linear-gradient(135deg, var(--red), var(--gold), var(--green));
+  box-shadow: 0 0 16px rgba(240,192,64,0.35);
+  flex: 0 0 auto;
+}
+
+.plogoimg {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  border-radius: 6px;
+  background: rgba(255,255,255,0.92);
+  padding: 3px;
+}
+
+@keyframes mq {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .mtrack,
+  .mtrack2 {
+    animation: none;
+  }
 }
 
 .hero-logo-wrap {
@@ -1761,6 +1908,27 @@ footer {
 }
 
 @media (max-width: 640px) {
+  .home-partners {
+    border-radius: 22px;
+    margin-top: 1.8rem;
+  }
+
+  .mqlab {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .mqwrap::before,
+  .mqwrap::after {
+    width: 48px;
+  }
+
+  .plogopill {
+    min-height: 44px;
+    padding: .65rem .95rem;
+    font-size: .86rem;
+  }
+
   .hero-title {
     font-size: 3.7rem;
   }
