@@ -225,13 +225,13 @@ document.querySelectorAll('nav a[data-section]').forEach(function(link) {
 
 (function () {
   const tournamentPartners = [
-    { name: 'PokéBreizh Trainers', url: '', logo: '' },
-    { name: 'Cards Quest', url: '', logo: '' },
-    { name: 'Bucklr', url: '', logo: '' },
-    { name: 'Sortilèges Rennes', url: '', logo: '' },
-    { name: 'Maison Martin', url: '', logo: '' },
-    { name: 'KFC', url: '', logo: '' },
-    { name: 'McCain', url: '', logo: '' }
+    { name: 'PokéBreizh Trainers', url: 'https://pokebreizhtrainers.jimdosite.com/', logo: 'assets/logos/pokebreizhtrainers.png' },
+    { name: 'Cards Quest', url: 'https://www.whatnot.com/user/cardsquestoff', logo: 'assets/logos/cardsquest.png' },
+    { name: 'Bucklr', url: '', logo: 'assets/logos/bucklr.png' },
+    { name: 'Sortilèges Rennes', url: 'https://www.sortileges.fr/sortileges-rennes', logo: 'assets/logos/sortileges.png' },
+    { name: 'Maison Martin', url: 'https://www.m-martin.fr/', logo: 'martin.png' },
+    { name: 'KFC', url: 'https://www.kfc.fr/', logo: 'assets/logos/kfc.png' },
+    { name: 'McCain', url: 'https://www.mccain.fr/', logo: 'assets/logos/mccain.png' }
   ];
 
   function buildPartnerMarquee(trackId) {

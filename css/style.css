@@ -476,9 +476,10 @@ nav a.active {
   width: 28px;
   height: 28px;
   object-fit: contain;
-  border-radius: 6px;
-  background: rgba(255,255,255,0.92);
-  padding: 3px;
+  border-radius: 0;
+  background: transparent !important;
+  padding: 0;
+  display: block;
 }
 
 @keyframes mq {
